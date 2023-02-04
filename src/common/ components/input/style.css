@@ -1,0 +1,36 @@
+.field-container-comp-input {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.field-container-comp-input > input {
+  display: block !important;
+  width: 100% !important;
+  padding: 0.475rem 0.75rem; 
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+  height: auto !important;
+  color: #212529 !important;
+  background-color: #fff !important;
+  background-clip: padding-box !important;
+  border: 1px solid #ced4da !important;
+  appearance: none !important;
+  margin-top: .4rem;
+  border-radius: 0.25rem;
+  transition: border-color 5s ease-in-out,
+  box-shadow .15s ease-in-out;
+}
+
+.form-label {
+  font-weight: 400;
+}
+
+.note-small-text {
+  font-size: .9rem;
+  margin-top: .5rem;
+  font-weight: 300;
+  color: var(--lightTextColor);
+}

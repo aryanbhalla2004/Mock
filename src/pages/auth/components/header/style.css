@@ -1,0 +1,29 @@
+.auth-12-header {
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+  width: 100%;
+}
+
+.auth-12-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-12-header-wrapper {
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.auth-12-action-btn-work-start {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.auth-12-action-btn-work-start > p {
+  color: var(--lightTextColor);
+  font-weight: 300;
+  font-size: .9rem;
+}

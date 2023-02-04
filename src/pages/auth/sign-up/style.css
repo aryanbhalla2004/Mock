@@ -1,0 +1,39 @@
+.auth-12-register {
+  max-width: 450px;
+  width: 100%;
+}
+
+.auth-12-register-header-text > h2{
+  font-weight: 300;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  line-height: 35px;
+}
+
+.auth-12-register > p {
+  color: var(--lightTextColor);
+  font-weight: 300;
+  font-size: .9rem;
+  margin-bottom: 1rem;
+  line-height: 20px;
+}
+
+.auth-12-register-step-2 {
+  max-width: 600px;
+}
+
+.col-2-form-register {
+  display: flex;
+  gap: 20px;
+}
+
+.col-2-form-register > div {
+  margin-bottom: 0;
+}
+
+.note-small-text {
+  font-size: .9rem;
+  margin-top: .5rem;
+  font-weight: 300;
+  color: var(--lightTextColor);
+}

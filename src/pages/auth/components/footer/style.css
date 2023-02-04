@@ -1,0 +1,22 @@
+.auth-12-footer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid var(--lightBorderColor);
+}
+
+.auth-12-footer-content {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.auth-12-footer-content > p {
+  font-size: .9rem;
+  color: var(--lightTextColor);
+  font-weight: 300;
+}
+
+.auth-12-footer-content > p > a {
+  color: var(--darkColor);
+}
