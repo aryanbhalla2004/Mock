@@ -1,0 +1,93 @@
+.field-container-comp-input {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.field-container-comp-input > input {
+  display: block !important;
+  width: 100% !important;
+  padding: 0.475rem 0.75rem; 
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+  height: auto !important;
+  color: #212529 !important;
+  background-color: #fff !important;
+  background-clip: padding-box !important;
+  border: 1px solid #ced4da;
+  appearance: none !important;
+  margin-top: .4rem;
+  border-radius: 0.25rem;
+  transition: border-color .1s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.field-container-comp-input > input:focus {
+  outline: none;
+}
+
+.form-label {
+  font-weight: 400;
+}
+
+.note-small-text {
+  font-size: .9rem;
+  margin-top: .5rem;
+  gap: 5px;
+  display: flex;
+  font-weight: 300;
+  color: var(--lightTextColor);
+}
+
+.error-field {
+  border-color:  red !important;
+}
+
+.error-text {
+  color: red !important;
+}
+
+.PhoneInput > input {
+  display: block !important;
+  width: 100% !important;
+  padding: 0.475rem 0.75rem; 
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+  height: auto !important;
+  color: #212529 !important;
+  background-color: #fff !important;
+  background-clip: padding-box !important;
+  border: 1px solid #ced4da;
+  appearance: none !important;
+  border-radius: 0.25rem;
+  transition: border-color .1s ease-in-out, box-shadow .15s ease-in-out;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.PhoneInput > input:focus {
+  outline: none;
+}
+
+.PhoneInput > .PhoneInputCountry {
+  border: 1px solid #ced4da;
+  display: flex;
+  gap: 5px;
+  border-radius: 0.25rem;
+  background-color: #f3f3f3;
+  padding: 0.75rem 0.75rem; 
+  border-right: 0px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-right: 0;
+}
+
+.error-phoneNumber > input{
+  border: 1px solid red;
+}
+
+.phoneContainer {
+  border-radius: 0.25rem;
+}

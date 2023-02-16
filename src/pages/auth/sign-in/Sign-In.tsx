@@ -1,6 +1,6 @@
 import React from 'react'
-import { PrimaryButton, TextLink } from '../../../common/ components/button/Button';
-import { TextInput } from '../../../common/ components/input/Input';
+import { PrimaryButton, TextLink } from '../../../common/components/button/Button';
+import { TextInput } from '../../../common/components/input/Input';
 import "./style.css";
 const SignIn = () => {
   return (

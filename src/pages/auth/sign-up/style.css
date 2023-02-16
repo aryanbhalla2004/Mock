@@ -37,3 +37,78 @@
   font-weight: 300;
   color: var(--lightTextColor);
 }
+
+.header-flex-with-icon {
+  display: flex;
+  gap: 20px;
+}
+
+.header-flex-with-icon > i {
+  font-size: 2rem;
+  border: 1px solid;
+}
+
+.items2-1-big-1-small {
+  display: flex;
+  gap: 10px;
+}
+
+.items2-1-big-1-small > mapbox-address-autofill {
+  width: 100%;
+}
+
+.items2-1-big-1-small > div:nth-child(2) {
+  width: 45%;
+}
+
+.auth-12-register-step-3 {
+  max-width: 650px;
+  width: 100%;
+}
+
+
+
+.time-picker-container {
+  justify-content: space-between;
+  list-style-type: none;
+}
+
+.time-picker-container > li {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  grid-template-columns: 1fr 2fr 3fr;
+}
+
+
+.time-picker-container > li > h4 {
+  font-weight: 500;
+  width: 100%;
+  color: var(--primary);
+}
+
+.day-time-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.day-time-container > input {
+  padding: 5px !important;
+  font-weight: 300;
+  color: var(--textDarkColor);
+}
+
+.day-time-container > span {
+  font-weight: 300;
+  font-size: .9rem;
+  font-style: italic;
+}
+
+.button-same-level-col {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 20px;
+}

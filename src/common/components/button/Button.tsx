@@ -5,18 +5,19 @@ interface prop {
   name: String
   type?: any
   path?: any,
-  width?: string
+  width?: string,
+  onClick?: () => void
 }
 
 export const PrimaryButton = (props: prop) => {
   return (
-    <button type={props.type}  style={props.width === "full" ? { width: '100%' } : { width: 'fit-content' }} className="btn-general primary-button">{props.name}</button>
+    <button type={props.type} onClick={props.onClick} style={props.width === "full" ? { width: '100%' } : { width: 'fit-content' }} className="btn-general primary-button">{props.name}</button>
   )
 }
 
 export const GhostButton = (props: prop) => {
   return (
-    <button type={props.type} style={props.width === "full" ? { width: '100%' } : { width: 'fit-content' }} className="btn-general ghost-button">{props.name}</button>
+    <button type={props.type} onClick={props.onClick} style={props.width === "full" ? { width: '100%' } : { width: 'fit-content' }} className="btn-general ghost-button">{props.name}</button>
   )
 }
 
