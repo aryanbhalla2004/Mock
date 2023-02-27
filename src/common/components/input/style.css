@@ -44,10 +44,6 @@
   border-color:  red !important;
 }
 
-.error-text {
-  color: red !important;
-}
-
 .PhoneInput > input {
   display: block !important;
   width: 100% !important;
@@ -90,4 +86,5 @@
 
 .phoneContainer {
   border-radius: 0.25rem;
+  margin-top: .4rem;
 }

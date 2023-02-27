@@ -5,7 +5,8 @@
   --lightColor: #F8F8F8;
   --lightBorderColor: #e6e6e6;
   --lightTextColor: #848484;
-  --blueColorLink: #0000FF
+  --blueColorLink: #0000FF;
+  --danger: #df4759;
 }
 
 * {
@@ -38,4 +39,10 @@ body {
 
 .mb-1 {
   margin-bottom: 1rem !important;
+}
+
+.error-text {
+  margin-bottom: 10px;
+  color: var(--danger) !important;
+  text-align: center;
 }

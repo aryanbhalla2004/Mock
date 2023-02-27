@@ -2,11 +2,15 @@ export interface IEmployeeSignUpForm {
   email: string
   fName: string,
   lName: string,
-  pNumber: number,
+  pNumber: string,
   dob: string,
+  password: string,
+  confirm_password:string,
   address: Address,
   availability: Availability,
-  verified: boolean
+  verified: boolean,
+  WorkingStatus: string,
+  proof: document
 }
 
 export interface Address {
@@ -19,21 +23,23 @@ export interface Address {
 }
 
 export interface Availability {
-  Sunday: SingleDayAvailability,
-  Monday: SingleDayAvailability,
-  Tuesday: SingleDayAvailability,
-  Wednesday: SingleDayAvailability,
-  Thursday: SingleDayAvailability,
-  Friday: SingleDayAvailability,
-  Saturday: SingleDayAvailability,
+  Sunday: timing[],
+  Monday: timing[],
+  Tuesday: timing[],
+  Wednesday: timing[],
+  Thursday: timing[],
+  Friday: timing[],
+  Saturday: timing[],
 }
 
-interface SingleDayAvailability {
-  isAvailable: boolean,
-  timing: [timing]
-}
-
-interface timing {
+export interface timing {
   start: string,
   end: string
+}
+
+export interface document {
+  addressType: string,
+  addressDocument: File | null,
+  mainType: string,
+  mainDocument: File | null,
 }

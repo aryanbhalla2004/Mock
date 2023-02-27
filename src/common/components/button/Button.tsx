@@ -6,12 +6,14 @@ interface prop {
   type?: any
   path?: any,
   width?: string,
+  loading?: boolean,
+  form?: string,
   onClick?: () => void
 }
 
 export const PrimaryButton = (props: prop) => {
   return (
-    <button type={props.type} onClick={props.onClick} style={props.width === "full" ? { width: '100%' } : { width: 'fit-content' }} className="btn-general primary-button">{props.name}</button>
+    <button form={props.form} type={props.type} onClick={props.onClick} style={props.width === "full" ? { width: '100%' } : { width: 'fit-content' }} className="btn-general primary-button">{props.loading ? <div id="loading-small-spinner"></div> : props.name}</button>
   )
 }
 
