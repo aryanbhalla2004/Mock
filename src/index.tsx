@@ -5,6 +5,7 @@ import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Amplify } from 'aws-amplify';
 import awsExports from './aws-exports';
+
 import {AccountProvider } from './setup/contexts/AuthContext';
 Amplify.configure(awsExports);
 const root = ReactDOM.createRoot(
