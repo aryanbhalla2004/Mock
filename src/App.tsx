@@ -3,9 +3,14 @@ import Auth from "./pages/auth/Auth";
 import SignIn from "./pages/auth/sign-in/Sign-In";
 import SignUp from "./pages/auth/sign-up/Sign-Up";
 import { ActivateAccount } from "./pages/auth/activate-account/ActivateAccount";
+<<<<<<< HEAD
 import { useEffect, useContext } from "react";
 import { AccountContext } from "./setup/contexts/AuthContext";
 import Dashboard from "./pages/backend/Dashboard";
+||||||| a5eb1b8
+=======
+import Dashboard from "./pages/backend/Dashboard";
+>>>>>>> a3ceb4a70cc9288deb73da18c4ed1170fb25818c
 
 const App = () => {
   const {getUser, isAuthenticated, isLoading, logout} = useContext(AccountContext);
@@ -38,9 +43,15 @@ const App = () => {
   return (
     <>
     <Routes>
+<<<<<<< HEAD
 
       <Route path="*" element={<h1>Error 404 sirjak</h1>}></Route>
 
+||||||| a5eb1b8
+      <Route path="*" element={<h1>Error 404 sirjak</h1>}></Route>
+=======
+      <Route path="*" element={<h1>Error 404</h1>}></Route>
+>>>>>>> a3ceb4a70cc9288deb73da18c4ed1170fb25818c
       <Route path="/auth" element={<Auth />}>
         <Route index element={<SignIn/>} />
         <Route path="sign-up">
@@ -48,6 +59,7 @@ const App = () => {
           <Route path="activate" element={<ActivateAccount/>}/>
         </Route>
       </Route>
+<<<<<<< HEAD
 
       
       <Route path="/" element={<><Link to="/auth">Auth</Link> <Link to="/dashboard">dashboard</Link> </>} />
@@ -56,6 +68,13 @@ const App = () => {
       
 
 
+||||||| a5eb1b8
+      <Route path="/" element={<Link to="/auth">Auth</Link>} />
+=======
+      <Route path="/dashboard" element={<Dashboard />}>
+      </Route>
+      <Route path="/" element={<><Link to="/auth">Auth</Link> <Link to="/dashboard">dashboard</Link> </>} />
+>>>>>>> a3ceb4a70cc9288deb73da18c4ed1170fb25818c
     </Routes>
     </>
   )
