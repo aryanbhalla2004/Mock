@@ -16,7 +16,6 @@
         "mock": {}
       },
       "storage": {
-        "s3mockstorage78d49162": {},
         "s3mockstorage760ca2fb": {}
       }
     }

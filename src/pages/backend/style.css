@@ -1,0 +1,222 @@
+:root {
+  --prim: rgb(68,197,156);
+  --sec: #CDD1D8;
+}
+
+
+/* * reset*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*body reset*/
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #333;
+    background-color: #5e5757;
+}
+
+/*Container*/
+.container {
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    display: flex;
+    justify-content: space-between;
+    
+}
+.logo{
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+}
+.logoImg{
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+}
+nav{
+  background-color: #fff;
+  color: var(--prim);
+  width: 100%;
+  max-width: 250px;
+  border: var(--prim) 1px solid;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  gap: 15px;
+}
+nav span {
+  color: var(--sec);
+}
+nav hr{
+  border: 1px solid #F3F6F8;
+}
+nav ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}--prim--prim
+
+.navTop{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 30%;
+}
+
+nav > ul > li:hover {
+  background-color: #EDF9F4;
+  color: var(--prim);
+}
+
+nav > ul > li{
+  border-radius: 5px;
+  display: flex;
+  gap: 20px;
+  color: var(--sec);
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  align-items: center;
+  padding: 10px 15px ;
+}
+
+nav > ul > li > i {
+  font-size: 1.2rem;
+  display: flex;
+}
+
+nav > ul > li > span {
+  color: inherit !important;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.noti{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background-color: var(--prim);
+  width: 30px;
+  height: 30px;
+  border-radius: 100px;
+}
+main{
+  width: 100%;
+  border: #333 1px solid;
+}
+/*Side Nav*/
+
+.profileImg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  background-color: var(--prim);
+  height: 40px;
+  padding-bottom: 2px;
+  color: white;
+  border: var(--prim) 2px solid;
+  border-radius: 7px;
+  font-size: 20px;
+}
+
+.profile{
+  display: flex;
+  color: black;
+  gap: 15px;
+  align-items: center;
+  line-height: 19px;
+}
+
+.left {
+  display: flex;
+  justify-content: end;
+  flex-direction: column;
+
+}
+.profTitle{
+  font-weight: 550;
+  font-size: 0.9rem;
+ 
+}
+
+.profName{
+  font-weight: 500;
+  color: var(--sec);
+  font-size: 0.8rem;
+
+}
+
+.closeNav{
+  padding: 4px 8px;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #fff;
+  background-color: var(--prim);
+  border: 1px solid var(--prim);
+  border-radius: 20px;
+}
+
+.block-holder{
+  display: grid;
+
+  grid-template-rows: repeat(5, 150px);
+  grid-template-columns: repeat(7, 1fr);
+  gap: 15px 15px;
+  padding: 15px;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+.one-block{
+  margin: 0;
+  max-height: 200px;
+  width: 100%;
+  max-width: 200px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  border-radius: 5px;
+  background-color: #fff;
+  color: var(--sec);
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  color: var(--prim);
+}
+
+.day{
+  font-size: 2rem;
+  justify-content: center;
+  max-height: 100px;
+}
+
+.one-block-upper{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+  padding-top: -10px;
+}
+
+.one-block-upper span{
+  font-size: 3rem;
+
+  
+}
