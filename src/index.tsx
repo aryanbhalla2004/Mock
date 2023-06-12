@@ -3,22 +3,32 @@ import "./index.css";
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { Amplify } from 'aws-amplify';
+import { Amplify, Storage } from 'aws-amplify';
 import awsExports from './aws-exports';
 
 import {AccountProvider } from './setup/contexts/AuthContext';
+import { DbProvider } from './setup/contexts/dbContext';
 Amplify.configure(awsExports);
+
+Storage.configure({
+  region: awsExports.aws_user_files_s3_bucket_region,
+  bucket: awsExports.aws_user_files_s3_bucket,
+  identityPoolId: awsExports.aws_user_pools_id,
+});
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
 root.render(
   <React.StrictMode>
-    <AccountProvider>
-      <Router>
-        <App />
-      </Router>
-    </AccountProvider>
+    <DbProvider>
+      <AccountProvider>
+        <Router>
+          <App />
+        </Router>
+      </AccountProvider>
+    </DbProvider>
   </React.StrictMode>
 );
 

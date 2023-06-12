@@ -42,7 +42,7 @@ const StepFour = (props: prop) => {
             <th></th>
           </thead>
           <tbody>
-            {Object.entries(props.formData.availability).map((item: any, index) => (
+            {/* {Object.entries(props.formData?.availability).map((item: any, index) => (
               <tr className={item[1].length <= 0 ? "two-item-class" : ""}>
               <td>{item[0]}</td>
               {item[1].length > 0 ? <>
@@ -55,7 +55,7 @@ const StepFour = (props: prop) => {
                 <td>{item[1].length > 0 && <button className='clear-button-avability' type='button' onClick={e => clearSingleInterval(item[0])}><i className="bi bi-calendar2-x"></i> Clear</button>}</td>
                 </> : <td><button onClick={e => props.setShowModal(true)} type="button"><i className="bi bi-plus-circle-dotted"></i> Add Hours</button></td>}
             </tr>
-            ))}
+            ))} */}
           </tbody>
         </table>
       </div>

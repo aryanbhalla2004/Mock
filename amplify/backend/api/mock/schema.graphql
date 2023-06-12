@@ -1,0 +1,37 @@
+type Rating @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  description: String
+  Owner: String
+  rating: Float
+  employeeID: ID! @index(name: "byEmployee")
+}
+
+type Document {
+  type: String
+  document: String
+}
+
+type Address {
+  address: String
+  unit: String
+  postalcode: String
+  country: String
+  state: String
+}
+
+type Employee @model @auth(rules: [{allow: owner, operations: [create, read, update]}, {allow: groups, groups: ["Admin"], operations: [read, update]}, {allow: public, operations: [create]}]) {
+  id: ID!
+  cognitoUser: ID
+  firstName: String
+  lastName: String
+  phoneNumber: AWSPhone
+  dob: AWSDate
+  address: Address
+  workingStatus: String
+  documents: [Document!]
+  agreement: [Document!]
+  ratingValue: Float
+  Ratings: [Rating] @hasMany(indexName: "byEmployee", fields: ["id"])
+  systemRating: Float
+}
+ 

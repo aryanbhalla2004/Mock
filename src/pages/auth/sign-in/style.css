@@ -1,8 +1,16 @@
 .login-form-auth-12 {
   padding: 20px;
   border-radius: 4px;
-  max-width: 500px;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form-auth-12-container {
+  max-width: 600px;
+  flex-direction: column;
+  display: flex;
 }
 
 .auth-12-login-header-text {
@@ -24,6 +32,7 @@
   display: flex;
   justify-content: space-between;
   margin: 1rem 0;
+  margin-top: 0;
 }
 
 

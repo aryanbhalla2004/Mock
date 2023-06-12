@@ -1,0 +1,27 @@
+.otp-container {
+  display: flex;
+  gap: 10px;
+  margin: 30px 0;
+  margin-bottom: 20px;
+}
+
+.otp-code-field {
+  border: 1px solid var(--lightBorderColor);
+  border-radius: 4px;
+  font-size: 1.2rem;
+  width: 50px !important;
+  height: 60px;
+}
+
+.auth-12-register-step-agreement-opt {
+  max-width: 500px;
+}
+
+.smaller-text{
+  line-height: 20px;
+}
+
+.resend-link-otp {
+  font-size: .9rem;
+  margin: 20px 0;
+}

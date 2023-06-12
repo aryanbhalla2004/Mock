@@ -7,10 +7,10 @@ export interface IEmployeeSignUpForm {
   password: string,
   confirm_password:string,
   address: Address,
-  availability: Availability,
+  availability?: Availability,
   verified: boolean,
-  WorkingStatus: string,
-  proof: document
+  WorkingStatus?: string,
+  proof?: document
 }
 
 export interface Address {

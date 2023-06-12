@@ -25,15 +25,21 @@ export const StepSix = (props: prop) => {
     });
   }
 
+  const deleteFile = (name: string) => {
+    props.setFormData((prev: any) => {
+      return {...prev, proof: {...prev.proof, [name]: null}}
+    });
+  }
+
   return (
     <div className='auth-12-register-step-3 animate-entry-signup'>
       <div className='auth-12-register-header-text'>
         <h2>Uploading Proof of Identity/Address</h2>
         <p className='note-small-text mt-0 mb-1'>We assure you that your personal information and identity documents will be securely stored and handled with the utmost confidentiality.</p>
         
-        <div className='proof-container-sign-up'>
+        {/* <div className='proof-container-sign-up'>
           <ul className='address-proof-document'>
-            {props.formData.WorkingStatus === "CANADIAN" && <li>
+            {props.formData.WorkingStatus === "RESIDENT" && <li>
               <span className='absolute-postion-box'>required</span>
               <i className="bi bi-flag"></i>
               <h3>Citizenship or Permanent Residency</h3>
@@ -52,12 +58,12 @@ export const StepSix = (props: prop) => {
                 </>
                 }
               </>}
-              {props.formData.proof.mainDocument !== null && <div className='file-uploaded-conformation'>
-                <i className="bi bi-check-circle"></i>File Uploaded
-              </div>}
+              {props.formData.proof.mainDocument !== null && <div className='file-uploaded-conformation new-file-button' onClick={() => deleteFile("mainDocument")}><span><i className="bi bi-check-circle-fill"></i>File Uploaded</span> <i className="bi bi-trash3"></i></div>}
             </li> }
 
-            {props.formData.WorkingStatus === "WORK" && <li>
+            
+
+            {props.formData.WorkingStatus === "WORKPERMIT" && <li>
               <span className='absolute-postion-box'>required</span>
               <i className="bi bi-person-vcard"></i>
               <h3>Work Permit</h3>
@@ -65,10 +71,9 @@ export const StepSix = (props: prop) => {
               {props.formData.proof.mainDocument === null && props.formData.proof.mainType != "" && <>
                 <input type="file" accept=".doc,.docx,.pdf" id="fileID" name="mainDocument" className='upload-field-button' onChange={fileUploadToState}/>
               </>}
-              {props.formData.proof.mainDocument !== null && <div className='file-uploaded-conformation'>
-                <i className="bi bi-check-circle"></i>File Uploaded
-              </div>}
+              {props.formData.proof.mainDocument !== null && <div className='file-uploaded-conformation new-file-button' onClick={() => deleteFile("mainDocument")}><span><i className="bi bi-check-circle-fill"></i>File Uploaded</span> <i className="bi bi-trash3"></i></div>}
             </li> }
+
             <li>
               <span className='absolute-postion-box'>required</span>
               <i className="bi bi-geo-alt"></i>
@@ -88,13 +93,11 @@ export const StepSix = (props: prop) => {
               </>
               }
               </>}
-              {props.formData.proof.addressDocument !== null && <div className='file-uploaded-conformation'>
-                <i className="bi bi-check-circle"></i>File Uploaded
-              </div>}
+              {props.formData.proof.addressDocument !== null && <div className='file-uploaded-conformation new-file-button' onClick={() => deleteFile("addressDocument")}><span><i className="bi bi-check-circle-fill"></i>File Uploaded</span> <i className="bi bi-trash3"></i></div>}
             </li>
           </ul>
           {props.error.for === "ProofUpload" && <p className="note-small-text error-text mt-1"><i className="bi bi-exclamation-triangle-fill"></i> {props.error.note}</p>}
-        </div>
+        </div> */}
       </div>
     </div>
   )

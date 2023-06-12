@@ -109,33 +109,24 @@ const AccountProvider = ({children}: any) => {
   }
 
   const register = async (registration: any) => {
-    // const {email, password, fName, lName, accountType, bName, bEmail, bAddress} = registration;
-    // let attributes:any = {
-    //   given_name: fName,
-    //   family_name: lName,
-    //   'custom:account_type': accountType,
-    //   'custom:sign_up_status': 'pending',
-    //   'custom:birthdate': 'N/a',
-    //   'custom:phone_number': 'N/a',
-    //   'custom:address': 'N/a', 
-    //   'custom:city': 'N/a',
-    //   'custom:country': 'N/a'
-    // }
+    const {email, password, fName, lName} = registration;
+    let attributes:any = {
+      given_name: fName,
+      family_name: lName,
+      'custom:account_type': "Employee",
+    }
 
-    // if(accountType === "BUSINESS") {
-    //   attributes = {...attributes, 'custom:business_name': bName, 'custom:business_email': bEmail, 'custom:business_address': bAddress}
-    // }
 
-    // try {
-    //   const response = await Auth.signUp({
-    //     username: email,
-    //     password: password,
-    //     attributes
-    //   });
-    //   return response;
-    // } catch (err) {
-    //   throw err;
-    // }
+    try {
+      const response = await Auth.signUp({
+        username: email,
+        password: password,
+        attributes
+      });
+      return response;
+    } catch (err) {
+      throw err;
+    }
   }
 
   const fetchDevices = async () => {

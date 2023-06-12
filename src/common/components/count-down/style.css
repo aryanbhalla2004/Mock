@@ -1,0 +1,8 @@
+.timing-clock {
+  border: 1px solid var(--darkBorderColor);
+  font-size: .9rem;
+  font-weight: 600;
+  letter-spacing: .01rem;
+  border-radius: 3px;
+  padding: 3px 5px;
+}

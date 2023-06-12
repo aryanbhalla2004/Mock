@@ -1,9 +1,11 @@
-import { AddressAutofill } from '@mapbox/search-js-react';
-import React, { FormEvent, useContext, useEffect, useState } from 'react'
+import React, { FormEvent, useContext, useEffect, useState, useRef } from 'react'
 import { isValidPhoneNumber } from 'react-phone-number-input';
+import { CreateEmployeeInput} from '../../../API';
 import { GhostButton, PrimaryButton } from '../../../common/components/button/Button';
 import { IEmployeeSignUpForm } from '../../../common/interfaces/CommonInterfaces';
 import { AccountContext } from '../../../setup/contexts/AuthContext';
+import { DatabaseContext } from '../../../setup/contexts/dbContext';
+import { Review } from './components/review/Review';
 import { SetPassword } from './components/set-password/SetPassword';
 import { StepFive } from './components/step-five/Step-five';
 import StepFour from './components/step-four/Step-four';
@@ -15,6 +17,9 @@ import StepTwo from './components/step-two/Step-two';
 import { useMultistepForm } from './hooks/useMultistepForm';
 import { Error } from './interface/Error';
 import "./style.css";
+import { createEmployee } from '../../../graphql/mutations';
+import { useNavigate } from 'react-router-dom';
+
 
 const INITIAL_DATA: IEmployeeSignUpForm = {
   fName: "",
@@ -32,24 +37,23 @@ const INITIAL_DATA: IEmployeeSignUpForm = {
     country: "",
     postalCode: "",
   },
-  availability: {
-    Sunday: [],
-    Monday: [],
-    Tuesday: [],
-    Wednesday: [],
-    Thursday: [],
-    Friday: [],
-    Saturday: [],
-  },
-  WorkingStatus: "",
+  // availability: {
+  //   Sunday: [],
+  //   Monday: [],
+  //   Tuesday: [],
+  //   Wednesday: [],
+  //   Thursday: [],
+  //   Friday: [],
+  //   Saturday: [],
+  // },
+  //WorkingStatus: "",
   verified: false,
-  proof: {
-    addressType: "",
-    addressDocument: null,
-    mainType: "",
-    mainDocument: null,
-  }
-
+  // proof: {
+  //   addressType: "",
+  //   addressDocument: null,
+  //   mainType: "",
+  //   mainDocument: null,
+  // }
 };
 
 const INITIAL_ERROR: Error = {
@@ -59,11 +63,24 @@ const INITIAL_ERROR: Error = {
 }
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState<IEmployeeSignUpForm>(INITIAL_DATA);
   const [error, setError] = useState<Error>(INITIAL_ERROR);
   const [loading, setLoading] = useState<boolean>(false);
-  const {login} = useContext(AccountContext);
-  const [showModal, setShowModal] = useState(false);
+  const {login, register} = useContext(AccountContext);
+  const {uploadFile, pushDataUserAPI} = useContext(DatabaseContext);
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [signatureData, setSignatureData] = useState<any>({
+    oneRef: useRef<any>(),
+    twoRef: useRef<any>(),
+    oneCode: "",
+    twoCode: "",
+    oneFile: "",
+    twoFile: "",
+    one: [],
+    two: [],
+  });
+
 
   const updateFields = (fields: Partial<IEmployeeSignUpForm>) => {
     setFormData(prev => {
@@ -71,15 +88,16 @@ const SignUp = () => {
     })
   }
 
-  const {back, next, step, isFirstStep, isLastStep, currentStepIndex} = useMultistepForm([
+  const {back, next, step, isFirstStep, isLastStep, isReview, currentStepIndex} = useMultistepForm([
     <StepOne formData={formData} updateFields={updateFields} error={error}/>,
     <StepTwo formData={formData} updateFields={updateFields} setFormData={setFormData} error={error}/>,
     <StepThree formData={formData} setFormData={setFormData} error={error}/>,
     <SetPassword formData={formData} setFormData={setFormData} error={error}/>,
-    <StepFour formData={formData} updateFields={updateFields} setFormData={setFormData} showModal={showModal} setShowModal={setShowModal}/>,
-    <StepFive formData={formData} setFormData={setFormData} error={error}/>,
-    <StepSix formData={formData} setFormData={setFormData} error={error}/>,
-    <StepSeven formData={formData} setFormData={setFormData}/>
+    // <StepFour formData={formData} updateFields={updateFields} setFormData={setFormData} showModal={showModal} setShowModal={setShowModal}/>,
+    // <StepFive formData={formData} setFormData={setFormData} error={error}/>,
+    // <StepSix formData={formData} setFormData={setFormData} error={error}/>,
+    // <StepSeven formData={formData} setFormData={setFormData} signatureData={signatureData} setSignatureData={setSignatureData}/>,
+    <Review formData={formData}/>
   ]);
 
 
@@ -175,23 +193,31 @@ const SignUp = () => {
     } else if (currentStepIndex === 4) {
       //! Shifts do checks here SAINI
       next();
-    } else if (currentStepIndex === 5) {
-      if(formData.WorkingStatus != "") {
-        next();
-      } else {
-        setError({for: "WorkingStatus", note: "Please make a selection before pressing next."});
-      }
-    } else if (currentStepIndex === 6) {
-      if(formData.proof.addressType !== "" && formData.proof.mainType !== "") {
-        if(formData.proof.addressDocument != null && formData.proof.mainDocument != null) {
-          next();
-        } else {
-          setError({for: "ProofUpload", note: "Unable to proceed. No document has been upload. Please upload a valid document type and try again."});
-        }
-      } else {
-        setError({for: "ProofUpload", note: "Unable to proceed. No document type has been selected for upload. Please select a valid document type and try again."});
-      }
-    }
+      finishSignUp();
+    } 
+    
+    // else if (currentStepIndex === 5) {
+    //   if(formData.WorkingStatus != "") {
+    //     next();
+    //   } else {
+    //     setError({for: "WorkingStatus", note: "Please make a selection before pressing next."});
+    //   }
+    // } else if (currentStepIndex === 6) {
+    //   if(formData.proof.addressType !== "" && formData.proof.mainType !== "") {
+    //     if(formData.proof.addressDocument != null && formData.proof.mainDocument != null) {
+    //       next();
+    //     } else {
+    //       setError({for: "ProofUpload", note: "Unable to proceed. No document has been upload. Please upload a valid document type and try again."});
+    //     }
+    //   } else {
+    //     setError({for: "ProofUpload", note: "Unable to proceed. No document type has been selected for upload. Please select a valid document type and try again."});
+    //   }
+    // } else if(currentStepIndex === 7) {
+    //   console.log(formData);
+    //   next();
+    // } else if(currentStepIndex === 8) {
+    //   finishSignUp();
+    // }
 
     setLoading(false);
   }
@@ -226,52 +252,104 @@ const SignUp = () => {
     return age;
   }
 
-  const onSubmitAddInterval = (e: any) => {
-    e.preventDefault();
-    const data = new FormData(e.target);
-    const email = Object.fromEntries(data.entries());
-    const start = Object.fromEntries(data.entries()).start;
-    const end = Object.fromEntries(data.entries()).end;
-    const target = Object.fromEntries(data.entries()).targetDay.toString();
-    if(Object.entries(email).length == 3) {
-      if(target === "All Days") {
-        Object.entries(formData.availability).map((item) => {
-          setFormData((prev: any) => {
-            return {...prev, availability: {...prev.availability, [item[0]]: [{start: start, end: end}]}}
-          });
-        });
-      } else {
-        setFormData((prev: any) => {
-          return {...prev, availability: {...prev.availability, [target]: [{start: start, end: end}]}}
-        });
-      }
-    } else {
-      const start1 = Object.fromEntries(data.entries()).start1;
-      const end1 = Object.fromEntries(data.entries()).end1;
-      if(target === "All Days") {
-        Object.entries(formData.availability).map((item) => {
-          setFormData((prev: any) => {
-            return {...prev, availability: {...prev.availability, [item[0]]: [{start: start, end: end}, {start: start1, end: end1}]}}
-          });
-        });
-      } else {
-        setFormData((prev: any) => {
-          return {...prev, availability: {...prev.availability, [target]: [{start: start, end: end}, {start: start1, end: end1}]}}
-        });
-      }
+  //! Avability Function
+  // const onSubmitAddInterval = (e: any) => {
+  //   e.preventDefault();
+  //   const data = new FormData(e.target);
+  //   const email = Object.fromEntries(data.entries());
+  //   const start = Object.fromEntries(data.entries()).start;
+  //   const end = Object.fromEntries(data.entries()).end;
+  //   const target = Object.fromEntries(data.entries()).targetDay.toString();
+  //   if(Object.entries(email).length == 3) {
+  //     if(target === "All Days") {
+  //       Object.entries(formData.availability).map((item) => {
+  //         setFormData((prev: any) => {
+  //           return {...prev, availability: {...prev.availability, [item[0]]: [{start: start, end: end}]}}
+  //         });
+  //       });
+  //     } else {
+  //       setFormData((prev: any) => {
+  //         return {...prev, availability: {...prev.availability, [target]: [{start: start, end: end}]}}
+  //       });
+  //     }
+  //   } else {
+  //     const start1 = Object.fromEntries(data.entries()).start1;
+  //     const end1 = Object.fromEntries(data.entries()).end1;
+  //     if(target === "All Days") {
+  //       Object.entries(formData.availability).map((item) => {
+  //         setFormData((prev: any) => {
+  //           return {...prev, availability: {...prev.availability, [item[0]]: [{start: start, end: end}, {start: start1, end: end1}]}}
+  //         });
+  //       });
+  //     } else {
+  //       setFormData((prev: any) => {
+  //         return {...prev, availability: {...prev.availability, [target]: [{start: start, end: end}, {start: start1, end: end1}]}}
+  //       });
+  //     }
+  //   }
+  //   console.log(Object.entries(email).length);
+  //   setShowModal(false);
+  // }
+
+
+
+  const finishSignUp = async () => {
+    const userAttributes = {email: formData.email, password: formData.password, fName: formData.fName, lName: formData.lName};
+    let employeeProfile : CreateEmployeeInput = {
+      cognitoUser: null,
+      firstName: formData.fName,
+      lastName: formData.lName,
+      phoneNumber: formData.pNumber,
+      dob: formData.dob,
+      address: {
+        address: formData.address.address,
+        unit: formData.address.unit,
+        postalcode: formData.address.postalCode,
+        country: formData.address.country,
+        state: formData.address.state,
+      },
+      ratingValue: 0,
+      systemRating: 5.0,
+
     }
-    console.log(Object.entries(email).length);
-    setShowModal(false);
+    try {
+      const user = await register(userAttributes);
+      //! Now Push the Uploaded files to the database
+      employeeProfile = {...employeeProfile, cognitoUser: user.userSub}
+      const uploadDataEmployee = pushDataUserAPI(createEmployee, employeeProfile);
+
+      const redirectPassedState = {
+        userConfirmed: user.userConfirmed, 
+        userSub: user.userSub,
+        username: user.user.username,
+        from: "SIGNUP"
+      }
+
+      //? Activate
+      if(user != undefined) {
+        navigate("/auth/sign-up/activate", {state: redirectPassedState});
+      }
+      // const fileOneExtension = formData.proof.addressDocument?.name.split('.').pop();
+      // const fileTwoExtension = formData.proof.mainDocument?.name.split('.').pop();
+      // const url1 = await uploadFile(`${formData.proof.addressType}.${fileOneExtension}`, formData.proof.addressDocument, "public" );
+      // const url2 = await uploadFile(`${formData.proof.mainType}.${fileTwoExtension}`, formData.proof.mainDocument, "protected" );
+      
+      //console.log(uploadDataEmployee);
+      //console.log(employeeProfile);
+      //! Then create a employee
+    } catch(e: any) {
+      console.log(e);
+    }
   }
 
   return (
     <>
-      <form id="getUserHours" onSubmit={onSubmitAddInterval}  />
+      {/* <form id="getUserHours" onSubmit={onSubmitAddInterval}  /> */}
       <form onSubmit={onSubmit} className="main-form-container-signup">
         <div className='content-sizing flex-below'>
           {step}
           <div className='button-same-level-col'>
-            <PrimaryButton loading={loading} name={isLastStep ? "Finish" : "Next"} type="submit" width="full"/>
+            <PrimaryButton loading={loading} name={isReview ? "Review" : isLastStep ? "Finish" :  "Next"} type="submit" width="full"/>
             {!isFirstStep && <GhostButton type="button" onClick={back} name="Back" width="full" />}
           </div>
         </div>

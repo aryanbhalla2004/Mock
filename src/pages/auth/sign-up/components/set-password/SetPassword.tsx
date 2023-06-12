@@ -17,7 +17,7 @@ export const SetPassword = (props: prop) => {
   return (
     <div className='auth-12-register-step-3 small-width-container mb-1 animate-entry-signup'>
       <div className='auth-12-register-header-text mb-1'>
-        <h2 className='mb-0'>Lets Secure your Account.</h2>
+        <h2 className='mb-0'>Set a New Password for your account.</h2>
         <p className='note-small-text mt-0 mb-1'>The purpose of this form is to ensure the security and protection of the user's account by preventing unauthorized access.</p>
       </div>
       <div className='small-size-password-box'>

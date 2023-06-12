@@ -13,10 +13,10 @@ var opt = {
   jsPDF: { unit: "in", format: "A4", orientation: "portrait" },
 };
 
-export const print = () => {
-  var element = document.querySelector(".aggrement-data-container-pop").cloneNode(true);
+export const print = async () => {
+  var element = document.querySelector("#printable-aggreement").cloneNode(true);
   element.style.maxHeight = "none";
-
+  var signBox = element.querySelector(".sign-concent-name").remove();
   // element.classList.remove("shadow-sm");
   // element.classList.remove("mt-5");
 
@@ -49,5 +49,12 @@ export const print = () => {
   //   elem.style.marginBottom = "0px ";
   // });
 
-  return html2pdf().from(element).set(opt).output("pdf");
+  const data = await html2pdf().from(element).set(opt).outputPdf().then(function (p) {
+    return p
+  });
+
+  return btoa(data);
+  // google.script.run.savePdf(file, fileName);
+  // window.print();
+  // google.script.host.close();
 }
