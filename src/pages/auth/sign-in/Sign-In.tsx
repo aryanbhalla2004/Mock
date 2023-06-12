@@ -7,9 +7,10 @@ import { useNavigate} from 'react-router-dom';
 import { AccountContext } from '../../../setup/contexts/AuthContext';
 
 const INITIAL_ERROR = {
-  for: "",
-  secondFor: "",
-  note: ""
+  emailError: "",
+  passwordError: "",
+  email: "",
+  password: "",
 }
 
 const SignIn = () => {
@@ -22,20 +23,17 @@ const SignIn = () => {
   const {login, completeUserPassword, getSession} = useContext(AccountContext);
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
   const [error, setError] = useState<any>(INITIAL_ERROR);
-  // const [message, setMessage] = useState<messageType>({
-  //   email: "", 
-  //   password: "",
-  //   form: "",
-  //   type: "",
-  //   header: "",
-  //   outside: ""
-  // });
+  const [message, setMessage] = useState({
+    message: "",
+    type: "",
+    header: "",
+  });
   
   const onSubmit = async (e: React.BaseSyntheticEvent) => {
     e.preventDefault();
     setError(INITIAL_ERROR);
     setFormSubmitted(true);
-    // setMessage({email: "", password: "", form: "", type: "", header: "", outside: ""});
+    setMessage({message: "", type: "", header: ""});
     const data = new FormData(e.target);
     const email = Object.fromEntries(data.entries()).email;
     const password = Object.fromEntries(data.entries()).password;
@@ -63,25 +61,17 @@ const SignIn = () => {
         }
 
       } catch (e: any) {
-        console.log(e.message);
-      //   if(e.code === "UserNotFoundException") {
-      //     setError({for: "email", secondFor: "", note: e.message})
-      //     // setMessage((prev) => {
-      //     //   return {...prev, email: e.message}
-      //     // });
-      //   }
-
-      //   if(e.code === "NotAuthorizedException") {
-      //     setError({for: "email", secondFor: "password", note: e.message})
-      //   }
+        console.log(e);
+        if(e.code === "UserNotFoundException" || e.code === "NotAuthorizedException") {
+          setError({emailError: "email", passwordError: "password", email: "Invalid Username/Password", password: "Invalid Username/Password",})
+        }
 
         if(e.code === "UserNotConfirmedException") {
           navigate('/auth/sign-up/activate', {state: {username: email, userConfirmed: false, from: "LOGIN"}});
         }
-      //   console.log(e);
       }
     } else {
-      console.log("field is empty");
+      setError({emailError: "email", passwordError: "password", email: "Invalid Username/Password", password: "Invalid Username/Password",})
     }
 
     setFormSubmitted(false);
@@ -95,9 +85,9 @@ const SignIn = () => {
             <h2>Employee Portal</h2>
             <h4>Login to View and Manage Your Work Schedule</h4>
           </div>
-          <TextInput type="email" name="email" placeholder="mail@example.com" label="Email Address"/>
-          <TextInput type="password" name="password" placeholder="Min 8. Characters" label="Password"/>
-          <div className='auth-12-check-forgot-link'>
+          <TextInput type="email" name="email" placeholder="mail@example.com" label="Email Address" error={error.emailError} note={error.email}/>
+          <TextInput type="password" name="password" placeholder="Min 8. Characters" label="Password" error={error.passwordError} note={error.password}/>
+          <div className='auth-12-check-forgot-link mb-3'>
             <div className="checkboxes__item">
               <label className="checkbox style-e">
                 <input type="checkbox" name="remember"/>
@@ -107,7 +97,7 @@ const SignIn = () => {
             </div>
             <TextLink name="Forgot Password?" path={`/auth/forgot-password`}/>
           </div>
-          <PrimaryButton name="Sign In" type="submit" width="full"/>
+          <PrimaryButton name="Sign In" type="submit" width="full" loading={formSubmitted}/>
         </div>
       </form>
     </>

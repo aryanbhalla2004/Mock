@@ -1,0 +1,65 @@
+.message-box {
+  display: flex;
+  border: 1px solid;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  align-items: center;
+  overflow: hidden;
+  gap: 20px;
+  transform: .3s;
+}
+
+.icon-holder {
+  background-color: rgb(250, 212, 212);
+  height: 100% ;
+  padding: 30px 30px;
+  width: 18%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.icon-holder > i {
+  font-size: 1.8rem;
+}
+
+.message-data {
+  color: var(--darkColor);
+}
+
+.message-data > h2 {
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.message-data > p {
+  font-size: .9rem;
+  font-weight: 400;
+  color: var(--lightTextColor);
+}
+
+.error {
+  color: var(--danger);
+}
+
+.warning {
+  color: var(--warning) ;
+}
+
+.success {
+  color: var(--success);
+}
+
+.error-bg {
+  background-color: #fe9ba5;
+}
+
+.warning-bg {
+  background-color: #fce597;
+}
+
+.success-bg {
+  background-color: #bef5cb;
+}

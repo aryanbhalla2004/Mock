@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import "./style.css";
 import logo from "../../../../assets/logo-green.png";
 import { GhostButton, GhostLinkBtn } from '../../../../common/components/button/Button';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const AuthHeader = () => {
   const location = useLocation();
@@ -13,7 +13,7 @@ const AuthHeader = () => {
     <header className='auth-12-header'>
       <div className='content-sizing auth-12-header-wrapper'>
         <div className='logo-holder-auth'>
-          <img src={logo} width={150}></img>
+          <Link to="/"><img src={logo} width={150}></img></Link>
         </div>
         {location.pathname === "/auth" &&
         <div className='auth-12-action-btn-work-start'>

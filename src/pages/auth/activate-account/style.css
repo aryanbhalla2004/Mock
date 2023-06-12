@@ -1,13 +1,19 @@
 .otp-container {
   display: flex;
   gap: 10px;
+  padding-top: 10px;
+}
+
+.otp-container-of-wrapper {
   margin: 30px 0;
+ 
 }
 
 .otp-code-field {
   border: 1px solid var(--lightBorderColor);
   border-radius: 4px;
   font-size: 1.2rem;
+  transition: .3s;
   width: 50px !important;
   height: 60px;
 }
@@ -23,4 +29,8 @@
 .resend-link-otp {
   font-size: .9rem;
   margin: 20px 0;
+}
+
+.opt-form > button {
+  width: 70% !important;
 }

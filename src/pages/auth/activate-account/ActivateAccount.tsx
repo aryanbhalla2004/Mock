@@ -7,6 +7,7 @@ import OtpInput from 'react-otp-input';
 import "./style.css";
 import { toast } from 'react-toastify';
 import { AccountContext } from '../../../setup/contexts/AuthContext';
+import { MessageBox } from '../../../common/components/message-box/MessageBox';
 
 interface currentUserInfo{
   userConfirmed: boolean, 
@@ -23,6 +24,17 @@ export const ActivateAccount = () => {
   const {sendMFACode, verifyMFACode} = useContext(AccountContext);
   const [currentUserInfo, setCurrentUserInfo] = useState<currentUserInfo>();
   const [otp, setOtp] = useState('');
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [error, setError] = useState<any>(null);
+  const [message, setMessage] = useState({
+    message: "",
+    type: "",
+    header: "",
+  });
+
+  useEffect(() => {
+    setError(null);
+  }, [otp]);
 
   useEffect(() => {
     const onLoad = async () => {
@@ -68,46 +80,40 @@ export const ActivateAccount = () => {
 
   const confirmCode = async (e: React.BaseSyntheticEvent) => {
     e.preventDefault();
-    //setFormSubmitted(true);
-    //setError(INITIAL_ERROR);
-    //setMessage({ code: '', form: '', type: '', header: ''});
+    setFormSubmitted(true);
+    setError(null);
+    setMessage({message: "", type: "", header: ""});
     if(otp !== "") {
       try {
         const response = await verifyMFACode(currentUserInfo?.username, otp);
         if(response === 'SUCCESS') {
           toast.success(`Your account ${currentUserInfo?.username} was activated successfully. Please login in with your credentials.`, {toastId: "EMAIL_SENT"});
-          //! Select Account Types
           navigate('/auth');
-          //navigate("/auth/sign-up/account-setup", {state: {name: currentUserInfo?.username, response: "SUCCESS"}});
         }
       } catch (e: any) {
-        // if(e.code === "CodeMismatchException") {
-        //   setError({for: "code", note: e.message});
-        //   // setMessage((prev) => {
-        //   //   return {...prev, code: }
-        //   // });
-        // }
+        if(e.code === "CodeMismatchException") {
+          setMessage({message: e.message, type: "ERROR", header: "Invalid Verification Code"});
+        }
 
-        // if(e.code === "ExpiredCodeException") {
-        //   setMessage((prev) => {
-        //     return {...prev, form: `The code that you entered was expired. Click the resend button to get a new code`, type: "WARNING", header: "Code Expired"}
-        //   });
-        // }
+        if(e.code === "ExpiredCodeException") {
+          setMessage({message: `The code that you entered was expired. Click the resend button to get a new code`, type: "ERROR", header: "Code Expired"});
+        }
 
-        // if(e.code === "LimitExceededException") {
-        //   setMessage((prev) => {
-        //     return {...prev, form: e.message, type: "ERROR", header: "Limit Exceeded"}
-        //   });
-        // }
+        if(e.code === "LimitExceededException") {
+          setMessage({message: e.message, type: "WARNING", header: "Limit Exceeded"});
+        }
 
         if(e.code === "NotAuthorizedException") {
           navigate("/");
         }
+
         console.log(e);
       }
+    } else {
+      setError("Verification field is empty.");
     }
 
-    // setFormSubmitted(false);
+    setFormSubmitted(false);
   }
 
   return (
@@ -118,19 +124,22 @@ export const ActivateAccount = () => {
               <h2>Enter Verification Code</h2>
               <p className="note-small-text mt-0 mb-1 smaller-text">We have just sent a verification code to {currentUserInfo?.username}. If you can't find it, check your junk/spam folder.</p>
             </div>
-            <form onSubmit={confirmCode}>
-              <div className='mb-3'>
-              <OtpInput
-                value={otp}
-                onChange={setOtp}
-                numInputs={6}
-                containerStyle="otp-container"
-                inputStyle="otp-code-field"
-                renderInput={(props) => <input name="code" {...props} />}
-              />
+            {message.type && <MessageBox type={message.type} header={message.header} message={message.message}/>}
+            <form onSubmit={confirmCode} className='opt-form'>
+              <div className='mb-5 otp-container-of-wrapper'>
+                <OtpInput
+                  value={otp}
+                  onChange={setOtp}
+                  numInputs={6}
+                  containerStyle="otp-container"
+                  inputStyle={error === null ? "otp-code-field" : "otp-code-field error-field"}
+                  renderInput={(props) => <input name="code" {...props} />}
+                />
+                <span className={"note-small-text error-text"}>{error != null && <><i className="bi bi-exclamation-triangle-fill"></i> {error}</>}</span>
               </div>
+              
+              <PrimaryButton name="Verify" loading={formSubmitted}/>
               <p className="text-2 text-dark form-label resend-link-otp">Didn't receive the Code? {!timeRunning ? <Link className="text-link" to="" onClick={timeRun}>Resend Code</Link> : <CountDown seconds={defaultTime} setTimeRunning={setTimeRunning}/>}</p>
-              <PrimaryButton name="Verify"/>
             </form>
           </div>
        </div>

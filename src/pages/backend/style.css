@@ -1,26 +1,10 @@
 :root {
-  --prim: rgb(68,197,156);
+  --prim: var(--primary);
   --sec: #CDD1D8;
 }
 
 
-/* * reset*/
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-/*body reset*/
-body {
-    margin: 0;
-    padding: 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 12px;
-    line-height: 1.5;
-    color: #333;
-    background-color: #5e5757;
-}
 
 /*Container*/
 .container {
