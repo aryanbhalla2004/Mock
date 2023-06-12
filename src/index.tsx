@@ -5,7 +5,8 @@ import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Amplify, Storage } from 'aws-amplify';
 import awsExports from './aws-exports';
-
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {AccountProvider } from './setup/contexts/AuthContext';
 import { DbProvider } from './setup/contexts/dbContext';
 Amplify.configure(awsExports);
@@ -26,6 +27,7 @@ root.render(
       <AccountProvider>
         <Router>
           <App />
+          <ToastContainer autoClose={8000} />
         </Router>
       </AccountProvider>
     </DbProvider>

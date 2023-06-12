@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { TextInput } from '../../../common/components/input/Input';
 import { CountDown } from '../../../common/components/count-down/CountDown';
 import { PrimaryButton } from '../../../common/components/button/Button';
 import OtpInput from 'react-otp-input';
 import "./style.css";
+import { toast } from 'react-toastify';
+import { AccountContext } from '../../../setup/contexts/AuthContext';
 
 interface currentUserInfo{
   userConfirmed: boolean, 
@@ -18,6 +20,7 @@ export const ActivateAccount = () => {
   const navigate = useNavigate();
   const [timeRunning, setTimeRunning] = useState<boolean>(false);
   const [defaultTime, setDefaultTime] = useState<number>(30);
+  const {sendMFACode, verifyMFACode} = useContext(AccountContext);
   const [currentUserInfo, setCurrentUserInfo] = useState<currentUserInfo>();
   const [otp, setOtp] = useState('');
 
@@ -27,8 +30,8 @@ export const ActivateAccount = () => {
         setCurrentUserInfo(location.state);
         if(location.state?.from === "LOGIN") {
           try {
-            //await sendMFACode(location.state?.username);
-            //toast.success(`Email sent successfully to ${location.state?.username}`, {toastId: "EMAIL_SENT"});
+            await sendMFACode(location.state?.username);
+            toast.success(`Email sent successfully to ${location.state?.username}`, {toastId: "EMAIL_SENT"});
           } catch (e: any) {
             // setMessage((prev) => {
             //   return {...prev, form: e.message, type: "ERROR", header: "Limit Exceeded"}
@@ -53,58 +56,56 @@ export const ActivateAccount = () => {
     setTimeRunning(true);
     setDefaultTime(prev => prev + 30);
     try {
-      //await sendMFACode(currentUserInfo?.username);
-      //toast.success(`Email sent successfully to ${currentUserInfo?.username}`, {toastId: "EMAIL_SENT"});
+      await sendMFACode(currentUserInfo?.username);
+      toast.success(`Email sent successfully to ${currentUserInfo?.username}`, {toastId: "EMAIL_SENT"});
     } catch (e: any) {
       if(e.code === 'LimitExceededException') {
         setDefaultTime(prev => prev + 300);
       }
-      //toast.error(e.message, {toastId: "ERROR_RESEND_EMAIL_TOAST"});
+      toast.error(e.message, {toastId: "ERROR_RESEND_EMAIL_TOAST"});
     }
   }
 
   const confirmCode = async (e: React.BaseSyntheticEvent) => {
     e.preventDefault();
-    // setFormSubmitted(true);
-    // setError(INITIAL_ERROR);
-    // const data = new FormData(e.target);
-    // const code = Object.fromEntries(data.entries()).code;
-    // setMessage({ code: '', form: '', type: '', header: ''});
-    // if(code !== "") {
-    //   try {
-    //     const response = await verifyMFACode(currentUserInfo?.username, code);
-    //     if(response === 'SUCCESS') {
-    //       toast.success(`Your account ${currentUserInfo?.username} was activated successfully`, {toastId: "EMAIL_SENT"});
-    //       //! Select Account Types
-    //       navigate('/auth');
-    //       //navigate("/auth/sign-up/account-setup", {state: {name: currentUserInfo?.username, response: "SUCCESS"}});
-    //     }
-    //   } catch (e: any) {
-    //     if(e.code === "CodeMismatchException") {
-    //       setError({for: "code", note: e.message});
-    //       // setMessage((prev) => {
-    //       //   return {...prev, code: }
-    //       // });
-    //     }
+    //setFormSubmitted(true);
+    //setError(INITIAL_ERROR);
+    //setMessage({ code: '', form: '', type: '', header: ''});
+    if(otp !== "") {
+      try {
+        const response = await verifyMFACode(currentUserInfo?.username, otp);
+        if(response === 'SUCCESS') {
+          toast.success(`Your account ${currentUserInfo?.username} was activated successfully. Please login in with your credentials.`, {toastId: "EMAIL_SENT"});
+          //! Select Account Types
+          navigate('/auth');
+          //navigate("/auth/sign-up/account-setup", {state: {name: currentUserInfo?.username, response: "SUCCESS"}});
+        }
+      } catch (e: any) {
+        // if(e.code === "CodeMismatchException") {
+        //   setError({for: "code", note: e.message});
+        //   // setMessage((prev) => {
+        //   //   return {...prev, code: }
+        //   // });
+        // }
 
-    //     if(e.code === "ExpiredCodeException") {
-    //       setMessage((prev) => {
-    //         return {...prev, form: `The code that you entered was expired. Click the resend button to get a new code`, type: "WARNING", header: "Code Expired"}
-    //       });
-    //     }
+        // if(e.code === "ExpiredCodeException") {
+        //   setMessage((prev) => {
+        //     return {...prev, form: `The code that you entered was expired. Click the resend button to get a new code`, type: "WARNING", header: "Code Expired"}
+        //   });
+        // }
 
-    //     if(e.code === "LimitExceededException") {
-    //       setMessage((prev) => {
-    //         return {...prev, form: e.message, type: "ERROR", header: "Limit Exceeded"}
-    //       });
-    //     }
+        // if(e.code === "LimitExceededException") {
+        //   setMessage((prev) => {
+        //     return {...prev, form: e.message, type: "ERROR", header: "Limit Exceeded"}
+        //   });
+        // }
 
-    //     if(e.code === "NotAuthorizedException") {
-    //       navigate("/");
-    //     }
-    //     console.log(e);
-    //   }
-    // }
+        if(e.code === "NotAuthorizedException") {
+          navigate("/");
+        }
+        console.log(e);
+      }
+    }
 
     // setFormSubmitted(false);
   }
@@ -122,10 +123,10 @@ export const ActivateAccount = () => {
               <OtpInput
                 value={otp}
                 onChange={setOtp}
-                numInputs={4}
+                numInputs={6}
                 containerStyle="otp-container"
                 inputStyle="otp-code-field"
-                renderInput={(props) => <input  {...props} />}
+                renderInput={(props) => <input name="code" {...props} />}
               />
               </div>
               <p className="text-2 text-dark form-label resend-link-otp">Didn't receive the Code? {!timeRunning ? <Link className="text-link" to="" onClick={timeRun}>Resend Code</Link> : <CountDown seconds={defaultTime} setTimeRunning={setTimeRunning}/>}</p>

@@ -26,23 +26,40 @@ const AccountContext = createContext<any>(null);
 // }
 
 const AccountProvider = ({children}: any) => {
-//   const dispatch = useDispatch();
+  const [user, setUser] = useState<any>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  
+  useEffect(() => {
+    getSession();
+  }, []);
 
-//   useEffect(() => {
-//     getSession();
-//   });
+  const getSession = async () => {
+    try {
+      const currentUser = await Auth.currentAuthenticatedUser();
+      const currentSession = await Auth.currentSession();
+      const expirationTime = currentSession.getIdToken().payload.exp;
+      if (expirationTime * 1000 < Date.now()) {
+        await Auth.signOut();
+        setUser(null);
+        setIsAuthenticated(false);
+      } else {
+        const userAttributes = await Auth.currentUserInfo();
+        setUser({...currentUser, attributes: userAttributes.attributes});
+        setIsAuthenticated(true);
+      }
+    } catch (error) {
+      await Auth.signOut();
+      setUser(null);
+      setIsAuthenticated(false);
+    }
 
-//   const getSession = async () => {
-//     try {
-//       const authenticatedUser = await Auth.currentAuthenticatedUser();
-//       if(authenticatedUser) {
-//         dispatch(rLogin({...authenticatedUser}));
-//       }
-//       return authenticatedUser;
-//     } catch (err) {
-//       throw err;
-//     }
-//   }
+    setIsLoading(false);
+  }
+
+  const getUser = () => {
+    return user;
+  };
   
   const login = async (email: string, password: string) => {
     try {
@@ -139,7 +156,7 @@ const AccountProvider = ({children}: any) => {
   }
 
   return (
-    <AccountContext.Provider value={{login, forgotPassword, verifyMFACode, register, completeUserPassword, sendMFACode, logout, fetchDevices}}>
+    <AccountContext.Provider value={{getUser, getSession, login, forgotPassword, verifyMFACode, register, completeUserPassword, sendMFACode, logout, fetchDevices}}>
       {children}
     </AccountContext.Provider>
   )
