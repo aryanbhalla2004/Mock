@@ -7,6 +7,8 @@ import Dashboard from "./pages/backend/Dashboard";
 import { AccountContext } from "./setup/contexts/AuthContext";
 import { useContext, useEffect } from "react";
 import { ForgotPassword } from "./pages/auth/forgot-password/ForgotPassword";
+import { Landing } from "./pages/frontend/landing/Landing";
+import { Homepage } from "./pages/frontend/homepage/Homepage";
 
 const App = () => {
   const {getUser, isAuthenticated, isLoading, logout} = useContext(AccountContext);
@@ -50,7 +52,9 @@ const App = () => {
       </Route>
       <Route path="/dashboard" element={<Dashboard />}>
       </Route>
-      <Route path="/" element={<><Link to="/auth">Auth</Link> <Link to="/dashboard">dashboard</Link> </>} />
+      <Route path="/" element={<Landing/>}>
+        <Route index element={<Homepage />}></Route>
+      </Route>
     </Routes>
     </>
   )

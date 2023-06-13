@@ -1,0 +1,68 @@
+.auth-12-header {
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+  width: 100%;
+}
+
+.left-side-carrer-header {
+  display: flex;
+  align-items: center;
+  gap: 40px;  
+}
+
+.auth-12-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-12-header-wrapper {
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.auth-12-action-btn-work-start {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.auth-12-action-btn-work-start > p {
+  color: var(--lightTextColor);
+  font-weight: 300;
+  font-size: .9rem;
+}
+
+.nav-carrer-header {
+  display: flex;
+
+}
+
+.nav-carrer-header > ul {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  gap: 25px;
+}
+
+.nav-carrer-header > ul > li {
+  padding: 6px 10px;
+  transition: .3s;
+  color: var(--darkColor);
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.nav-carrer-header > ul > li > a {
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 1rem;
+  color: inherit;
+}
+
+.nav-carrer-header > ul > li:hover {
+  background-color: var(--primaryTransparent);
+  color: var(--primary);
+}

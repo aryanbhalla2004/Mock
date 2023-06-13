@@ -25,7 +25,7 @@
   max-width: 150px;
   height: auto;
 }
-nav{
+/* nav{
   background-color: #fff;
   color: var(--prim);
   width: 100%;
@@ -99,7 +99,7 @@ nav > ul > li > span {
 main{
   width: 100%;
   border: #333 1px solid;
-}
+} */
 /*Side Nav*/
 
 .profileImg {
