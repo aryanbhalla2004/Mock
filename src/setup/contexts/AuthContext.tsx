@@ -6,12 +6,12 @@ import { CognitoUser } from "@aws-amplify/auth";
 // import { logout as rLogout } from '../../setup/auth/userSlice';
 const AccountContext = createContext<any>(null);
 
-// //? Used for creating new password
-// interface userIdentity {
-//   username: string,
-//   code: string,
-//   password: string
-// }
+//? Used for creating new password
+interface userIdentity {
+  username: string,
+  code: string,
+  password: string
+}
 
 // //? Used when the user register
 // interface userSignUp {
@@ -27,8 +27,9 @@ const AccountContext = createContext<any>(null);
 
 const AccountProvider = ({children}: any) => {
   const [user, setUser] = useState<any>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [isLogoutEnabled, setIsLogoutEnabled] = useState<boolean>(false);
   
   useEffect(() => {
     getSession();
@@ -54,7 +55,9 @@ const AccountProvider = ({children}: any) => {
       setIsAuthenticated(false);
     }
 
+    
     setIsLoading(false);
+    console.log(isLoading);
   }
 
   const getUser = () => {
@@ -72,7 +75,8 @@ const AccountProvider = ({children}: any) => {
 
   const logout = async (isGlobal: boolean) => {
     Auth.signOut({global: isGlobal});
-    //dispatch(rLogout());
+    setUser(null);
+    setIsAuthenticated(false);
   }
 
   const forgotPassword = async (email: string) => {
@@ -84,15 +88,15 @@ const AccountProvider = ({children}: any) => {
     }
   }
 
-  // const createNewPassword = async (userIdentification: userIdentity) => {
-  //   const {username, code, password} = userIdentification;
-  //   try {
-  //     const response = await Auth.forgotPasswordSubmit(username, code, password);
-  //     return response;
-  //   } catch (err) {
-  //     throw err;
-  //   }
-  // }
+  const createNewPassword = async (userIdentification: userIdentity) => {
+    const {username, code, password} = userIdentification;
+    try {
+      const response = await Auth.forgotPasswordSubmit(username, code, password);
+      return response;
+    } catch (err) {
+      throw err;
+    }
+  }
 
   const completeUserPassword = async (tempUser: CognitoUser, password: string, attributes: any) => {
     console.log(attributes)
@@ -130,7 +134,8 @@ const AccountProvider = ({children}: any) => {
     let attributes:any = {
       given_name: fName,
       family_name: lName,
-      'custom:account_type': "Employee",
+      'custom:account_type': "Crew Member",
+      'custom:signup_status': '0'
     }
 
 
@@ -156,7 +161,7 @@ const AccountProvider = ({children}: any) => {
   }
 
   return (
-    <AccountContext.Provider value={{getUser, getSession, login, forgotPassword, verifyMFACode, register, completeUserPassword, sendMFACode, logout, fetchDevices}}>
+    <AccountContext.Provider value={{createNewPassword, setIsLogoutEnabled, isLogoutEnabled, getUser, isLoading, isAuthenticated, getSession, login, forgotPassword, verifyMFACode, register, completeUserPassword, sendMFACode, logout, fetchDevices, setIsAuthenticated}}>
       {children}
     </AccountContext.Provider>
   )

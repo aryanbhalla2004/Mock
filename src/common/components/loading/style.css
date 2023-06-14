@@ -1,0 +1,34 @@
+.loader-spin {
+  width: 25px !important;
+  height: 25px !important;
+  border: 3px solid var(--primary) !important;
+  border-bottom-color: transparent !important;
+  border-radius: 50% !important;
+  display: inline-block !important;
+  box-sizing: border-box !important;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
+
+.loading-full-screen {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+}
+
+.loading-full-screen > h1 {
+  font-weight: 400;
+  font-size: 1rem;
+}

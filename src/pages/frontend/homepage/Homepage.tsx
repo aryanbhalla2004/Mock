@@ -13,7 +13,7 @@ export const Homepage = () => {
         <div className='overlay-cover-banner'>
           <div className='content-sizing slide-show-content'>
             <h1>Get Started with <span className='primary-text'>Zoobo</span> <br/>and Grow with Us in Canada.</h1>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni fugiat dignissimos minima alias, nam facere voluptate sapiente dolor, iste ipsa a. Hic facere nemo aliquid tempora atque provident architecto perferendis.</p>
+            <p>Our bright and airy offices serve to create an open environment where collaboration is the default, and ideas are freely exchanged to create a culture of inclusivity and innovation.</p>
             <PrimaryButton name="Explore Zoobo"/>
           </div>
         </div>

@@ -8,6 +8,7 @@
   --lightTextColor: #848484;
   --blueColorLink: #0000FF;
   --danger: #df4759;
+  --z-index-pop: 100;
 }
 
 * {
@@ -21,7 +22,7 @@ body {
 }
 
 .content-sizing {
-  max-width: 1700px;
+  max-width: 1600px;
   width: 100%;
   display: flex;
   padding-left: 60px;

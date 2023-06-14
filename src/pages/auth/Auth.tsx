@@ -6,11 +6,11 @@ import "./style.css";
 import { AccountContext } from '../../setup/contexts/AuthContext';
 const Auth = () => {
   
-  const {getUser} = useContext(AccountContext);
+  const {getUser, isAuthenticated} = useContext(AccountContext);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if(getUser() !== null)
+    if(isAuthenticated)
       navigate('/');
   }, [navigate, getUser]);
 

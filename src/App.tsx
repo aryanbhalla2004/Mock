@@ -9,37 +9,20 @@ import { useContext, useEffect } from "react";
 import { ForgotPassword } from "./pages/auth/forgot-password/ForgotPassword";
 import { Landing } from "./pages/frontend/landing/Landing";
 import { Homepage } from "./pages/frontend/homepage/Homepage";
+import { Logout } from "./pages/auth/logout/Logout";
 
 const App = () => {
-  const {getUser, isAuthenticated, isLoading, logout} = useContext(AccountContext);
-  
-  useEffect(() => {
-    if(!isLoading && isAuthenticated) {
-      //logout(false);
-      const data = getUser();
-      if(data !== null) {
-        const signUpStatus = data?.attributes["custom:sign_up_status"];
-        const group = data?.signInUserSession.accessToken.payload['cognito:groups'][0];
-        // if(signUpStatus === "pending" && group !== "Admin") {
-        //   setPopModal(true);
-        //   navigate("/finialize-details");
-        // }
+  const {isLogoutEnabled, getUser, isAuthenticated, isLoading, logout, getSession} = useContext(AccountContext);
 
-        // if(signUpStatus === "Complete") {
-        //   getUserProfile();
-        // }
-      } else {
-        logout(true);
-      }
-    
-      
-      //getData();
-      //handleClick();
+  useEffect(() => {
+    if(isAuthenticated) {
+      console.log(getUser());
     }
-  }, [isAuthenticated, isLoading, getUser]);
+  }, [isAuthenticated]);
   
   return (
     <>
+    <Logout/>
     <Routes>
       <Route path="*" element={<h1>Error 404</h1>}></Route>
       <Route path="/auth" element={<Auth />}>
@@ -54,6 +37,7 @@ const App = () => {
       </Route>
       <Route path="/" element={<Landing/>}>
         <Route index element={<Homepage />}></Route>
+        <Route path="logout" />
       </Route>
     </Routes>
     </>
