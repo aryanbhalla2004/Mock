@@ -1,40 +1,54 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { Link, Outlet } from 'react-router-dom'
 import "./style.css";
+import logo from "../../assets/logo-green.png";
+import { AccountContext } from '../../setup/contexts/AuthContext';
 const Dashboard = () => {
+  const {setIsLogoutEnabled} = useContext(AccountContext);
   return (
-    <>
-    <div className="container">
-      <nav>
-        <div className="profile">
-          <div className="profileImg">
-            <i className="bi bi-person-fill"></i>
+    <div className="container-dashboard">
+      <aside className='side-bar-menu-dashboard'>
+        <div className='to-item'>
+          <div className='logo-dashboard-container-left'>
+            <Link to={"/"}><img src={logo}/></Link>
           </div>
-          <div className="left">
-            <h3 className="profTitle">Grooze</h3>
-            <span className="profName">Analytics Dashboard</span>
-          </div>
+          <nav className='dashboard-nav'>
+            <span>HOME</span>
+            <ul>
+              <li><Link to="/dashboard"><i className="bi bi-columns-gap"></i> Dashboard</Link></li>
+              <li><Link to="/dashboard"><i className="bi bi-speedometer2"></i> My Profile</Link></li>
+            </ul>
+          </nav>
+          <nav className='dashboard-nav'>
+            <span>Work</span>
+            <ul>
+              <li><Link to="/dashboard"><i className="bi bi-binoculars-fill"></i> My Work</Link></li>
+              <li><Link to="/dashboard"><i className="bi bi-speedometer"></i>Houses</Link></li>
+              <li><Link to="/dashboard"><i className="bi bi-columns-gap"></i> Payment</Link></li>
+              <li><Link to="/dashboard"><i className="bi bi-speedometer2"></i>Analytics</Link></li>
+            </ul>
+          </nav>
+          <nav className='dashboard-nav'>
+            <span>General</span>
+            <ul>
+              <li><Link to="/dashboard"><i className="bi bi-columns-gap"></i> Setting</Link></li>
+              <li><Link to="/dashboard"><i className="bi bi-speedometer2"></i> Help</Link></li>
+            </ul>
+          </nav>
         </div>
-
-        <hr />
-        <span className="">MENU</span>
-        <ul className="nav-links">
-          <li><i className="bi bi-house"></i><span> Dashboard </span></li>
-          <li>
-            <i className="bi bi-cart"></i
-            ><span>Orders <span className="noti">6</span></span>
-          </li>
-          <li><i className="bi bi-people"></i><span>Users</span></li>
-          <li><i className="bi bi-bag"></i><span>Product </span></li>
-        </ul>
-      </nav>
+        <div className='user-profile'>
+          <div className='user-profile-text'>
+            <span>Logged in as</span>
+            <h3>Aryan Bhalla</h3>
+            
+          </div>
+          <button onClick={() => setIsLogoutEnabled(true)}><i className="bi bi-box-arrow-right"></i> </button>
+        </div>
+      </aside>
       <main>
         <Outlet/>
       </main>
-      </div>
-      
-      </>
-    
+    </div>
   )
 }
 

@@ -755,3 +755,7 @@
 .signed-colm-container > button {
   white-space: nowrap;
 }
+
+.contry-code-captial > div > input {
+  text-transform: uppercase;
+}

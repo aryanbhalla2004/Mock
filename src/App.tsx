@@ -1,4 +1,4 @@
-import {Route, Routes, useNavigate, Link} from "react-router-dom"
+import {Route, Routes, useNavigate, Link, Navigate} from "react-router-dom"
 import Auth from "./pages/auth/Auth";
 import SignIn from "./pages/auth/sign-in/Sign-In";
 import SignUp from "./pages/auth/sign-up/Sign-Up";
@@ -23,18 +23,22 @@ const App = () => {
   return (
     <>
     <Logout/>
+
     <Routes>
       <Route path="*" element={<h1>Error 404</h1>}></Route>
-      <Route path="/auth" element={<Auth />}>
-        <Route index element={<SignIn/>} />
+
+      <Route path="/auth" element={!isAuthenticated ? <Auth /> : <Navigate to={"/"} />}>
+        <Route index element={!isAuthenticated ? <SignIn/> : <Navigate to={"/"} />} />
         <Route path="sign-up">
-          <Route index element={<SignUp/>}/>
+          <Route index element={!isAuthenticated ? <SignUp/> : <Navigate to={"/"} />}/>
           <Route path="activate" element={<ActivateAccount/>}/>
         </Route>
-        <Route path="forgot-password" element={<ForgotPassword />} />
+        <Route path="forgot-password" element={!isAuthenticated ? <ForgotPassword /> : <Navigate to={"/"} />} />
       </Route>
-      <Route path="/dashboard" element={<Dashboard />}>
+
+      <Route path="/dashboard" element={isAuthenticated ? <Dashboard /> : <Navigate to={"/"} />}>
       </Route>
+
       <Route path="/" element={<Landing/>}>
         <Route index element={<Homepage />}></Route>
         <Route path="logout" />

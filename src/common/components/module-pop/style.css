@@ -1,0 +1,27 @@
+.logout-main-container {
+  width: 100%;
+  background-color: rgba(0, 0, 0, .7);
+  border: 1px solid;
+  height: 100vh;
+  z-index: var(--z-index-pop);
+  display: flex;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.2s ease-in-out; 
+  visibility: hidden;
+}
+
+.logout-main-container > div {
+  transform: scale(0.8);
+}
+
+.show-box-pop {
+  visibility: visible;
+  opacity: 1;
+}
+
+.show-box-pop > div {
+  transform: scale(1);
+}

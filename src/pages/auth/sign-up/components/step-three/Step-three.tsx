@@ -29,13 +29,14 @@ const StepThree = (props: prop) => {
             <AddressAutofill accessToken="pk.eyJ1IjoiYXJ5YW5iaGFsbGEiLCJhIjoiY2ttbWMxYjN0MG4zNzJ2b2RzenNtNHloeCJ9.D28HxdUCUpf7YpvsQZ26AQ">
               <TextInput value={props.formData.address.address} updateValue={inputValue} type="text" autoComplete="address-line1" name="address" placeholder="123 Street Rd 12345 USA" label="Your Address" error={props.error.for} note={props.error.note}/>
             </AddressAutofill>
-            <TextInput value={props.formData.address.unit} updateValue={inputValue} type="text" autoComplete="address-line2" name="unit" placeholder="Unit 123" label="Unit #"/>
+            <TextInput value={props.formData.address.postalCode} updateValue={inputValue} name="postalCode" placeholder="Postcode" type="text" autoComplete="postal-code" label="Postal Code" error={props.error.for} note={props.error.note}/>
           </div>
           <div className='col-2-form-register mb-1'>
             <TextInput value={props.formData.address.city} updateValue={inputValue} name="city" placeholder="City" type="text" autoComplete="address-level2" label="City" error={props.error.for} note={props.error.note}/>
             <TextInput value={props.formData.address.state} updateValue={inputValue} name="state" placeholder="State" type="text" autoComplete="address-level1" label="State / Province" error={props.error.for} note={props.error.note}/>
-            <TextInput value={props.formData.address.country} updateValue={inputValue} name="country" placeholder="Country" type="text" autoComplete="country" label="Country" error={props.error.for} note={props.error.note}/>
-            <TextInput value={props.formData.address.postalCode} updateValue={inputValue} name="postalCode" placeholder="Postcode" type="text" autoComplete="postal-code" label="Postal Code" error={props.error.for} note={props.error.note}/>
+            <div className='contry-code-captial'>
+              <TextInput value={props.formData.address.country} updateValue={inputValue} name="country" placeholder="Country" type="text" autoComplete="country" label="Country" error={props.error.for} note={props.error.note}/>
+            </div>
           </div>
         </div>
       </div>

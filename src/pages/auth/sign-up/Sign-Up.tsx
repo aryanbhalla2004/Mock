@@ -19,6 +19,8 @@ import { Error } from './interface/Error';
 import "./style.css";
 import { createEmployee } from '../../../graphql/mutations';
 import { useNavigate } from 'react-router-dom';
+import { ModualPop } from '../../../common/components/module-pop/ModualPop';
+import { FinalStep } from './components/loading-final-form/FinalStep';
 
 
 const INITIAL_DATA: IEmployeeSignUpForm = {
@@ -63,6 +65,10 @@ const INITIAL_ERROR: Error = {
 }
 
 const SignUp = () => {
+
+  const [signupFormSubmitted, setSignupFormSubmitted] = useState<boolean>(false);
+  const [signupDone, setSignupDone] = useState(false);
+  const [paramStorage, setParamStorege] = useState<any>(null);
   const navigate = useNavigate();
   const [formData, setFormData] = useState<IEmployeeSignUpForm>(INITIAL_DATA);
   const [error, setError] = useState<Error>(INITIAL_ERROR);
@@ -294,6 +300,7 @@ const SignUp = () => {
 
 
   const finishSignUp = async () => {
+    setSignupFormSubmitted(true);
     const userAttributes = {email: formData.email, password: formData.password, fName: formData.fName, lName: formData.lName};
     let employeeProfile : CreateEmployeeInput = {
       cognitoUser: null,
@@ -314,7 +321,7 @@ const SignUp = () => {
     }
     try {
       const user = await register(userAttributes);
-      //! Now Push the Uploaded files to the database
+      // //! Now Push the Uploaded files to the database
       employeeProfile = {...employeeProfile, cognitoUser: user.userSub}
       const uploadDataEmployee = pushDataUserAPI(createEmployee, employeeProfile);
 
@@ -325,9 +332,14 @@ const SignUp = () => {
         from: "SIGNUP"
       }
 
+     
+
+      
       //? Activate
       if(user != undefined) {
-        navigate("/auth/sign-up/activate", {state: redirectPassedState});
+        setParamStorege(redirectPassedState);
+        setSignupDone(true);
+        //
       }
       // const fileOneExtension = formData.proof.addressDocument?.name.split('.').pop();
       // const fileTwoExtension = formData.proof.mainDocument?.name.split('.').pop();
@@ -338,8 +350,14 @@ const SignUp = () => {
       //console.log(employeeProfile);
       //! Then create a employee
     } catch(e: any) {
+      setSignupFormSubmitted(false);
       console.log(e);
     }
+  }
+
+  const navaiteToActivate = () => {
+    console.log('sds');
+    navigate("/auth/sign-up/activate", {state: paramStorage});
   }
 
   return (
@@ -354,6 +372,8 @@ const SignUp = () => {
           </div>
         </div>
       </form>
+
+      <ModualPop show={signupFormSubmitted} child={<FinalStep activateFunction={navaiteToActivate} isLoading={!signupDone}/>}/>
     </>
   )
 }
