@@ -48,3 +48,13 @@ body {
   color: var(--danger) !important;
   text-align: center;
 }
+
+.slow-animate-pop-loading {
+  transition: .2s all ease-in-out;
+  opacity: 1;
+  transition: scale(1);
+}
+
+.modal-open {
+  overflow: hidden !important;
+}

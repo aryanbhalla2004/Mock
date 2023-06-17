@@ -4,12 +4,14 @@ import { PrimaryButton, GhostButton} from '../../../../../common/components/butt
 import { IEmployeeSignUpForm } from '../../../../../common/interfaces/CommonInterfaces';
 import { print } from '../../../../../common/util/html2PDF';
 interface prop {
-  formData: IEmployeeSignUpForm,
+  formData: any,
   signatureData: any,
   setSignatureData: (data: any) => void,
   setFormData: (data: any) => void,
+  next: () => void,
+  back: () => void,
 }
-export const StepSeven = (props: prop) => {
+export const Agreement = (props: prop) => {
   const EmployeeAgreement = useRef<any>();
   const [showSign, setShowSign] = useState(false);
   
@@ -127,6 +129,10 @@ export const StepSeven = (props: prop) => {
             }
           </li>
         </ul>
+        <div className='button-action-setup-wizzard'>
+          <GhostButton name="Back" onClick={props.back}/>
+          <PrimaryButton name="Finish" onClick={props.next}/>
+        </div> 
       </div>
     </div>
     {viewAgreement !== "" &&
@@ -200,8 +206,10 @@ export const StepSeven = (props: prop) => {
               <p>Sorry, your browser doesn't support embedded PDFs.</p>
             </object>  */}
           </div> 
+         
         </div>
       }
     </>
+    
   )
 }

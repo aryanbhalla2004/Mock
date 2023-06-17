@@ -28,6 +28,7 @@ interface userIdentity {
 const AccountProvider = ({children}: any) => {
   const [user, setUser] = useState<any>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isSignInComplete, setIsSignUpInComplete] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [isLogoutEnabled, setIsLogoutEnabled] = useState<boolean>(false);
   
@@ -161,7 +162,7 @@ const AccountProvider = ({children}: any) => {
   }
 
   return (
-    <AccountContext.Provider value={{createNewPassword, setIsLogoutEnabled, isLogoutEnabled, getUser, isLoading, isAuthenticated, getSession, login, forgotPassword, verifyMFACode, register, completeUserPassword, sendMFACode, logout, fetchDevices, setIsAuthenticated}}>
+    <AccountContext.Provider value={{isSignInComplete, setIsSignUpInComplete, createNewPassword, setIsLogoutEnabled, isLogoutEnabled, getUser, isLoading, isAuthenticated, getSession, login, forgotPassword, verifyMFACode, register, completeUserPassword, sendMFACode, logout, fetchDevices, setIsAuthenticated}}>
       {children}
     </AccountContext.Provider>
   )

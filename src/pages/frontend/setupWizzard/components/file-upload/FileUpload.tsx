@@ -1,15 +1,17 @@
-import React, { FormEvent } from 'react'
+import React, { FormEvent, useState } from 'react'
 import { TextInput } from '../../../../../common/components/input/Input'
 import { IEmployeeSignUpForm } from '../../../../../common/interfaces/CommonInterfaces'
-import { Error } from '../../interface/Error'
+import { GhostButton, PrimaryButton } from '../../../../../common/components/button/Button'
 
 interface prop {
-  formData: IEmployeeSignUpForm,
+  formData: any,
   setFormData: (data: any) => void,
-  error: Error
+  next: () => void,
+  back: () => void,
 }
 
-export const StepSix = (props: prop) => {
+export const FileUpload = (props: prop) => {
+  const [error, setError] = useState<any>("");
 
   const documentType = (e: any) => {
     props.setFormData((prev: any) => {
@@ -31,13 +33,21 @@ export const StepSix = (props: prop) => {
     });
   }
 
+  const submit = () => {
+    if(props.formData.proof.mainDocument != null && props.formData.proof.addressDocument != null) {
+      props.next();
+    } else {
+      setError("Please make sure to upload both documents before continuning")
+    }
+  }
+
   return (
     <div className='auth-12-register-step-3 animate-entry-signup'>
       <div className='auth-12-register-header-text'>
         <h2>Uploading Proof of Identity/Address</h2>
         <p className='note-small-text mt-0 mb-1'>We assure you that your personal information and identity documents will be securely stored and handled with the utmost confidentiality.</p>
         
-        {/* <div className='proof-container-sign-up'>
+        <div className='proof-container-sign-up align-item-center'>
           <ul className='address-proof-document'>
             {props.formData.WorkingStatus === "RESIDENT" && <li>
               <span className='absolute-postion-box'>required</span>
@@ -58,7 +68,7 @@ export const StepSix = (props: prop) => {
                 </>
                 }
               </>}
-              {props.formData.proof.mainDocument !== null && <div className='file-uploaded-conformation new-file-button' onClick={() => deleteFile("mainDocument")}><span><i className="bi bi-check-circle-fill"></i>File Uploaded</span> <i className="bi bi-trash3"></i></div>}
+              {props.formData.proof.mainDocument !== null && <div className='file-uploaded-conformation new-file-button snow-show' onClick={() => deleteFile("mainDocument")}><span><i className="bi bi-check-circle-fill"></i>File Uploaded</span> <i className="bi bi-trash3"></i></div>}
             </li> }
 
             
@@ -96,8 +106,12 @@ export const StepSix = (props: prop) => {
               {props.formData.proof.addressDocument !== null && <div className='file-uploaded-conformation new-file-button' onClick={() => deleteFile("addressDocument")}><span><i className="bi bi-check-circle-fill"></i>File Uploaded</span> <i className="bi bi-trash3"></i></div>}
             </li>
           </ul>
-          {props.error.for === "ProofUpload" && <p className="note-small-text error-text mt-1"><i className="bi bi-exclamation-triangle-fill"></i> {props.error.note}</p>}
-        </div> */}
+          {error && <p className="note-small-text error-text mt-1"><i className="bi bi-exclamation-triangle-fill"></i> {error}</p>}
+        </div>
+        <div className='button-action-setup-wizzard'>
+          <GhostButton name="Back" onClick={props.back}/>
+          <PrimaryButton name="Next" onClick={submit}/>
+        </div>
       </div>
     </div>
   )

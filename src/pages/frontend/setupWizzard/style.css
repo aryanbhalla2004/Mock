@@ -1,0 +1,36 @@
+.setup-wizzard-container-for-all-elements {
+  background-color: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+  max-width: 1000px;
+  max-height: 700px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-action-setup-wizzard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.button-action-setup-wizzard > button {
+  width: 120px !important;
+}
+
+.align-item-center {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.snow-show {
+  transition: .3s all ease-in-out !important;
+  opacity: 1;
+}

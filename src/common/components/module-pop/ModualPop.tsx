@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./style.css";
 
 interface prop {
@@ -7,6 +7,12 @@ interface prop {
 }
 
 export const ModualPop = (props: prop) => {
+
+  useEffect(() => {
+    if(props.show)
+      document.getElementsByTagName("body")[0].classList.add("modal-open");
+
+  }, [props.show]);
   return (
     <div className={props.show ? "show-box-pop logout-main-container" : "logout-main-container"}>
       {props.child}

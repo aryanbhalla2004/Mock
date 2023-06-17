@@ -48,7 +48,7 @@ export const Header = () => {
         </div>
 
 
-        {!isLoading ? <>{isAuthenticated ? 
+        {!isLoading ? <> {isAuthenticated ? 
           <div className='right-side-auth-user'>
             <div className='border-right'>
               <Link to="/" className='notification-button-auth-header '><i className="bi bi-bell"></i></Link>

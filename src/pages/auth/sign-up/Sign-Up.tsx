@@ -7,11 +7,8 @@ import { AccountContext } from '../../../setup/contexts/AuthContext';
 import { DatabaseContext } from '../../../setup/contexts/dbContext';
 import { Review } from './components/review/Review';
 import { SetPassword } from './components/set-password/SetPassword';
-import { StepFive } from './components/step-five/Step-five';
 import StepFour from './components/step-four/Step-four';
 import StepOne from './components/step-one/Step-one';
-import { StepSeven } from './components/step-seven/Step-seven';
-import { StepSix } from './components/step-six/Step-six';
 import StepThree from './components/step-three/Step-three';
 import StepTwo from './components/step-two/Step-two';
 import { useMultistepForm } from './hooks/useMultistepForm';
@@ -76,16 +73,6 @@ const SignUp = () => {
   const {login, register} = useContext(AccountContext);
   const {uploadFile, pushDataUserAPI} = useContext(DatabaseContext);
   const [showModal, setShowModal] = useState<boolean>(false);
-  const [signatureData, setSignatureData] = useState<any>({
-    oneRef: useRef<any>(),
-    twoRef: useRef<any>(),
-    oneCode: "",
-    twoCode: "",
-    oneFile: "",
-    twoFile: "",
-    one: [],
-    two: [],
-  });
 
 
   const updateFields = (fields: Partial<IEmployeeSignUpForm>) => {
