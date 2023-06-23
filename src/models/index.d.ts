@@ -61,6 +61,7 @@ type EagerUser = {
   readonly Houses?: (House | null)[] | null;
   readonly Workorders?: (House | null)[] | null;
   readonly subscriptionWorkorder?: number | null;
+  readonly name?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -70,6 +71,7 @@ type LazyUser = {
   readonly Houses: AsyncCollection<House>;
   readonly Workorders: AsyncCollection<House>;
   readonly subscriptionWorkorder?: number | null;
+  readonly name?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -84,11 +86,11 @@ type EagerWorkorder = {
   readonly id: string;
   readonly userID: string;
   readonly House?: House | null;
-  readonly employeeID: string;
+  readonly employeeID?: string | null;
   readonly completionImage?: (string | null)[] | null;
   readonly usercompletion?: boolean | null;
   readonly workercompletion?: boolean | null;
-  readonly money?: string | null;
+  readonly money: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly workorderHouseId?: string | null;
@@ -98,11 +100,11 @@ type LazyWorkorder = {
   readonly id: string;
   readonly userID: string;
   readonly House: AsyncItem<House | undefined>;
-  readonly employeeID: string;
+  readonly employeeID?: string | null;
   readonly completionImage?: (string | null)[] | null;
   readonly usercompletion?: boolean | null;
   readonly workercompletion?: boolean | null;
-  readonly money?: string | null;
+  readonly money: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly workorderHouseId?: string | null;
@@ -117,7 +119,7 @@ export declare const Workorder: (new (init: ModelInit<Workorder, WorkorderMetaDa
 type EagerHouse = {
   readonly id: string;
   readonly userID: string;
-  readonly employeeID: string;
+  readonly employeeID?: string | null;
   readonly address?: Address | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
@@ -126,7 +128,7 @@ type EagerHouse = {
 type LazyHouse = {
   readonly id: string;
   readonly userID: string;
-  readonly employeeID: string;
+  readonly employeeID?: string | null;
   readonly address?: Address | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
@@ -176,10 +178,10 @@ type EagerEmployee = {
   readonly documents?: Document[] | null;
   readonly agreement?: Document[] | null;
   readonly ratingValue?: number | null;
-  readonly Ratings?: (Rating | null)[] | null;
+  readonly Ratings?: (House | null)[] | null;
   readonly systemRating?: number | null;
-  readonly House?: (Rating | null)[] | null;
-  readonly Workorders?: (Rating | null)[] | null;
+  readonly Houses?: (House | null)[] | null;
+  readonly Workorders?: (House | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -196,10 +198,10 @@ type LazyEmployee = {
   readonly documents?: Document[] | null;
   readonly agreement?: Document[] | null;
   readonly ratingValue?: number | null;
-  readonly Ratings: AsyncCollection<Rating>;
+  readonly Ratings: AsyncCollection<House>;
   readonly systemRating?: number | null;
-  readonly House: AsyncCollection<Rating>;
-  readonly Workorders: AsyncCollection<Rating>;
+  readonly Houses: AsyncCollection<House>;
+  readonly Workorders: AsyncCollection<House>;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

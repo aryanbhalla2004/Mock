@@ -244,11 +244,11 @@ export default function WorkorderUpdateForm(props) {
   const completionImageRef = React.createRef();
   const validations = {
     userID: [{ type: "Required" }],
-    employeeID: [{ type: "Required" }],
+    employeeID: [],
     completionImage: [],
     usercompletion: [],
     workercompletion: [],
-    money: [],
+    money: [{ type: "Required" }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -359,7 +359,7 @@ export default function WorkorderUpdateForm(props) {
       ></TextField>
       <TextField
         label="Employee id"
-        isRequired={true}
+        isRequired={false}
         isReadOnly={false}
         value={employeeID}
         onChange={(e) => {
@@ -495,7 +495,7 @@ export default function WorkorderUpdateForm(props) {
       ></SwitchField>
       <TextField
         label="Money"
-        isRequired={false}
+        isRequired={true}
         isReadOnly={false}
         value={money}
         onChange={(e) => {

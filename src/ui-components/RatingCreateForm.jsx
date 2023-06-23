@@ -8,10 +8,10 @@
 import * as React from "react";
 import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
-import { User } from "../models";
+import { Rating } from "../models";
 import { fetchByPath, validateField } from "./utils";
 import { DataStore } from "aws-amplify";
-export default function UserCreateForm(props) {
+export default function RatingCreateForm(props) {
   const {
     clearOnSuccess = true,
     onSuccess,
@@ -23,22 +23,30 @@ export default function UserCreateForm(props) {
     ...rest
   } = props;
   const initialValues = {
-    subscriptionWorkorder: "",
-    name: "",
+    description: "",
+    Owner: "",
+    rating: "",
+    employeeID: "",
   };
-  const [subscriptionWorkorder, setSubscriptionWorkorder] = React.useState(
-    initialValues.subscriptionWorkorder
+  const [description, setDescription] = React.useState(
+    initialValues.description
   );
-  const [name, setName] = React.useState(initialValues.name);
+  const [Owner, setOwner] = React.useState(initialValues.Owner);
+  const [rating, setRating] = React.useState(initialValues.rating);
+  const [employeeID, setEmployeeID] = React.useState(initialValues.employeeID);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
-    setSubscriptionWorkorder(initialValues.subscriptionWorkorder);
-    setName(initialValues.name);
+    setDescription(initialValues.description);
+    setOwner(initialValues.Owner);
+    setRating(initialValues.rating);
+    setEmployeeID(initialValues.employeeID);
     setErrors({});
   };
   const validations = {
-    subscriptionWorkorder: [],
-    name: [],
+    description: [],
+    Owner: [],
+    rating: [],
+    employeeID: [{ type: "Required" }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -66,8 +74,10 @@ export default function UserCreateForm(props) {
       onSubmit={async (event) => {
         event.preventDefault();
         let modelFields = {
-          subscriptionWorkorder,
-          name,
+          description,
+          Owner,
+          rating,
+          employeeID,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -97,7 +107,7 @@ export default function UserCreateForm(props) {
               modelFields[key] = undefined;
             }
           });
-          await DataStore.save(new User(modelFields));
+          await DataStore.save(new Rating(modelFields));
           if (onSuccess) {
             onSuccess(modelFields);
           }
@@ -110,64 +120,120 @@ export default function UserCreateForm(props) {
           }
         }
       }}
-      {...getOverrideProps(overrides, "UserCreateForm")}
+      {...getOverrideProps(overrides, "RatingCreateForm")}
       {...rest}
     >
       <TextField
-        label="Subscription workorder"
+        label="Description"
         isRequired={false}
         isReadOnly={false}
-        type="number"
-        step="any"
-        value={subscriptionWorkorder}
-        onChange={(e) => {
-          let value = isNaN(parseInt(e.target.value))
-            ? e.target.value
-            : parseInt(e.target.value);
-          if (onChange) {
-            const modelFields = {
-              subscriptionWorkorder: value,
-              name,
-            };
-            const result = onChange(modelFields);
-            value = result?.subscriptionWorkorder ?? value;
-          }
-          if (errors.subscriptionWorkorder?.hasError) {
-            runValidationTasks("subscriptionWorkorder", value);
-          }
-          setSubscriptionWorkorder(value);
-        }}
-        onBlur={() =>
-          runValidationTasks("subscriptionWorkorder", subscriptionWorkorder)
-        }
-        errorMessage={errors.subscriptionWorkorder?.errorMessage}
-        hasError={errors.subscriptionWorkorder?.hasError}
-        {...getOverrideProps(overrides, "subscriptionWorkorder")}
-      ></TextField>
-      <TextField
-        label="Name"
-        isRequired={false}
-        isReadOnly={false}
-        value={name}
+        value={description}
         onChange={(e) => {
           let { value } = e.target;
           if (onChange) {
             const modelFields = {
-              subscriptionWorkorder,
-              name: value,
+              description: value,
+              Owner,
+              rating,
+              employeeID,
             };
             const result = onChange(modelFields);
-            value = result?.name ?? value;
+            value = result?.description ?? value;
           }
-          if (errors.name?.hasError) {
-            runValidationTasks("name", value);
+          if (errors.description?.hasError) {
+            runValidationTasks("description", value);
           }
-          setName(value);
+          setDescription(value);
         }}
-        onBlur={() => runValidationTasks("name", name)}
-        errorMessage={errors.name?.errorMessage}
-        hasError={errors.name?.hasError}
-        {...getOverrideProps(overrides, "name")}
+        onBlur={() => runValidationTasks("description", description)}
+        errorMessage={errors.description?.errorMessage}
+        hasError={errors.description?.hasError}
+        {...getOverrideProps(overrides, "description")}
+      ></TextField>
+      <TextField
+        label="Owner"
+        isRequired={false}
+        isReadOnly={false}
+        value={Owner}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              description,
+              Owner: value,
+              rating,
+              employeeID,
+            };
+            const result = onChange(modelFields);
+            value = result?.Owner ?? value;
+          }
+          if (errors.Owner?.hasError) {
+            runValidationTasks("Owner", value);
+          }
+          setOwner(value);
+        }}
+        onBlur={() => runValidationTasks("Owner", Owner)}
+        errorMessage={errors.Owner?.errorMessage}
+        hasError={errors.Owner?.hasError}
+        {...getOverrideProps(overrides, "Owner")}
+      ></TextField>
+      <TextField
+        label="Rating"
+        isRequired={false}
+        isReadOnly={false}
+        type="number"
+        step="any"
+        value={rating}
+        onChange={(e) => {
+          let value = isNaN(parseFloat(e.target.value))
+            ? e.target.value
+            : parseFloat(e.target.value);
+          if (onChange) {
+            const modelFields = {
+              description,
+              Owner,
+              rating: value,
+              employeeID,
+            };
+            const result = onChange(modelFields);
+            value = result?.rating ?? value;
+          }
+          if (errors.rating?.hasError) {
+            runValidationTasks("rating", value);
+          }
+          setRating(value);
+        }}
+        onBlur={() => runValidationTasks("rating", rating)}
+        errorMessage={errors.rating?.errorMessage}
+        hasError={errors.rating?.hasError}
+        {...getOverrideProps(overrides, "rating")}
+      ></TextField>
+      <TextField
+        label="Employee id"
+        isRequired={true}
+        isReadOnly={false}
+        value={employeeID}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              description,
+              Owner,
+              rating,
+              employeeID: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.employeeID ?? value;
+          }
+          if (errors.employeeID?.hasError) {
+            runValidationTasks("employeeID", value);
+          }
+          setEmployeeID(value);
+        }}
+        onBlur={() => runValidationTasks("employeeID", employeeID)}
+        errorMessage={errors.employeeID?.errorMessage}
+        hasError={errors.employeeID?.hasError}
+        {...getOverrideProps(overrides, "employeeID")}
       ></TextField>
       <Flex
         justifyContent="space-between"

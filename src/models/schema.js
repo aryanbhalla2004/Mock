@@ -45,6 +45,13 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "name": {
+                    "name": "name",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -138,7 +145,7 @@ export const schema = {
                     "name": "employeeID",
                     "isArray": false,
                     "type": "ID",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "completionImage": {
@@ -167,7 +174,7 @@ export const schema = {
                     "name": "money",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "createdAt": {
@@ -225,7 +232,7 @@ export const schema = {
                         "rules": [
                             {
                                 "provider": "userPools",
-                                "ownerField": "owner",
+                                "ownerField": "userID",
                                 "allow": "owner",
                                 "operations": [
                                     "create",
@@ -287,7 +294,7 @@ export const schema = {
                     "name": "employeeID",
                     "isArray": false,
                     "type": "ID",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "address": {
@@ -347,7 +354,7 @@ export const schema = {
                         "rules": [
                             {
                                 "provider": "userPools",
-                                "ownerField": "owner",
+                                "ownerField": "userID",
                                 "allow": "owner",
                                 "operations": [
                                     "create",
@@ -368,6 +375,12 @@ export const schema = {
                                     "create",
                                     "update",
                                     "delete"
+                                ]
+                            },
+                            {
+                                "allow": "private",
+                                "operations": [
+                                    "read"
                                 ]
                             }
                         ]
@@ -579,7 +592,7 @@ export const schema = {
                     "name": "Ratings",
                     "isArray": true,
                     "type": {
-                        "model": "Rating"
+                        "model": "House"
                     },
                     "isRequired": false,
                     "attributes": [],
@@ -596,11 +609,11 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "House": {
-                    "name": "House",
+                "Houses": {
+                    "name": "Houses",
                     "isArray": true,
                     "type": {
-                        "model": "Rating"
+                        "model": "House"
                     },
                     "isRequired": false,
                     "attributes": [],
@@ -614,7 +627,7 @@ export const schema = {
                     "name": "Workorders",
                     "isArray": true,
                     "type": {
-                        "model": "Rating"
+                        "model": "House"
                     },
                     "isRequired": false,
                     "attributes": [],
@@ -744,5 +757,5 @@ export const schema = {
         }
     },
     "codegenVersion": "3.4.0",
-    "version": "c973c261dcb563948c247f3e02f47dc0"
+    "version": "1e005a6bf55e6c2a182b8f8782d59415"
 };
