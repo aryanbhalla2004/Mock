@@ -5,3 +5,7 @@
  **************************************************************************/
 
 export { default as studioTheme } from "./studioTheme";
+export { default as UserCreateForm } from "./UserCreateForm";
+export { default as UserUpdateForm } from "./UserUpdateForm";
+export { default as WorkorderCreateForm } from "./WorkorderCreateForm";
+export { default as WorkorderUpdateForm } from "./WorkorderUpdateForm";

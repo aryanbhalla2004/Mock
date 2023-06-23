@@ -28,31 +28,6 @@ const INITIAL_DATA: IEmployeeSignUpForm = {
   dob: "",
   password: "",
   confirm_password: "",
-  address: {
-    address: "",
-    unit: "",
-    city: "",
-    state: "",
-    country: "",
-    postalCode: "",
-  },
-  // availability: {
-  //   Sunday: [],
-  //   Monday: [],
-  //   Tuesday: [],
-  //   Wednesday: [],
-  //   Thursday: [],
-  //   Friday: [],
-  //   Saturday: [],
-  // },
-  //WorkingStatus: "",
-  verified: false,
-  // proof: {
-  //   addressType: "",
-  //   addressDocument: null,
-  //   mainType: "",
-  //   mainDocument: null,
-  // }
 };
 
 const INITIAL_ERROR: Error = {
@@ -84,12 +59,7 @@ const SignUp = () => {
   const {back, next, step, isFirstStep, isLastStep, isReview, currentStepIndex} = useMultistepForm([
     <StepOne formData={formData} updateFields={updateFields} error={error}/>,
     <StepTwo formData={formData} updateFields={updateFields} setFormData={setFormData} error={error}/>,
-    <StepThree formData={formData} setFormData={setFormData} error={error}/>,
     <SetPassword formData={formData} setFormData={setFormData} error={error}/>,
-    // <StepFour formData={formData} updateFields={updateFields} setFormData={setFormData} showModal={showModal} setShowModal={setShowModal}/>,
-    // <StepFive formData={formData} setFormData={setFormData} error={error}/>,
-    // <StepSix formData={formData} setFormData={setFormData} error={error}/>,
-    // <StepSeven formData={formData} setFormData={setFormData} signatureData={signatureData} setSignatureData={setSignatureData}/>,
     <Review formData={formData}/>
   ]);
 
@@ -142,30 +112,7 @@ const SignUp = () => {
       } else {
         setError({for: "fName", secondFor: "lName", note: "Invalid Name"});
       }
-    } else if(currentStepIndex === 2) {
-      if(formData.address.address != "") {
-        if(formData.address.city != "") {
-          if(formData.address.state != "") {
-            if(formData.address.country != "") {
-              if(formData.address.postalCode != "") {
-                next();
-              } else {
-                setError({for: "postalCode", note: "Invalid Postal Code"});
-              }
-            } else {
-              setError({for: "country", note: "Invalid Country"});
-            }
-           } else {
-            setError({for: "state", note: "Invalid State/Province"});
-          }
-        } else {
-          setError({for: "city", note: "Invalid City"});
-        }
-      } else {
-        setError({for: "address", note: "Invalid Address"});
-      }
-      
-    } else if (currentStepIndex === 3) {
+    } else if (currentStepIndex === 2) {
       if(formData.password != "" && formData.confirm_password != "") {
         if(formData.password === formData.confirm_password) {
           if(getPasswordStrength(formData.password)) {
@@ -183,35 +130,10 @@ const SignUp = () => {
           setError({for: "confirm_password",note: "Invalid Password entry."});
         }
       }
-    } else if (currentStepIndex === 4) {
-      //! Shifts do checks here SAINI
+    } else if (currentStepIndex === 3) {
       next();
       finishSignUp();
     } 
-    
-    // else if (currentStepIndex === 5) {
-    //   if(formData.WorkingStatus != "") {
-    //     next();
-    //   } else {
-    //     setError({for: "WorkingStatus", note: "Please make a selection before pressing next."});
-    //   }
-    // } else if (currentStepIndex === 6) {
-    //   if(formData.proof.addressType !== "" && formData.proof.mainType !== "") {
-    //     if(formData.proof.addressDocument != null && formData.proof.mainDocument != null) {
-    //       next();
-    //     } else {
-    //       setError({for: "ProofUpload", note: "Unable to proceed. No document has been upload. Please upload a valid document type and try again."});
-    //     }
-    //   } else {
-    //     setError({for: "ProofUpload", note: "Unable to proceed. No document type has been selected for upload. Please select a valid document type and try again."});
-    //   }
-    // } else if(currentStepIndex === 7) {
-    //   console.log(formData);
-    //   next();
-    // } else if(currentStepIndex === 8) {
-    //   finishSignUp();
-    // }
-
     setLoading(false);
   }
 
@@ -288,45 +210,21 @@ const SignUp = () => {
 
   const finishSignUp = async () => {
     setSignupFormSubmitted(true);
-    const userAttributes = {email: formData.email, password: formData.password, fName: formData.fName, lName: formData.lName};
-    let employeeProfile : CreateEmployeeInput = {
-      cognitoUser: null,
-      firstName: formData.fName,
-      lastName: formData.lName,
-      phoneNumber: formData.pNumber,
-      dob: formData.dob,
-      address: {
-        address: formData.address.address,
-        unit: formData.address.unit,
-        postalcode: formData.address.postalCode,
-        country: formData.address.country,
-        state: formData.address.state,
-      },
-      ratingValue: 0,
-      systemRating: 5.0,
-
-    }
+    const userAttributes = {email: formData.email, password: formData.password, fName: formData.fName, lName: formData.lName, phone: formData.pNumber, dob: formData.dob};
     try {
       const user = await register(userAttributes);
-      // //! Now Push the Uploaded files to the database
-      employeeProfile = {...employeeProfile, cognitoUser: user.userSub}
-      const uploadDataEmployee = pushDataUserAPI(createEmployee, employeeProfile);
-
+      //! Now Push the Uploaded files to the database
       const redirectPassedState = {
         userConfirmed: user.userConfirmed, 
         userSub: user.userSub,
         username: user.user.username,
         from: "SIGNUP"
       }
-
-     
-
       
-      //? Activate
+      // //? Activate
       if(user != undefined) {
         setParamStorege(redirectPassedState);
         setSignupDone(true);
-        //
       }
       // const fileOneExtension = formData.proof.addressDocument?.name.split('.').pop();
       // const fileTwoExtension = formData.proof.mainDocument?.name.split('.').pop();

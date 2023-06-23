@@ -29,6 +29,11 @@ export const Homepage = () => {
           </div>
         </div>
       </section>
+
+      <section className='working-for-zoobo-home-page'>
+        <div className='content-sizing starting-up'>
+        </div> 
+      </section>
     </>
   )
 }

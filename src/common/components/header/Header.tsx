@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import logo from "../../../assets/logo-green.png";
 import "./style.css";
-import { GhostLinkBtn } from '../button/Button';
+import { GhostLinkBtn, PrimaryButton } from '../button/Button';
 import { AccountContext } from '../../../setup/contexts/AuthContext';
 import { Loading } from '../loading/Loading';
 export const Header = () => {
@@ -32,13 +32,14 @@ export const Header = () => {
           <nav className='nav-carrer-header'>
             <ul>
               <li>
-                <Link to={''}>Our Team</Link>
+                <Link to={''}>Working at Zoobo</Link>
+              </li>
+             
+              <li>
+                <Link to="">Mission & Values</Link>
               </li>
               <li>
                 <Link to="">Benifts</Link>
-              </li>
-              <li>
-                <Link to="">Work Terms</Link>
               </li>
               <li>
                 <Link to="">FAQ</Link>
@@ -82,6 +83,9 @@ export const Header = () => {
           </div> :  <div className='auth-12-action-btn-work-start'>
           <p>Join the crew at Zoobo!</p>
           <GhostLinkBtn name="Get Started" path={'/auth/sign-up'}/>
+          <p>or</p>
+          <GhostLinkBtn name="Login" path={'/auth'}/>
+          
         </div>}</> : <div className='center-loading-box-header'><Loading/></div>}
 
         

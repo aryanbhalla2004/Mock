@@ -6,11 +6,6 @@ export interface IEmployeeSignUpForm {
   dob: string,
   password: string,
   confirm_password:string,
-  address: Address,
-  availability?: Availability,
-  verified: boolean,
-  WorkingStatus?: string,
-  proof?: document
 }
 
 export interface Address {

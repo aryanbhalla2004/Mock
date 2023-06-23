@@ -49,31 +49,24 @@ export const FileUpload = (props: prop) => {
         
         <div className='proof-container-sign-up align-item-center'>
           <ul className='address-proof-document'>
-            {props.formData.WorkingStatus === "RESIDENT" && <li>
+            <li>
               <span className='absolute-postion-box'>required</span>
-              <i className="bi bi-flag"></i>
-              <h3>Citizenship or Permanent Residency</h3>
-              <p>Please upload a document as proof of your citizenship or permanent residency.</p>
-              {props.formData.proof.mainDocument === null && 
-              <>
-                <select name='mainType' onChange={documentType} value={props.formData.proof.mainType}>
-                  <option value="" selected disabled>Select Document Type</option>
-                  <option value="Passport">Passport</option>
-                  <option value="Citizenship Certificates">Citizenship Certificates</option>
-                  <option value="Birth Certificate">Birth Certificate</option>
-                </select>
-                {props.formData.proof.mainType != "" && 
+              <i className="bi bi-person-vcard"></i>
+              <h3>Identification</h3>
+              <p>Please upload a document as proof of your driving license or any Government ID.</p>
+
+                {props.formData.proof.mainDocument === null && 
                 <>
                   <input type="file" accept=".doc,.docx,.pdf" id="fileID" name="mainDocument" className='upload-field-button' onChange={fileUploadToState}/>
                 </>
                 }
-              </>}
+
               {props.formData.proof.mainDocument !== null && <div className='file-uploaded-conformation new-file-button snow-show' onClick={() => deleteFile("mainDocument")}><span><i className="bi bi-check-circle-fill"></i>File Uploaded</span> <i className="bi bi-trash3"></i></div>}
-            </li> }
+            </li>
 
             
 
-            {props.formData.WorkingStatus === "WORKPERMIT" && <li>
+            {/* {props.formData.WorkingStatus === "WORKPERMIT" && <li>
               <span className='absolute-postion-box'>required</span>
               <i className="bi bi-person-vcard"></i>
               <h3>Work Permit</h3>
@@ -82,27 +75,19 @@ export const FileUpload = (props: prop) => {
                 <input type="file" accept=".doc,.docx,.pdf" id="fileID" name="mainDocument" className='upload-field-button' onChange={fileUploadToState}/>
               </>}
               {props.formData.proof.mainDocument !== null && <div className='file-uploaded-conformation new-file-button' onClick={() => deleteFile("mainDocument")}><span><i className="bi bi-check-circle-fill"></i>File Uploaded</span> <i className="bi bi-trash3"></i></div>}
-            </li> }
+            </li> } */}
 
             <li>
               <span className='absolute-postion-box'>required</span>
-              <i className="bi bi-geo-alt"></i>
-              <h3>Address Proof</h3>
-              <p>Please provide a document confirming your previously entered address.</p>
+              <i className="bi bi-person-square"></i>
+              <h3>Face Photo</h3>
+              <p>Please provide a passport size person photo with clear background</p>
+
               {props.formData.proof.addressDocument === null && 
-              <>
-              <select name='addressType' onChange={documentType} value={props.formData.proof.addressType}>
-                <option value="" selected disabled>Select Document Type</option>
-                <option value="Driving Licence">Driving Licence</option>
-                <option value="Utility Bill">Utility Bill</option>
-                <option value="Bank Statement">Bank Statement</option>
-              </select> 
-              {props.formData.proof.addressType != "" && 
               <>
                 <input type="file" accept=".doc,.docx,.pdf" id="fileID" name="addressDocument" className='upload-field-button' onChange={fileUploadToState}/>
               </>
               }
-              </>}
               {props.formData.proof.addressDocument !== null && <div className='file-uploaded-conformation new-file-button' onClick={() => deleteFile("addressDocument")}><span><i className="bi bi-check-circle-fill"></i>File Uploaded</span> <i className="bi bi-trash3"></i></div>}
             </li>
           </ul>

@@ -131,10 +131,13 @@ const AccountProvider = ({children}: any) => {
   }
 
   const register = async (registration: any) => {
-    const {email, password, fName, lName} = registration;
+    const {email, password, fName, lName, phone, dob} = registration;
     let attributes:any = {
       given_name: fName,
       family_name: lName,
+      'custom:accountSetup': '0',
+      'custom:DateOfBirth':	dob,
+      'custom:phoneNumber':	phone,
       'custom:account_type': "Crew Member",
       'custom:signup_status': '0'
     }

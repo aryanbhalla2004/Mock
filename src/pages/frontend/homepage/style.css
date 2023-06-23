@@ -87,3 +87,12 @@
   line-height: 30px;
   font-weight: 300;
 }
+
+.working-for-zoobo-home-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 80px 0;
+  background-color: var(--primaryTransparent);
+}
