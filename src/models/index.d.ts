@@ -1,6 +1,6 @@
 import { ModelInit, MutableModel } from "@aws-amplify/datastore";
 // @ts-ignore
-import { LazyLoading, LazyLoadingDisabled, AsyncCollection } from "@aws-amplify/datastore";
+import { LazyLoading, LazyLoadingDisabled, AsyncCollection, AsyncItem } from "@aws-amplify/datastore";
 
 type EagerDocument = {
   readonly type?: string | null;
@@ -36,12 +36,108 @@ export declare type Address = LazyLoading extends LazyLoadingDisabled ? EagerAdd
 
 export declare const Address: (new (init: ModelInit<Address>) => Address)
 
+type UserMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
+type WorkorderMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
+type HouseMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
 type RatingMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
 type EmployeeMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
+type EagerUser = {
+  readonly id: string;
+  readonly Houses?: (House | null)[] | null;
+  readonly Workorders?: (House | null)[] | null;
+  readonly subscriptionWorkorder?: number | null;
+  readonly name?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyUser = {
+  readonly id: string;
+  readonly Houses: AsyncCollection<House>;
+  readonly Workorders: AsyncCollection<House>;
+  readonly subscriptionWorkorder?: number | null;
+  readonly name?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type User = LazyLoading extends LazyLoadingDisabled ? EagerUser : LazyUser
+
+export declare const User: (new (init: ModelInit<User, UserMetaData>) => User) & {
+  copyOf(source: User, mutator: (draft: MutableModel<User, UserMetaData>) => MutableModel<User, UserMetaData> | void): User;
+}
+
+type EagerWorkorder = {
+  readonly id: string;
+  readonly userID: string;
+  readonly House?: House | null;
+  readonly employeeID?: string | null;
+  readonly completionImage?: (string | null)[] | null;
+  readonly usercompletion?: boolean | null;
+  readonly workercompletion?: boolean | null;
+  readonly money: string;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  readonly workorderHouseId?: string | null;
+}
+
+type LazyWorkorder = {
+  readonly id: string;
+  readonly userID: string;
+  readonly House: AsyncItem<House | undefined>;
+  readonly employeeID?: string | null;
+  readonly completionImage?: (string | null)[] | null;
+  readonly usercompletion?: boolean | null;
+  readonly workercompletion?: boolean | null;
+  readonly money: string;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  readonly workorderHouseId?: string | null;
+}
+
+export declare type Workorder = LazyLoading extends LazyLoadingDisabled ? EagerWorkorder : LazyWorkorder
+
+export declare const Workorder: (new (init: ModelInit<Workorder, WorkorderMetaData>) => Workorder) & {
+  copyOf(source: Workorder, mutator: (draft: MutableModel<Workorder, WorkorderMetaData>) => MutableModel<Workorder, WorkorderMetaData> | void): Workorder;
+}
+
+type EagerHouse = {
+  readonly id: string;
+  readonly userID: string;
+  readonly employeeID?: string | null;
+  readonly address?: Address | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyHouse = {
+  readonly id: string;
+  readonly userID: string;
+  readonly employeeID?: string | null;
+  readonly address?: Address | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type House = LazyLoading extends LazyLoadingDisabled ? EagerHouse : LazyHouse
+
+export declare const House: (new (init: ModelInit<House, HouseMetaData>) => House) & {
+  copyOf(source: House, mutator: (draft: MutableModel<House, HouseMetaData>) => MutableModel<House, HouseMetaData> | void): House;
 }
 
 type EagerRating = {
@@ -82,8 +178,10 @@ type EagerEmployee = {
   readonly documents?: Document[] | null;
   readonly agreement?: Document[] | null;
   readonly ratingValue?: number | null;
-  readonly Ratings?: (Rating | null)[] | null;
+  readonly Ratings?: (House | null)[] | null;
   readonly systemRating?: number | null;
+  readonly Houses?: (House | null)[] | null;
+  readonly Workorders?: (House | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -100,8 +198,10 @@ type LazyEmployee = {
   readonly documents?: Document[] | null;
   readonly agreement?: Document[] | null;
   readonly ratingValue?: number | null;
-  readonly Ratings: AsyncCollection<Rating>;
+  readonly Ratings: AsyncCollection<House>;
   readonly systemRating?: number | null;
+  readonly Houses: AsyncCollection<House>;
+  readonly Workorders: AsyncCollection<House>;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

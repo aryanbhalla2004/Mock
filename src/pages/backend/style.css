@@ -2,12 +2,18 @@
   border: 1px solid;
   width: 100%;
   height: 100vh;
+  display: flex;
+  justify-content: flex-start;
   overflow: hidden;
 }
 
+.container-dashboard main {
+  width: 100%;
+}
 .side-bar-menu-dashboard {
   border-right: 1px solid var(--lightBorderColor);
   max-width: 300px;
+  width: 100%;
   height: 100vh;
   position: relative;
   display: flex;
@@ -107,3 +113,4 @@
 .user-profile > button:hover {
   background-color: var(--primaryHover);
 }
+

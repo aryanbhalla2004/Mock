@@ -13,7 +13,8 @@ import { Logout } from "./pages/auth/logout/Logout";
 import { LoadingMain } from "./common/components/loading-main-page/LoadingMain";
 import { ModualPop } from "./common/components/module-pop/ModualPop";
 import { SetupWizzard } from "./pages/frontend/setupWizzard/SetupWizzard";
-
+import Test from "./pages/backend/test/Test";
+import SelectHouses from "./pages/backend/selectHouses/selectHouses";
 const App = () => {
   const {isSignInComplete, isLogoutEnabled, getUser, isAuthenticated, isLoading, logout, getSession, setIsSignUpInComplete} = useContext(AccountContext);
   const [contentLoader, setContentLoader] = useState(true);
@@ -39,7 +40,7 @@ const App = () => {
   return (
     !contentLoader && !isLoading ? <div className="slow-animate-pop-loading">
       <Logout/>
-      <ModualPop show={isSignInComplete} child={<SetupWizzard />}/>
+      {/*<ModualPop show={isSignInComplete} child={<SetupWizzard />}/>*/}
       <Routes>
         <Route path="*" element={<h1>Error 404</h1>}></Route>
 
@@ -53,11 +54,13 @@ const App = () => {
         </Route>
 
         <Route path="/dashboard" element={isAuthenticated ? <Dashboard /> : <Navigate to={"/"} />}>
+          <Route path="test" element={<Test/>}/>
+          <Route path="selectHouses" element={<SelectHouses/>}/>
         </Route>
 
         <Route path="/" element={<Landing/>}>
           <Route index element={<Homepage />}></Route>
-          <Route path="logout" />
+          <Route path="logout"/>
         </Route>
       </Routes>
     </div> : <LoadingMain />
