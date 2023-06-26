@@ -77,6 +77,22 @@ const SignIn = () => {
     setFormSubmitted(false);
   }
 
+  const loginquick = async () => {
+    const response = await login("aryanbhalla66@gmail.com", `Zoobo123`);
+    if(response.challengeName === "NEW_PASSWORD_REQUIRED") {
+      const { requiredAttributes } = response.challengeParam;
+      setRequiredAttr(requiredAttributes);
+      //setTempUser(response);
+      setAllowResetPass(true);
+    } else {
+      getSession();
+      //const userAttributes = await Auth.currentUserInfo();
+      //props.setUser({ ...response, attributes: userAttributes.attributes});
+      //localStorage.setItem('user', JSON.stringify({ ...response, attributes: userAttributes.attributes}));
+      navigate('/');
+    }
+  }
+
   return (
     <>
       <form className='login-form-auth-12' onSubmit={onSubmit}>
@@ -100,6 +116,8 @@ const SignIn = () => {
           <PrimaryButton name="Sign In" type="submit" width="full" loading={formSubmitted}/>
         </div>
       </form>
+
+      <button onClick={loginquick}>LOG IN QUICK</button>
     </>
   )
 }

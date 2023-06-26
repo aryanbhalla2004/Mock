@@ -15,6 +15,8 @@ import { ModualPop } from "./common/components/module-pop/ModualPop";
 import { SetupWizzard } from "./pages/frontend/setupWizzard/SetupWizzard";
 import Test from "./pages/backend/test/Test";
 import SelectHouses from "./pages/backend/selectHouses/selectHouses";
+import MyHouse from "./pages/backend/myHouse/myHouse";
+import MyWork from "./pages/backend/myWork/myWork";
 const App = () => {
   const {isSignInComplete, isLogoutEnabled, getUser, isAuthenticated, isLoading, logout, getSession, setIsSignUpInComplete} = useContext(AccountContext);
   const [contentLoader, setContentLoader] = useState(true);
@@ -56,6 +58,8 @@ const App = () => {
         <Route path="/dashboard" element={isAuthenticated ? <Dashboard /> : <Navigate to={"/"} />}>
           <Route path="test" element={<Test/>}/>
           <Route path="selectHouses" element={<SelectHouses/>}/>
+          <Route path="myHouse" element={<MyHouse/>}/>
+          <Route path="myWork" element={<MyWork/>}/>
         </Route>
 
         <Route path="/" element={<Landing/>}>

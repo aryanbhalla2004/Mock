@@ -22,8 +22,9 @@ const Dashboard = () => {
           <nav className='dashboard-nav'>
             <span>Work</span>
             <ul>
-              <li><Link to="/dashboard"><i className="bi bi-binoculars-fill"></i> My Work</Link></li>
+              <li><Link to="/dashboard/myHouse"><i className="bi bi-binoculars-fill"></i> My Houses</Link></li>
               <li><Link to="/dashboard/selectHouses"><i className="bi bi-speedometer"></i>Select Houses</Link></li>
+              <li><Link to="/dashboard/myWork"><i className="bi bi-speedometer"></i>My Work</Link></li>
               <li><Link to="/dashboard"><i className="bi bi-columns-gap"></i> Payment</Link></li>
               <li><Link to="/dashboard"><i className="bi bi-speedometer2"></i>Analytics</Link></li>
               <li><Link to="/dashboard/test"><i className="bi bi-speedometer2"></i>TEST</Link></li>

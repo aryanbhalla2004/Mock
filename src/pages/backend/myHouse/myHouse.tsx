@@ -5,7 +5,7 @@ import { DatabaseContext } from '../../../setup/contexts/dbContext';
 import {listHouses} from "../../../graphql/queries"
 import {updateHouse} from "../../../graphql/mutations"
 
-const SelectHouses = () => {
+const MyHouse = () => {
   const [itms, setItms] = React.useState([]);
   const {getUser} = useContext(AccountContext);
   const {pullDataFilter, pushDataUser} = useContext(DatabaseContext);
@@ -17,7 +17,7 @@ const SelectHouses = () => {
     const variables = {
       filter: {
         employeeID: {
-          attributeExists: false,
+          eq: getUser().username
         },
       }
     };
@@ -31,28 +31,16 @@ const SelectHouses = () => {
     
   }
 
-  const setAsEmployesHouse = async (id:any) => {
-    const itm = {
-      id: id,
-      employeeID: getUser().username
-    }
-    try {
-      const response = await pushDataUser(updateHouse, itm);
-      console.log(response);
-      setItms(response.data.listHouses.items);
-    } catch(response){
-      console.log(response);
-    }
-  }
 
 
   return(<>
+
     {itms && itms.map((itm:any) => (
-      <div><p>{itm.id}</p><button onClick={() => setAsEmployesHouse(itm.id)}>set as my house</button></div>
+      <div><p>{itm.id}</p><button >View House</button></div>
 
     ))}
   
   </>)
 }
 
-export default SelectHouses;
+export default MyHouse;

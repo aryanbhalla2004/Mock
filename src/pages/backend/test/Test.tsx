@@ -118,6 +118,33 @@ const Test = () => {
     }));
   }
 
+
+  const sendeEmail = async () => {
+    const user = getUser();
+    console.log(user.signInUserSession.accessToken.jwtToken);
+    const itm = await fetch("https://886bxynv5b.execute-api.ca-central-1.amazonaws.com/test",
+      {
+        mode: "cors",
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          'Authorization': user.signInUserSession.idToken.jwtToken,
+        },
+        body: JSON.stringify({
+          senderName: "aryansaini1005@gmail.com",//from
+          senderEmail: "aryansaini1005@gmail.com",//to
+          message: "HI aryan fuck u whore",
+          base64Data: "",
+          date: new Date(),
+          fileName: "TEST_FILE_NAME",
+        }),
+        
+      });
+
+      console.log(JSON.stringify({date:new Date()}));
+    }
+    
   console.log(getUser());
   return (
     <>
@@ -128,6 +155,7 @@ const Test = () => {
     <button onClick={createWork}>Create WorkOrder</button>
     <button onClick={pullWork}>Pull WorkOrder</button>
     <button onClick={pullHousesWithFilter}>Pull with fikter</button>
+    <button onClick={sendeEmail}>Send Email</button>
     <div>
       <p>USER: {itms?.user?.name}</p>
 
