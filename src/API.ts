@@ -2,6 +2,7 @@
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
+<<<<<<< HEAD
 export type CreateUserInput = {
   id?: string | null,
   subscriptionWorkorder?: number | null,
@@ -246,6 +247,336 @@ export type DeleteHouseInput = {
 };
 
 export type CreateRatingInput = {
+||||||| c4450da
+export type CreateRatingInput = {
+=======
+export type CreateUserInput = {
+>>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
+  id?: string | null,
+  subscriptionWorkorder?: number | null,
+  name?: string | null,
+  _version?: number | null,
+};
+
+export type ModelUserConditionInput = {
+  subscriptionWorkorder?: ModelIntInput | null,
+  name?: ModelStringInput | null,
+  and?: Array< ModelUserConditionInput | null > | null,
+  or?: Array< ModelUserConditionInput | null > | null,
+  not?: ModelUserConditionInput | null,
+  _deleted?: ModelBooleanInput | null,
+};
+
+<<<<<<< HEAD
+export type ModelFloatInput = {
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  between?: Array< number | null > | null,
+||||||| c4450da
+export type ModelStringInput = {
+  ne?: string | null,
+  eq?: string | null,
+  le?: string | null,
+  lt?: string | null,
+  ge?: string | null,
+  gt?: string | null,
+  contains?: string | null,
+  notContains?: string | null,
+  between?: Array< string | null > | null,
+  beginsWith?: string | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+  size?: ModelSizeInput | null,
+};
+
+export enum ModelAttributeTypes {
+  binary = "binary",
+  binarySet = "binarySet",
+  bool = "bool",
+  list = "list",
+  map = "map",
+  number = "number",
+  numberSet = "numberSet",
+  string = "string",
+  stringSet = "stringSet",
+  _null = "_null",
+}
+
+
+export type ModelSizeInput = {
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  between?: Array< number | null > | null,
+};
+
+export type ModelFloatInput = {
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  between?: Array< number | null > | null,
+=======
+export type ModelIntInput = {
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  between?: Array< number | null > | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+};
+
+export enum ModelAttributeTypes {
+  binary = "binary",
+  binarySet = "binarySet",
+  bool = "bool",
+  list = "list",
+  map = "map",
+  number = "number",
+  numberSet = "numberSet",
+  string = "string",
+  stringSet = "stringSet",
+  _null = "_null",
+}
+
+
+export type ModelStringInput = {
+  ne?: string | null,
+  eq?: string | null,
+  le?: string | null,
+  lt?: string | null,
+  ge?: string | null,
+  gt?: string | null,
+  contains?: string | null,
+  notContains?: string | null,
+  between?: Array< string | null > | null,
+  beginsWith?: string | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+  size?: ModelSizeInput | null,
+};
+
+export type ModelSizeInput = {
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  between?: Array< number | null > | null,
+};
+
+export type ModelBooleanInput = {
+  ne?: boolean | null,
+  eq?: boolean | null,
+>>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+};
+
+<<<<<<< HEAD
+||||||| c4450da
+export type ModelIDInput = {
+  ne?: string | null,
+  eq?: string | null,
+  le?: string | null,
+  lt?: string | null,
+  ge?: string | null,
+  gt?: string | null,
+  contains?: string | null,
+  notContains?: string | null,
+  between?: Array< string | null > | null,
+  beginsWith?: string | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+  size?: ModelSizeInput | null,
+};
+
+=======
+export type User = {
+  __typename: "User",
+  id: string,
+  Houses?: ModelHouseConnection | null,
+  Workorders?: ModelHouseConnection | null,
+  subscriptionWorkorder?: number | null,
+  name?: string | null,
+  createdAt: string,
+  updatedAt: string,
+  _version: number,
+  _deleted?: boolean | null,
+  _lastChangedAt: number,
+  owner?: string | null,
+};
+
+export type ModelHouseConnection = {
+  __typename: "ModelHouseConnection",
+  items:  Array<House | null >,
+  nextToken?: string | null,
+  startedAt?: number | null,
+};
+
+export type House = {
+  __typename: "House",
+  id: string,
+  userID: string,
+  employeeID?: string | null,
+  address?: Address | null,
+  createdAt: string,
+  updatedAt: string,
+  _version: number,
+  _deleted?: boolean | null,
+  _lastChangedAt: number,
+};
+
+export type Address = {
+  __typename: "Address",
+  address?: string | null,
+  unit?: string | null,
+  postalcode?: string | null,
+  country?: string | null,
+  state?: string | null,
+};
+
+export type UpdateUserInput = {
+  id: string,
+  subscriptionWorkorder?: number | null,
+  name?: string | null,
+  _version?: number | null,
+};
+
+export type DeleteUserInput = {
+  id: string,
+  _version?: number | null,
+};
+
+export type CreateWorkorderInput = {
+  id?: string | null,
+  userID: string,
+  employeeID?: string | null,
+  completionImage?: Array< string | null > | null,
+  usercompletion?: boolean | null,
+  workercompletion?: boolean | null,
+  money: string,
+  _version?: number | null,
+  workorderHouseId?: string | null,
+};
+
+export type ModelWorkorderConditionInput = {
+  userID?: ModelIDInput | null,
+  employeeID?: ModelIDInput | null,
+  completionImage?: ModelStringInput | null,
+  usercompletion?: ModelBooleanInput | null,
+  workercompletion?: ModelBooleanInput | null,
+  money?: ModelStringInput | null,
+  and?: Array< ModelWorkorderConditionInput | null > | null,
+  or?: Array< ModelWorkorderConditionInput | null > | null,
+  not?: ModelWorkorderConditionInput | null,
+  _deleted?: ModelBooleanInput | null,
+  workorderHouseId?: ModelIDInput | null,
+};
+
+export type ModelIDInput = {
+  ne?: string | null,
+  eq?: string | null,
+  le?: string | null,
+  lt?: string | null,
+  ge?: string | null,
+  gt?: string | null,
+  contains?: string | null,
+  notContains?: string | null,
+  between?: Array< string | null > | null,
+  beginsWith?: string | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+  size?: ModelSizeInput | null,
+};
+
+export type Workorder = {
+  __typename: "Workorder",
+  id: string,
+  userID: string,
+  House?: House | null,
+  employeeID?: string | null,
+  completionImage?: Array< string | null > | null,
+  usercompletion?: boolean | null,
+  workercompletion?: boolean | null,
+  money: string,
+  createdAt: string,
+  updatedAt: string,
+  _version: number,
+  _deleted?: boolean | null,
+  _lastChangedAt: number,
+  workorderHouseId?: string | null,
+};
+
+export type UpdateWorkorderInput = {
+  id: string,
+  userID?: string | null,
+  employeeID?: string | null,
+  completionImage?: Array< string | null > | null,
+  usercompletion?: boolean | null,
+  workercompletion?: boolean | null,
+  money?: string | null,
+  _version?: number | null,
+  workorderHouseId?: string | null,
+};
+
+export type DeleteWorkorderInput = {
+  id: string,
+  _version?: number | null,
+};
+
+export type CreateHouseInput = {
+  id?: string | null,
+  userID: string,
+  employeeID?: string | null,
+  address?: AddressInput | null,
+  _version?: number | null,
+};
+
+export type AddressInput = {
+  address?: string | null,
+  unit?: string | null,
+  postalcode?: string | null,
+  country?: string | null,
+  state?: string | null,
+};
+
+export type ModelHouseConditionInput = {
+  userID?: ModelIDInput | null,
+  employeeID?: ModelIDInput | null,
+  and?: Array< ModelHouseConditionInput | null > | null,
+  or?: Array< ModelHouseConditionInput | null > | null,
+  not?: ModelHouseConditionInput | null,
+  _deleted?: ModelBooleanInput | null,
+};
+
+export type UpdateHouseInput = {
+  id: string,
+  userID?: string | null,
+  employeeID?: string | null,
+  address?: AddressInput | null,
+  _version?: number | null,
+};
+
+export type DeleteHouseInput = {
+  id: string,
+  _version?: number | null,
+};
+
+export type CreateRatingInput = {
   id?: string | null,
   description?: string | null,
   Owner?: string | null,
@@ -262,6 +593,7 @@ export type ModelRatingConditionInput = {
   and?: Array< ModelRatingConditionInput | null > | null,
   or?: Array< ModelRatingConditionInput | null > | null,
   not?: ModelRatingConditionInput | null,
+  _deleted?: ModelBooleanInput | null,
 };
 
 export type ModelFloatInput = {
@@ -276,6 +608,7 @@ export type ModelFloatInput = {
   attributeType?: ModelAttributeTypes | null,
 };
 
+>>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
 export type Rating = {
   __typename: "Rating",
   id: string,
@@ -338,6 +671,7 @@ export type ModelEmployeeConditionInput = {
   and?: Array< ModelEmployeeConditionInput | null > | null,
   or?: Array< ModelEmployeeConditionInput | null > | null,
   not?: ModelEmployeeConditionInput | null,
+  _deleted?: ModelBooleanInput | null,
 };
 
 export type Employee = {
@@ -392,6 +726,7 @@ export type DeleteEmployeeInput = {
   _version?: number | null,
 };
 
+<<<<<<< HEAD
 export type ModelUserFilterInput = {
   id?: ModelIDInput | null,
   subscriptionWorkorder?: ModelIntInput | null,
@@ -438,6 +773,58 @@ export type ModelHouseFilterInput = {
   not?: ModelHouseFilterInput | null,
 };
 
+||||||| c4450da
+=======
+export type ModelUserFilterInput = {
+  id?: ModelIDInput | null,
+  subscriptionWorkorder?: ModelIntInput | null,
+  name?: ModelStringInput | null,
+  and?: Array< ModelUserFilterInput | null > | null,
+  or?: Array< ModelUserFilterInput | null > | null,
+  not?: ModelUserFilterInput | null,
+  _deleted?: ModelBooleanInput | null,
+};
+
+export type ModelUserConnection = {
+  __typename: "ModelUserConnection",
+  items:  Array<User | null >,
+  nextToken?: string | null,
+  startedAt?: number | null,
+};
+
+export type ModelWorkorderFilterInput = {
+  id?: ModelIDInput | null,
+  userID?: ModelIDInput | null,
+  employeeID?: ModelIDInput | null,
+  completionImage?: ModelStringInput | null,
+  usercompletion?: ModelBooleanInput | null,
+  workercompletion?: ModelBooleanInput | null,
+  money?: ModelStringInput | null,
+  and?: Array< ModelWorkorderFilterInput | null > | null,
+  or?: Array< ModelWorkorderFilterInput | null > | null,
+  not?: ModelWorkorderFilterInput | null,
+  _deleted?: ModelBooleanInput | null,
+  workorderHouseId?: ModelIDInput | null,
+};
+
+export type ModelWorkorderConnection = {
+  __typename: "ModelWorkorderConnection",
+  items:  Array<Workorder | null >,
+  nextToken?: string | null,
+  startedAt?: number | null,
+};
+
+export type ModelHouseFilterInput = {
+  id?: ModelIDInput | null,
+  userID?: ModelIDInput | null,
+  employeeID?: ModelIDInput | null,
+  and?: Array< ModelHouseFilterInput | null > | null,
+  or?: Array< ModelHouseFilterInput | null > | null,
+  not?: ModelHouseFilterInput | null,
+  _deleted?: ModelBooleanInput | null,
+};
+
+>>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
 export type ModelRatingFilterInput = {
   id?: ModelIDInput | null,
   description?: ModelStringInput | null,
@@ -447,6 +834,14 @@ export type ModelRatingFilterInput = {
   and?: Array< ModelRatingFilterInput | null > | null,
   or?: Array< ModelRatingFilterInput | null > | null,
   not?: ModelRatingFilterInput | null,
+  _deleted?: ModelBooleanInput | null,
+};
+
+export type ModelRatingConnection = {
+  __typename: "ModelRatingConnection",
+  items:  Array<Rating | null >,
+  nextToken?: string | null,
+  startedAt?: number | null,
 };
 
 export type ModelRatingConnection = {
@@ -469,6 +864,7 @@ export type ModelEmployeeFilterInput = {
   and?: Array< ModelEmployeeFilterInput | null > | null,
   or?: Array< ModelEmployeeFilterInput | null > | null,
   not?: ModelEmployeeFilterInput | null,
+  _deleted?: ModelBooleanInput | null,
 };
 
 export type ModelEmployeeConnection = {
@@ -480,10 +876,25 @@ export type ModelEmployeeConnection = {
 
 export type ModelSubscriptionUserFilterInput = {
   id?: ModelSubscriptionIDInput | null,
+<<<<<<< HEAD
   subscriptionWorkorder?: ModelSubscriptionIntInput | null,
   name?: ModelSubscriptionStringInput | null,
   and?: Array< ModelSubscriptionUserFilterInput | null > | null,
   or?: Array< ModelSubscriptionUserFilterInput | null > | null,
+||||||| c4450da
+  description?: ModelSubscriptionStringInput | null,
+  Owner?: ModelSubscriptionStringInput | null,
+  rating?: ModelSubscriptionFloatInput | null,
+  employeeID?: ModelSubscriptionIDInput | null,
+  and?: Array< ModelSubscriptionRatingFilterInput | null > | null,
+  or?: Array< ModelSubscriptionRatingFilterInput | null > | null,
+=======
+  subscriptionWorkorder?: ModelSubscriptionIntInput | null,
+  name?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionUserFilterInput | null > | null,
+  or?: Array< ModelSubscriptionUserFilterInput | null > | null,
+  _deleted?: ModelBooleanInput | null,
+>>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
 };
 
 export type ModelSubscriptionIDInput = {
@@ -528,6 +939,7 @@ export type ModelSubscriptionStringInput = {
   notIn?: Array< string | null > | null,
 };
 
+<<<<<<< HEAD
 export type ModelSubscriptionWorkorderFilterInput = {
   id?: ModelSubscriptionIDInput | null,
   employeeID?: ModelSubscriptionIDInput | null,
@@ -561,6 +973,45 @@ export type ModelSubscriptionRatingFilterInput = {
   or?: Array< ModelSubscriptionRatingFilterInput | null > | null,
 };
 
+||||||| c4450da
+=======
+export type ModelSubscriptionWorkorderFilterInput = {
+  id?: ModelSubscriptionIDInput | null,
+  employeeID?: ModelSubscriptionIDInput | null,
+  completionImage?: ModelSubscriptionStringInput | null,
+  usercompletion?: ModelSubscriptionBooleanInput | null,
+  workercompletion?: ModelSubscriptionBooleanInput | null,
+  money?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionWorkorderFilterInput | null > | null,
+  or?: Array< ModelSubscriptionWorkorderFilterInput | null > | null,
+  _deleted?: ModelBooleanInput | null,
+};
+
+export type ModelSubscriptionBooleanInput = {
+  ne?: boolean | null,
+  eq?: boolean | null,
+};
+
+export type ModelSubscriptionHouseFilterInput = {
+  id?: ModelSubscriptionIDInput | null,
+  employeeID?: ModelSubscriptionIDInput | null,
+  and?: Array< ModelSubscriptionHouseFilterInput | null > | null,
+  or?: Array< ModelSubscriptionHouseFilterInput | null > | null,
+  _deleted?: ModelBooleanInput | null,
+};
+
+export type ModelSubscriptionRatingFilterInput = {
+  id?: ModelSubscriptionIDInput | null,
+  description?: ModelSubscriptionStringInput | null,
+  Owner?: ModelSubscriptionStringInput | null,
+  rating?: ModelSubscriptionFloatInput | null,
+  employeeID?: ModelSubscriptionIDInput | null,
+  and?: Array< ModelSubscriptionRatingFilterInput | null > | null,
+  or?: Array< ModelSubscriptionRatingFilterInput | null > | null,
+  _deleted?: ModelBooleanInput | null,
+};
+
+>>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
 export type ModelSubscriptionFloatInput = {
   ne?: number | null,
   eq?: number | null,
@@ -585,6 +1036,283 @@ export type ModelSubscriptionEmployeeFilterInput = {
   systemRating?: ModelSubscriptionFloatInput | null,
   and?: Array< ModelSubscriptionEmployeeFilterInput | null > | null,
   or?: Array< ModelSubscriptionEmployeeFilterInput | null > | null,
+  _deleted?: ModelBooleanInput | null,
+};
+
+export type CreateUserMutationVariables = {
+  input: CreateUserInput,
+  condition?: ModelUserConditionInput | null,
+};
+
+export type CreateUserMutation = {
+  createUser?:  {
+    __typename: "User",
+    id: string,
+    Houses?:  {
+      __typename: "ModelHouseConnection",
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
+    Workorders?:  {
+      __typename: "ModelHouseConnection",
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
+    subscriptionWorkorder?: number | null,
+    name?: string | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    owner?: string | null,
+  } | null,
+};
+
+export type UpdateUserMutationVariables = {
+  input: UpdateUserInput,
+  condition?: ModelUserConditionInput | null,
+};
+
+export type UpdateUserMutation = {
+  updateUser?:  {
+    __typename: "User",
+    id: string,
+    Houses?:  {
+      __typename: "ModelHouseConnection",
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
+    Workorders?:  {
+      __typename: "ModelHouseConnection",
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
+    subscriptionWorkorder?: number | null,
+    name?: string | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    owner?: string | null,
+  } | null,
+};
+
+export type DeleteUserMutationVariables = {
+  input: DeleteUserInput,
+  condition?: ModelUserConditionInput | null,
+};
+
+export type DeleteUserMutation = {
+  deleteUser?:  {
+    __typename: "User",
+    id: string,
+    Houses?:  {
+      __typename: "ModelHouseConnection",
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
+    Workorders?:  {
+      __typename: "ModelHouseConnection",
+      nextToken?: string | null,
+      startedAt?: number | null,
+    } | null,
+    subscriptionWorkorder?: number | null,
+    name?: string | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    owner?: string | null,
+  } | null,
+};
+
+export type CreateWorkorderMutationVariables = {
+  input: CreateWorkorderInput,
+  condition?: ModelWorkorderConditionInput | null,
+};
+
+export type CreateWorkorderMutation = {
+  createWorkorder?:  {
+    __typename: "Workorder",
+    id: string,
+    userID: string,
+    House?:  {
+      __typename: "House",
+      id: string,
+      userID: string,
+      employeeID?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+    } | null,
+    employeeID?: string | null,
+    completionImage?: Array< string | null > | null,
+    usercompletion?: boolean | null,
+    workercompletion?: boolean | null,
+    money: string,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    workorderHouseId?: string | null,
+  } | null,
+};
+
+export type UpdateWorkorderMutationVariables = {
+  input: UpdateWorkorderInput,
+  condition?: ModelWorkorderConditionInput | null,
+};
+
+export type UpdateWorkorderMutation = {
+  updateWorkorder?:  {
+    __typename: "Workorder",
+    id: string,
+    userID: string,
+    House?:  {
+      __typename: "House",
+      id: string,
+      userID: string,
+      employeeID?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+    } | null,
+    employeeID?: string | null,
+    completionImage?: Array< string | null > | null,
+    usercompletion?: boolean | null,
+    workercompletion?: boolean | null,
+    money: string,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    workorderHouseId?: string | null,
+  } | null,
+};
+
+export type DeleteWorkorderMutationVariables = {
+  input: DeleteWorkorderInput,
+  condition?: ModelWorkorderConditionInput | null,
+};
+
+export type DeleteWorkorderMutation = {
+  deleteWorkorder?:  {
+    __typename: "Workorder",
+    id: string,
+    userID: string,
+    House?:  {
+      __typename: "House",
+      id: string,
+      userID: string,
+      employeeID?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+    } | null,
+    employeeID?: string | null,
+    completionImage?: Array< string | null > | null,
+    usercompletion?: boolean | null,
+    workercompletion?: boolean | null,
+    money: string,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+    workorderHouseId?: string | null,
+  } | null,
+};
+
+export type CreateHouseMutationVariables = {
+  input: CreateHouseInput,
+  condition?: ModelHouseConditionInput | null,
+};
+
+export type CreateHouseMutation = {
+  createHouse?:  {
+    __typename: "House",
+    id: string,
+    userID: string,
+    employeeID?: string | null,
+    address?:  {
+      __typename: "Address",
+      address?: string | null,
+      unit?: string | null,
+      postalcode?: string | null,
+      country?: string | null,
+      state?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
+export type UpdateHouseMutationVariables = {
+  input: UpdateHouseInput,
+  condition?: ModelHouseConditionInput | null,
+};
+
+export type UpdateHouseMutation = {
+  updateHouse?:  {
+    __typename: "House",
+    id: string,
+    userID: string,
+    employeeID?: string | null,
+    address?:  {
+      __typename: "Address",
+      address?: string | null,
+      unit?: string | null,
+      postalcode?: string | null,
+      country?: string | null,
+      state?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
+export type DeleteHouseMutationVariables = {
+  input: DeleteHouseInput,
+  condition?: ModelHouseConditionInput | null,
+};
+
+export type DeleteHouseMutation = {
+  deleteHouse?:  {
+    __typename: "House",
+    id: string,
+    userID: string,
+    employeeID?: string | null,
+    address?:  {
+      __typename: "Address",
+      address?: string | null,
+      unit?: string | null,
+      postalcode?: string | null,
+      country?: string | null,
+      state?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
 };
 
 export type CreateUserMutationVariables = {
