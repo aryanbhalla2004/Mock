@@ -30,8 +30,6 @@ export const Footer = () => {
             <ul className='list-links-footer'>
               <li><Link to="/">Help center</Link></li>
               <li><Link to="/">Updates</Link></li>
-              <li><Link to="/">Documentation</Link></li>
-              <li><Link to="/">Terms of Use</Link></li>
             </ul>
           </div>
           <div className='single-footer-colum about-container-footer'>

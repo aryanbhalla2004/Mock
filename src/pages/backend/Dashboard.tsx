@@ -23,9 +23,10 @@ const Dashboard = () => {
             <span>Work</span>
             <ul>
               <li><Link to="/dashboard"><i className="bi bi-binoculars-fill"></i> My Work</Link></li>
-              <li><Link to="/dashboard"><i className="bi bi-speedometer"></i>Houses</Link></li>
+              <li><Link to="/dashboard/selectHouses"><i className="bi bi-speedometer"></i>Select Houses</Link></li>
               <li><Link to="/dashboard"><i className="bi bi-columns-gap"></i> Payment</Link></li>
               <li><Link to="/dashboard"><i className="bi bi-speedometer2"></i>Analytics</Link></li>
+              <li><Link to="/dashboard/test"><i className="bi bi-speedometer2"></i>TEST</Link></li>
             </ul>
           </nav>
           <nav className='dashboard-nav'>
@@ -40,7 +41,6 @@ const Dashboard = () => {
           <div className='user-profile-text'>
             <span>Logged in as</span>
             <h3>Aryan Bhalla</h3>
-            
           </div>
           <button onClick={() => setIsLogoutEnabled(true)}><i className="bi bi-box-arrow-right"></i> </button>
         </div>

@@ -32,7 +32,7 @@ export const Header = () => {
           <nav className='nav-carrer-header'>
             <ul>
               <li>
-                <Link to={''}>Working at Zoobo</Link>
+                <Link to="">Working at Zoobo</Link>
               </li>
              
               <li>

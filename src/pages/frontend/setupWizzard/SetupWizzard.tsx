@@ -7,6 +7,7 @@ import { FileUpload } from './components/file-upload/FileUpload';
 import { PreferedPayment } from './components/prefered-payment/PreferedPayment';
 import { Agreement } from './components/agreement/Agreement';
 import { CreateEmployeeInput } from '../../../API';
+import { AddressForm } from './components/addressInfo/AddressForm';
 
 export const SetupWizzard = () => {
   const [formData, setFormData] = useState({
@@ -47,6 +48,7 @@ export const SetupWizzard = () => {
 
   const {back, next, step, isFirstStep, isLastStep, isReview, currentStepIndex} = useMultistepForm([
     <WelcomePage next={nextPage}/>,
+    <AddressForm formData={formData} setFormData={setFormData}/>,
     <Status next={nextPage} formData={formData} setFormData={setFormData}/>,
     <FileUpload back={backPage} next={nextPage} formData={formData} setFormData={setFormData}/>,
     <PreferedPayment back={backPage} next={nextPage} formData={formData} setFormData={setFormData}/>,
