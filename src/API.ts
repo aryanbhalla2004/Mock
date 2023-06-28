@@ -2,31 +2,14 @@
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
-<<<<<<< HEAD
 export type CreateHouseInput = {
-||||||| c4450da
-export type CreateRatingInput = {
-=======
-export type CreateUserInput = {
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
   id?: string | null,
-<<<<<<< HEAD
   userID: string,
   employeeID: string,
   address?: AddressInput | null,
-||||||| c4450da
-  description?: string | null,
-  Owner?: string | null,
-  rating?: number | null,
-  employeeID: string,
-=======
-  subscriptionWorkorder?: number | null,
-  name?: string | null,
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
   _version?: number | null,
 };
 
-<<<<<<< HEAD
 export type AddressInput = {
   address: string,
   unit?: string | null,
@@ -34,27 +17,8 @@ export type AddressInput = {
   country: string,
   state: string,
   city: string,
-||||||| c4450da
-export type ModelRatingConditionInput = {
-  description?: ModelStringInput | null,
-  Owner?: ModelStringInput | null,
-  rating?: ModelFloatInput | null,
-  employeeID?: ModelIDInput | null,
-  and?: Array< ModelRatingConditionInput | null > | null,
-  or?: Array< ModelRatingConditionInput | null > | null,
-  not?: ModelRatingConditionInput | null,
-=======
-export type ModelUserConditionInput = {
-  subscriptionWorkorder?: ModelIntInput | null,
-  name?: ModelStringInput | null,
-  and?: Array< ModelUserConditionInput | null > | null,
-  or?: Array< ModelUserConditionInput | null > | null,
-  not?: ModelUserConditionInput | null,
-  _deleted?: ModelBooleanInput | null,
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
 };
 
-<<<<<<< HEAD
 export type ModelHouseConditionInput = {
   userID?: ModelIDInput | null,
   employeeID?: ModelIDInput | null,
@@ -65,19 +29,19 @@ export type ModelHouseConditionInput = {
 };
 
 export type ModelIDInput = {
-||||||| c4450da
-export type ModelStringInput = {
-=======
-export type ModelIntInput = {
-  ne?: number | null,
-  eq?: number | null,
-  le?: number | null,
-  lt?: number | null,
-  ge?: number | null,
-  gt?: number | null,
-  between?: Array< number | null > | null,
+  ne?: string | null,
+  eq?: string | null,
+  le?: string | null,
+  lt?: string | null,
+  ge?: string | null,
+  gt?: string | null,
+  contains?: string | null,
+  notContains?: string | null,
+  between?: Array< string | null > | null,
+  beginsWith?: string | null,
   attributeExists?: boolean | null,
   attributeType?: ModelAttributeTypes | null,
+  size?: ModelSizeInput | null,
 };
 
 export enum ModelAttributeTypes {
@@ -94,23 +58,6 @@ export enum ModelAttributeTypes {
 }
 
 
-export type ModelStringInput = {
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
-  ne?: string | null,
-  eq?: string | null,
-  le?: string | null,
-  lt?: string | null,
-  ge?: string | null,
-  gt?: string | null,
-  contains?: string | null,
-  notContains?: string | null,
-  between?: Array< string | null > | null,
-  beginsWith?: string | null,
-  attributeExists?: boolean | null,
-  attributeType?: ModelAttributeTypes | null,
-  size?: ModelSizeInput | null,
-};
-
 export type ModelSizeInput = {
   ne?: number | null,
   eq?: number | null,
@@ -121,7 +68,6 @@ export type ModelSizeInput = {
   between?: Array< number | null > | null,
 };
 
-<<<<<<< HEAD
 export type ModelBooleanInput = {
   ne?: boolean | null,
   eq?: boolean | null,
@@ -190,113 +136,11 @@ export type ModelIntInput = {
   ge?: number | null,
   gt?: number | null,
   between?: Array< number | null > | null,
-||||||| c4450da
-export type ModelFloatInput = {
-  ne?: number | null,
-  eq?: number | null,
-  le?: number | null,
-  lt?: number | null,
-  ge?: number | null,
-  gt?: number | null,
-  between?: Array< number | null > | null,
-=======
-export type ModelBooleanInput = {
-  ne?: boolean | null,
-  eq?: boolean | null,
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
   attributeExists?: boolean | null,
   attributeType?: ModelAttributeTypes | null,
 };
 
-<<<<<<< HEAD
 export type ModelStringInput = {
-||||||| c4450da
-export type ModelIDInput = {
-=======
-export type User = {
-  __typename: "User",
-  id: string,
-  Houses?: ModelHouseConnection | null,
-  Workorders?: ModelHouseConnection | null,
-  subscriptionWorkorder?: number | null,
-  name?: string | null,
-  createdAt: string,
-  updatedAt: string,
-  _version: number,
-  _deleted?: boolean | null,
-  _lastChangedAt: number,
-  owner?: string | null,
-};
-
-export type ModelHouseConnection = {
-  __typename: "ModelHouseConnection",
-  items:  Array<House | null >,
-  nextToken?: string | null,
-  startedAt?: number | null,
-};
-
-export type House = {
-  __typename: "House",
-  id: string,
-  userID: string,
-  employeeID?: string | null,
-  address?: Address | null,
-  createdAt: string,
-  updatedAt: string,
-  _version: number,
-  _deleted?: boolean | null,
-  _lastChangedAt: number,
-};
-
-export type Address = {
-  __typename: "Address",
-  address?: string | null,
-  unit?: string | null,
-  postalcode?: string | null,
-  country?: string | null,
-  state?: string | null,
-};
-
-export type UpdateUserInput = {
-  id: string,
-  subscriptionWorkorder?: number | null,
-  name?: string | null,
-  _version?: number | null,
-};
-
-export type DeleteUserInput = {
-  id: string,
-  _version?: number | null,
-};
-
-export type CreateWorkorderInput = {
-  id?: string | null,
-  userID: string,
-  employeeID?: string | null,
-  completionImage?: Array< string | null > | null,
-  usercompletion?: boolean | null,
-  workercompletion?: boolean | null,
-  money: string,
-  _version?: number | null,
-  workorderHouseId?: string | null,
-};
-
-export type ModelWorkorderConditionInput = {
-  userID?: ModelIDInput | null,
-  employeeID?: ModelIDInput | null,
-  completionImage?: ModelStringInput | null,
-  usercompletion?: ModelBooleanInput | null,
-  workercompletion?: ModelBooleanInput | null,
-  money?: ModelStringInput | null,
-  and?: Array< ModelWorkorderConditionInput | null > | null,
-  or?: Array< ModelWorkorderConditionInput | null > | null,
-  not?: ModelWorkorderConditionInput | null,
-  _deleted?: ModelBooleanInput | null,
-  workorderHouseId?: ModelIDInput | null,
-};
-
-export type ModelIDInput = {
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
   ne?: string | null,
   eq?: string | null,
   le?: string | null,
@@ -312,216 +156,13 @@ export type ModelIDInput = {
   size?: ModelSizeInput | null,
 };
 
-<<<<<<< HEAD
 export type User = {
   __typename: "User",
-||||||| c4450da
-export type Rating = {
-  __typename: "Rating",
-=======
-export type Workorder = {
-  __typename: "Workorder",
   id: string,
-  userID: string,
-  House?: House | null,
-  employeeID?: string | null,
-  completionImage?: Array< string | null > | null,
-  usercompletion?: boolean | null,
-  workercompletion?: boolean | null,
-  money: string,
-  createdAt: string,
-  updatedAt: string,
-  _version: number,
-  _deleted?: boolean | null,
-  _lastChangedAt: number,
-  workorderHouseId?: string | null,
-};
-
-export type UpdateWorkorderInput = {
-  id: string,
-  userID?: string | null,
-  employeeID?: string | null,
-  completionImage?: Array< string | null > | null,
-  usercompletion?: boolean | null,
-  workercompletion?: boolean | null,
-  money?: string | null,
-  _version?: number | null,
-  workorderHouseId?: string | null,
-};
-
-export type DeleteWorkorderInput = {
-  id: string,
-  _version?: number | null,
-};
-
-export type CreateHouseInput = {
-  id?: string | null,
-  userID: string,
-  employeeID?: string | null,
-  address?: AddressInput | null,
-  _version?: number | null,
-};
-
-export type AddressInput = {
-  address?: string | null,
-  unit?: string | null,
-  postalcode?: string | null,
-  country?: string | null,
-  state?: string | null,
-};
-
-export type ModelHouseConditionInput = {
-  userID?: ModelIDInput | null,
-  employeeID?: ModelIDInput | null,
-  and?: Array< ModelHouseConditionInput | null > | null,
-  or?: Array< ModelHouseConditionInput | null > | null,
-  not?: ModelHouseConditionInput | null,
-  _deleted?: ModelBooleanInput | null,
-};
-
-export type UpdateHouseInput = {
-  id: string,
-  userID?: string | null,
-  employeeID?: string | null,
-  address?: AddressInput | null,
-  _version?: number | null,
-};
-
-export type DeleteHouseInput = {
-  id: string,
-  _version?: number | null,
-};
-
-export type CreateRatingInput = {
-  id?: string | null,
-  description?: string | null,
-  Owner?: string | null,
-  rating?: number | null,
-  employeeID: string,
-  _version?: number | null,
-};
-
-export type ModelRatingConditionInput = {
-  description?: ModelStringInput | null,
-  Owner?: ModelStringInput | null,
-  rating?: ModelFloatInput | null,
-  employeeID?: ModelIDInput | null,
-  and?: Array< ModelRatingConditionInput | null > | null,
-  or?: Array< ModelRatingConditionInput | null > | null,
-  not?: ModelRatingConditionInput | null,
-  _deleted?: ModelBooleanInput | null,
-};
-
-export type ModelFloatInput = {
-  ne?: number | null,
-  eq?: number | null,
-  le?: number | null,
-  lt?: number | null,
-  ge?: number | null,
-  gt?: number | null,
-  between?: Array< number | null > | null,
-  attributeExists?: boolean | null,
-  attributeType?: ModelAttributeTypes | null,
-};
-
-export type Rating = {
-  __typename: "Rating",
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
-  id: string,
-<<<<<<< HEAD
   Houses?: ModelHouseConnection | null,
   Workorders?: ModelHouseConnection | null,
   subscriptionWorkorder?: number | null,
   name?: string | null,
-||||||| c4450da
-  description?: string | null,
-  Owner?: string | null,
-  rating?: number | null,
-  employeeID: string,
-  createdAt: string,
-  updatedAt: string,
-  _version: number,
-  _deleted?: boolean | null,
-  _lastChangedAt: number,
-};
-
-export type UpdateRatingInput = {
-  id: string,
-  description?: string | null,
-  Owner?: string | null,
-  rating?: number | null,
-  employeeID?: string | null,
-  _version?: number | null,
-};
-
-export type DeleteRatingInput = {
-  id: string,
-  _version?: number | null,
-};
-
-export type CreateEmployeeInput = {
-  id?: string | null,
-  cognitoUser?: string | null,
-  firstName?: string | null,
-  lastName?: string | null,
-  phoneNumber?: string | null,
-  dob?: string | null,
-  address?: AddressInput | null,
-  workingStatus?: string | null,
-  documents?: Array< DocumentInput > | null,
-  agreement?: Array< DocumentInput > | null,
-  ratingValue?: number | null,
-  systemRating?: number | null,
-  _version?: number | null,
-};
-
-export type AddressInput = {
-  address?: string | null,
-  unit?: string | null,
-  postalcode?: string | null,
-  country?: string | null,
-  state?: string | null,
-};
-
-export type DocumentInput = {
-  type?: string | null,
-  document?: string | null,
-};
-
-export type ModelEmployeeConditionInput = {
-  cognitoUser?: ModelIDInput | null,
-  firstName?: ModelStringInput | null,
-  lastName?: ModelStringInput | null,
-  phoneNumber?: ModelStringInput | null,
-  dob?: ModelStringInput | null,
-  workingStatus?: ModelStringInput | null,
-  ratingValue?: ModelFloatInput | null,
-  systemRating?: ModelFloatInput | null,
-  and?: Array< ModelEmployeeConditionInput | null > | null,
-  or?: Array< ModelEmployeeConditionInput | null > | null,
-  not?: ModelEmployeeConditionInput | null,
-};
-
-export type Employee = {
-  __typename: "Employee",
-  id: string,
-  cognitoUser?: string | null,
-  firstName?: string | null,
-  lastName?: string | null,
-  phoneNumber?: string | null,
-  dob?: string | null,
-  address?: Address | null,
-  workingStatus?: string | null,
-  documents?:  Array<Document > | null,
-  agreement?:  Array<Document > | null,
-  ratingValue?: number | null,
-  Ratings?: ModelRatingConnection | null,
-  systemRating?: number | null,
-=======
-  description?: string | null,
-  Owner?: string | null,
-  rating?: number | null,
-  employeeID: string,
   createdAt: string,
   updatedAt: string,
   _version: number,
@@ -530,83 +171,6 @@ export type Employee = {
   owner?: string | null,
 };
 
-export type UpdateRatingInput = {
-  id: string,
-  description?: string | null,
-  Owner?: string | null,
-  rating?: number | null,
-  employeeID?: string | null,
-  _version?: number | null,
-};
-
-export type DeleteRatingInput = {
-  id: string,
-  _version?: number | null,
-};
-
-export type CreateEmployeeInput = {
-  id?: string | null,
-  cognitoUser?: string | null,
-  firstName?: string | null,
-  lastName?: string | null,
-  phoneNumber?: string | null,
-  dob?: string | null,
-  address?: AddressInput | null,
-  workingStatus?: string | null,
-  documents?: Array< DocumentInput > | null,
-  agreement?: Array< DocumentInput > | null,
-  ratingValue?: number | null,
-  systemRating?: number | null,
-  _version?: number | null,
-};
-
-export type DocumentInput = {
-  type?: string | null,
-  document?: string | null,
-};
-
-export type ModelEmployeeConditionInput = {
-  cognitoUser?: ModelIDInput | null,
-  firstName?: ModelStringInput | null,
-  lastName?: ModelStringInput | null,
-  phoneNumber?: ModelStringInput | null,
-  dob?: ModelStringInput | null,
-  workingStatus?: ModelStringInput | null,
-  ratingValue?: ModelFloatInput | null,
-  systemRating?: ModelFloatInput | null,
-  and?: Array< ModelEmployeeConditionInput | null > | null,
-  or?: Array< ModelEmployeeConditionInput | null > | null,
-  not?: ModelEmployeeConditionInput | null,
-  _deleted?: ModelBooleanInput | null,
-};
-
-export type Employee = {
-  __typename: "Employee",
-  id: string,
-  cognitoUser?: string | null,
-  firstName?: string | null,
-  lastName?: string | null,
-  phoneNumber?: string | null,
-  dob?: string | null,
-  address?: Address | null,
-  workingStatus?: string | null,
-  documents?:  Array<Document > | null,
-  agreement?:  Array<Document > | null,
-  ratingValue?: number | null,
-  Ratings?: ModelHouseConnection | null,
-  systemRating?: number | null,
-  Houses?: ModelHouseConnection | null,
-  Workorders?: ModelHouseConnection | null,
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
-  createdAt: string,
-  updatedAt: string,
-  _version: number,
-  _deleted?: boolean | null,
-  _lastChangedAt: number,
-  owner?: string | null,
-};
-
-<<<<<<< HEAD
 export type ModelHouseConnection = {
   __typename: "ModelHouseConnection",
   items:  Array<House | null >,
@@ -782,29 +346,8 @@ export type EmployeeProfile = {
   _deleted?: boolean | null,
   _lastChangedAt: number,
   owner?: string | null,
-||||||| c4450da
-export type Address = {
-  __typename: "Address",
-  address?: string | null,
-  unit?: string | null,
-  postalcode?: string | null,
-  country?: string | null,
-  state?: string | null,
 };
 
-export type Document = {
-  __typename: "Document",
-  type?: string | null,
-  document?: string | null,
-=======
-export type Document = {
-  __typename: "Document",
-  type?: string | null,
-  document?: string | null,
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
-};
-
-<<<<<<< HEAD
 export type ModelRatingConnection = {
   __typename: "ModelRatingConnection",
   items:  Array<Rating | null >,
@@ -813,18 +356,6 @@ export type ModelRatingConnection = {
 };
 
 export type UpdateEmployeeProfileInput = {
-||||||| c4450da
-export type ModelRatingConnection = {
-  __typename: "ModelRatingConnection",
-  items:  Array<Rating | null >,
-  nextToken?: string | null,
-  startedAt?: number | null,
-};
-
-export type UpdateEmployeeInput = {
-=======
-export type UpdateEmployeeInput = {
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
   id: string,
   firstName?: string | null,
   lastName?: string | null,
@@ -938,7 +469,6 @@ export type DeleteEmployeeInput = {
   _version?: number | null,
 };
 
-<<<<<<< HEAD
 export type ModelHouseFilterInput = {
   id?: ModelIDInput | null,
   userID?: ModelIDInput | null,
@@ -981,58 +511,6 @@ export type ModelWorkorderFilterInput = {
   workorderHouseId?: ModelIDInput | null,
 };
 
-||||||| c4450da
-=======
-export type ModelUserFilterInput = {
-  id?: ModelIDInput | null,
-  subscriptionWorkorder?: ModelIntInput | null,
-  name?: ModelStringInput | null,
-  and?: Array< ModelUserFilterInput | null > | null,
-  or?: Array< ModelUserFilterInput | null > | null,
-  not?: ModelUserFilterInput | null,
-  _deleted?: ModelBooleanInput | null,
-};
-
-export type ModelUserConnection = {
-  __typename: "ModelUserConnection",
-  items:  Array<User | null >,
-  nextToken?: string | null,
-  startedAt?: number | null,
-};
-
-export type ModelWorkorderFilterInput = {
-  id?: ModelIDInput | null,
-  userID?: ModelIDInput | null,
-  employeeID?: ModelIDInput | null,
-  completionImage?: ModelStringInput | null,
-  usercompletion?: ModelBooleanInput | null,
-  workercompletion?: ModelBooleanInput | null,
-  money?: ModelStringInput | null,
-  and?: Array< ModelWorkorderFilterInput | null > | null,
-  or?: Array< ModelWorkorderFilterInput | null > | null,
-  not?: ModelWorkorderFilterInput | null,
-  _deleted?: ModelBooleanInput | null,
-  workorderHouseId?: ModelIDInput | null,
-};
-
-export type ModelWorkorderConnection = {
-  __typename: "ModelWorkorderConnection",
-  items:  Array<Workorder | null >,
-  nextToken?: string | null,
-  startedAt?: number | null,
-};
-
-export type ModelHouseFilterInput = {
-  id?: ModelIDInput | null,
-  userID?: ModelIDInput | null,
-  employeeID?: ModelIDInput | null,
-  and?: Array< ModelHouseFilterInput | null > | null,
-  or?: Array< ModelHouseFilterInput | null > | null,
-  not?: ModelHouseFilterInput | null,
-  _deleted?: ModelBooleanInput | null,
-};
-
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
 export type ModelRatingFilterInput = {
   id?: ModelIDInput | null,
   description?: ModelStringInput | null,
@@ -1042,7 +520,6 @@ export type ModelRatingFilterInput = {
   and?: Array< ModelRatingFilterInput | null > | null,
   or?: Array< ModelRatingFilterInput | null > | null,
   not?: ModelRatingFilterInput | null,
-<<<<<<< HEAD
   _deleted?: ModelBooleanInput | null,
 };
 
@@ -1063,17 +540,6 @@ export type ModelEmployeeProfileConnection = {
   items:  Array<EmployeeProfile | null >,
   nextToken?: string | null,
   startedAt?: number | null,
-||||||| c4450da
-=======
-  _deleted?: ModelBooleanInput | null,
-};
-
-export type ModelRatingConnection = {
-  __typename: "ModelRatingConnection",
-  items:  Array<Rating | null >,
-  nextToken?: string | null,
-  startedAt?: number | null,
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
 };
 
 export type ModelEmployeeFilterInput = {
@@ -1084,13 +550,8 @@ export type ModelEmployeeFilterInput = {
   and?: Array< ModelEmployeeFilterInput | null > | null,
   or?: Array< ModelEmployeeFilterInput | null > | null,
   not?: ModelEmployeeFilterInput | null,
-<<<<<<< HEAD
   _deleted?: ModelBooleanInput | null,
   employeeEmployeeProfileId?: ModelIDInput | null,
-||||||| c4450da
-=======
-  _deleted?: ModelBooleanInput | null,
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
 };
 
 export type ModelEmployeeConnection = {
@@ -1100,34 +561,13 @@ export type ModelEmployeeConnection = {
   startedAt?: number | null,
 };
 
-<<<<<<< HEAD
 export type ModelSubscriptionHouseFilterInput = {
-||||||| c4450da
-export type ModelSubscriptionRatingFilterInput = {
-=======
-export type ModelSubscriptionUserFilterInput = {
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
   id?: ModelSubscriptionIDInput | null,
-<<<<<<< HEAD
   userID?: ModelSubscriptionIDInput | null,
   employeeID?: ModelSubscriptionIDInput | null,
   and?: Array< ModelSubscriptionHouseFilterInput | null > | null,
   or?: Array< ModelSubscriptionHouseFilterInput | null > | null,
   _deleted?: ModelBooleanInput | null,
-||||||| c4450da
-  description?: ModelSubscriptionStringInput | null,
-  Owner?: ModelSubscriptionStringInput | null,
-  rating?: ModelSubscriptionFloatInput | null,
-  employeeID?: ModelSubscriptionIDInput | null,
-  and?: Array< ModelSubscriptionRatingFilterInput | null > | null,
-  or?: Array< ModelSubscriptionRatingFilterInput | null > | null,
-=======
-  subscriptionWorkorder?: ModelSubscriptionIntInput | null,
-  name?: ModelSubscriptionStringInput | null,
-  and?: Array< ModelSubscriptionUserFilterInput | null > | null,
-  or?: Array< ModelSubscriptionUserFilterInput | null > | null,
-  _deleted?: ModelBooleanInput | null,
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
 };
 
 export type ModelSubscriptionIDInput = {
@@ -1145,7 +585,6 @@ export type ModelSubscriptionIDInput = {
   notIn?: Array< string | null > | null,
 };
 
-<<<<<<< HEAD
 export type ModelSubscriptionUserFilterInput = {
   id?: ModelSubscriptionIDInput | null,
   subscriptionWorkorder?: ModelSubscriptionIntInput | null,
@@ -1167,21 +606,6 @@ export type ModelSubscriptionIntInput = {
   notIn?: Array< number | null > | null,
 };
 
-||||||| c4450da
-=======
-export type ModelSubscriptionIntInput = {
-  ne?: number | null,
-  eq?: number | null,
-  le?: number | null,
-  lt?: number | null,
-  ge?: number | null,
-  gt?: number | null,
-  between?: Array< number | null > | null,
-  in?: Array< number | null > | null,
-  notIn?: Array< number | null > | null,
-};
-
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
 export type ModelSubscriptionStringInput = {
   ne?: string | null,
   eq?: string | null,
@@ -1197,7 +621,6 @@ export type ModelSubscriptionStringInput = {
   notIn?: Array< string | null > | null,
 };
 
-<<<<<<< HEAD
 export type ModelSubscriptionWorkorderFilterInput = {
   id?: ModelSubscriptionIDInput | null,
   employeeID?: ModelSubscriptionIDInput | null,
@@ -1226,45 +649,6 @@ export type ModelSubscriptionRatingFilterInput = {
   _deleted?: ModelBooleanInput | null,
 };
 
-||||||| c4450da
-=======
-export type ModelSubscriptionWorkorderFilterInput = {
-  id?: ModelSubscriptionIDInput | null,
-  employeeID?: ModelSubscriptionIDInput | null,
-  completionImage?: ModelSubscriptionStringInput | null,
-  usercompletion?: ModelSubscriptionBooleanInput | null,
-  workercompletion?: ModelSubscriptionBooleanInput | null,
-  money?: ModelSubscriptionStringInput | null,
-  and?: Array< ModelSubscriptionWorkorderFilterInput | null > | null,
-  or?: Array< ModelSubscriptionWorkorderFilterInput | null > | null,
-  _deleted?: ModelBooleanInput | null,
-};
-
-export type ModelSubscriptionBooleanInput = {
-  ne?: boolean | null,
-  eq?: boolean | null,
-};
-
-export type ModelSubscriptionHouseFilterInput = {
-  id?: ModelSubscriptionIDInput | null,
-  employeeID?: ModelSubscriptionIDInput | null,
-  and?: Array< ModelSubscriptionHouseFilterInput | null > | null,
-  or?: Array< ModelSubscriptionHouseFilterInput | null > | null,
-  _deleted?: ModelBooleanInput | null,
-};
-
-export type ModelSubscriptionRatingFilterInput = {
-  id?: ModelSubscriptionIDInput | null,
-  description?: ModelSubscriptionStringInput | null,
-  Owner?: ModelSubscriptionStringInput | null,
-  rating?: ModelSubscriptionFloatInput | null,
-  employeeID?: ModelSubscriptionIDInput | null,
-  and?: Array< ModelSubscriptionRatingFilterInput | null > | null,
-  or?: Array< ModelSubscriptionRatingFilterInput | null > | null,
-  _deleted?: ModelBooleanInput | null,
-};
-
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
 export type ModelSubscriptionFloatInput = {
   ne?: number | null,
   eq?: number | null,
@@ -1294,7 +678,6 @@ export type ModelSubscriptionEmployeeFilterInput = {
   systemRating?: ModelSubscriptionFloatInput | null,
   and?: Array< ModelSubscriptionEmployeeFilterInput | null > | null,
   or?: Array< ModelSubscriptionEmployeeFilterInput | null > | null,
-<<<<<<< HEAD
   _deleted?: ModelBooleanInput | null,
 };
 
@@ -1581,286 +964,6 @@ export type DeleteWorkorderMutation = {
     _lastChangedAt: number,
     workorderHouseId?: string | null,
   } | null,
-||||||| c4450da
-=======
-  _deleted?: ModelBooleanInput | null,
-};
-
-export type CreateUserMutationVariables = {
-  input: CreateUserInput,
-  condition?: ModelUserConditionInput | null,
-};
-
-export type CreateUserMutation = {
-  createUser?:  {
-    __typename: "User",
-    id: string,
-    Houses?:  {
-      __typename: "ModelHouseConnection",
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
-    Workorders?:  {
-      __typename: "ModelHouseConnection",
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
-    subscriptionWorkorder?: number | null,
-    name?: string | null,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-    owner?: string | null,
-  } | null,
-};
-
-export type UpdateUserMutationVariables = {
-  input: UpdateUserInput,
-  condition?: ModelUserConditionInput | null,
-};
-
-export type UpdateUserMutation = {
-  updateUser?:  {
-    __typename: "User",
-    id: string,
-    Houses?:  {
-      __typename: "ModelHouseConnection",
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
-    Workorders?:  {
-      __typename: "ModelHouseConnection",
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
-    subscriptionWorkorder?: number | null,
-    name?: string | null,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-    owner?: string | null,
-  } | null,
-};
-
-export type DeleteUserMutationVariables = {
-  input: DeleteUserInput,
-  condition?: ModelUserConditionInput | null,
-};
-
-export type DeleteUserMutation = {
-  deleteUser?:  {
-    __typename: "User",
-    id: string,
-    Houses?:  {
-      __typename: "ModelHouseConnection",
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
-    Workorders?:  {
-      __typename: "ModelHouseConnection",
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
-    subscriptionWorkorder?: number | null,
-    name?: string | null,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-    owner?: string | null,
-  } | null,
-};
-
-export type CreateWorkorderMutationVariables = {
-  input: CreateWorkorderInput,
-  condition?: ModelWorkorderConditionInput | null,
-};
-
-export type CreateWorkorderMutation = {
-  createWorkorder?:  {
-    __typename: "Workorder",
-    id: string,
-    userID: string,
-    House?:  {
-      __typename: "House",
-      id: string,
-      userID: string,
-      employeeID?: string | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-    } | null,
-    employeeID?: string | null,
-    completionImage?: Array< string | null > | null,
-    usercompletion?: boolean | null,
-    workercompletion?: boolean | null,
-    money: string,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-    workorderHouseId?: string | null,
-  } | null,
-};
-
-export type UpdateWorkorderMutationVariables = {
-  input: UpdateWorkorderInput,
-  condition?: ModelWorkorderConditionInput | null,
-};
-
-export type UpdateWorkorderMutation = {
-  updateWorkorder?:  {
-    __typename: "Workorder",
-    id: string,
-    userID: string,
-    House?:  {
-      __typename: "House",
-      id: string,
-      userID: string,
-      employeeID?: string | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-    } | null,
-    employeeID?: string | null,
-    completionImage?: Array< string | null > | null,
-    usercompletion?: boolean | null,
-    workercompletion?: boolean | null,
-    money: string,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-    workorderHouseId?: string | null,
-  } | null,
-};
-
-export type DeleteWorkorderMutationVariables = {
-  input: DeleteWorkorderInput,
-  condition?: ModelWorkorderConditionInput | null,
-};
-
-export type DeleteWorkorderMutation = {
-  deleteWorkorder?:  {
-    __typename: "Workorder",
-    id: string,
-    userID: string,
-    House?:  {
-      __typename: "House",
-      id: string,
-      userID: string,
-      employeeID?: string | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-    } | null,
-    employeeID?: string | null,
-    completionImage?: Array< string | null > | null,
-    usercompletion?: boolean | null,
-    workercompletion?: boolean | null,
-    money: string,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-    workorderHouseId?: string | null,
-  } | null,
-};
-
-export type CreateHouseMutationVariables = {
-  input: CreateHouseInput,
-  condition?: ModelHouseConditionInput | null,
-};
-
-export type CreateHouseMutation = {
-  createHouse?:  {
-    __typename: "House",
-    id: string,
-    userID: string,
-    employeeID?: string | null,
-    address?:  {
-      __typename: "Address",
-      address?: string | null,
-      unit?: string | null,
-      postalcode?: string | null,
-      country?: string | null,
-      state?: string | null,
-    } | null,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-  } | null,
-};
-
-export type UpdateHouseMutationVariables = {
-  input: UpdateHouseInput,
-  condition?: ModelHouseConditionInput | null,
-};
-
-export type UpdateHouseMutation = {
-  updateHouse?:  {
-    __typename: "House",
-    id: string,
-    userID: string,
-    employeeID?: string | null,
-    address?:  {
-      __typename: "Address",
-      address?: string | null,
-      unit?: string | null,
-      postalcode?: string | null,
-      country?: string | null,
-      state?: string | null,
-    } | null,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-  } | null,
-};
-
-export type DeleteHouseMutationVariables = {
-  input: DeleteHouseInput,
-  condition?: ModelHouseConditionInput | null,
-};
-
-export type DeleteHouseMutation = {
-  deleteHouse?:  {
-    __typename: "House",
-    id: string,
-    userID: string,
-    employeeID?: string | null,
-    address?:  {
-      __typename: "Address",
-      address?: string | null,
-      unit?: string | null,
-      postalcode?: string | null,
-      country?: string | null,
-      state?: string | null,
-    } | null,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-  } | null,
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
 };
 
 export type CreateRatingMutationVariables = {
@@ -1925,7 +1028,6 @@ export type DeleteRatingMutation = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-<<<<<<< HEAD
     owner?: string | null,
   } | null,
 };
@@ -2008,10 +1110,6 @@ export type DeleteEmployeeProfileMutation = {
     _deleted?: boolean | null,
     _lastChangedAt: number,
     owner?: string | null,
-||||||| c4450da
-=======
-    owner?: string | null,
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
   } | null,
 };
 
@@ -2045,7 +1143,6 @@ export type CreateEmployeeMutation = {
       type?: string | null,
       document?: string | null,
     } > | null,
-<<<<<<< HEAD
     systemRating?: number | null,
     payment?:  {
       __typename: "PaymentInfo",
@@ -2058,19 +1155,9 @@ export type CreateEmployeeMutation = {
     } | null,
     Houses?:  {
       __typename: "ModelHouseConnection",
-||||||| c4450da
-    ratingValue?: number | null,
-    Ratings?:  {
-      __typename: "ModelRatingConnection",
-=======
-    ratingValue?: number | null,
-    Ratings?:  {
-      __typename: "ModelHouseConnection",
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
       nextToken?: string | null,
       startedAt?: number | null,
     } | null,
-<<<<<<< HEAD
     Workorders?:  {
       __typename: "ModelWorkorderConnection",
       nextToken?: string | null,
@@ -2090,21 +1177,6 @@ export type CreateEmployeeMutation = {
       _lastChangedAt: number,
       owner?: string | null,
     } | null,
-||||||| c4450da
-    systemRating?: number | null,
-=======
-    systemRating?: number | null,
-    Houses?:  {
-      __typename: "ModelHouseConnection",
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
-    Workorders?:  {
-      __typename: "ModelHouseConnection",
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -2144,7 +1216,6 @@ export type UpdateEmployeeMutation = {
       type?: string | null,
       document?: string | null,
     } > | null,
-<<<<<<< HEAD
     systemRating?: number | null,
     payment?:  {
       __typename: "PaymentInfo",
@@ -2157,19 +1228,9 @@ export type UpdateEmployeeMutation = {
     } | null,
     Houses?:  {
       __typename: "ModelHouseConnection",
-||||||| c4450da
-    ratingValue?: number | null,
-    Ratings?:  {
-      __typename: "ModelRatingConnection",
-=======
-    ratingValue?: number | null,
-    Ratings?:  {
-      __typename: "ModelHouseConnection",
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
       nextToken?: string | null,
       startedAt?: number | null,
     } | null,
-<<<<<<< HEAD
     Workorders?:  {
       __typename: "ModelWorkorderConnection",
       nextToken?: string | null,
@@ -2189,21 +1250,6 @@ export type UpdateEmployeeMutation = {
       _lastChangedAt: number,
       owner?: string | null,
     } | null,
-||||||| c4450da
-    systemRating?: number | null,
-=======
-    systemRating?: number | null,
-    Houses?:  {
-      __typename: "ModelHouseConnection",
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
-    Workorders?:  {
-      __typename: "ModelHouseConnection",
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -2243,7 +1289,6 @@ export type DeleteEmployeeMutation = {
       type?: string | null,
       document?: string | null,
     } > | null,
-<<<<<<< HEAD
     systemRating?: number | null,
     payment?:  {
       __typename: "PaymentInfo",
@@ -2256,19 +1301,9 @@ export type DeleteEmployeeMutation = {
     } | null,
     Houses?:  {
       __typename: "ModelHouseConnection",
-||||||| c4450da
-    ratingValue?: number | null,
-    Ratings?:  {
-      __typename: "ModelRatingConnection",
-=======
-    ratingValue?: number | null,
-    Ratings?:  {
-      __typename: "ModelHouseConnection",
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
       nextToken?: string | null,
       startedAt?: number | null,
     } | null,
-<<<<<<< HEAD
     Workorders?:  {
       __typename: "ModelWorkorderConnection",
       nextToken?: string | null,
@@ -2316,21 +1351,6 @@ export type GetHouseQuery = {
       state: string,
       city: string,
     } | null,
-||||||| c4450da
-    systemRating?: number | null,
-=======
-    systemRating?: number | null,
-    Houses?:  {
-      __typename: "ModelHouseConnection",
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
-    Workorders?:  {
-      __typename: "ModelHouseConnection",
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -2340,7 +1360,6 @@ export type GetHouseQuery = {
   } | null,
 };
 
-<<<<<<< HEAD
 export type ListHousesQueryVariables = {
   filter?: ModelHouseFilterInput | null,
   limit?: number | null,
@@ -2572,263 +1591,6 @@ export type SyncWorkordersQuery = {
   } | null,
 };
 
-||||||| c4450da
-=======
-export type GetUserQueryVariables = {
-  id: string,
-};
-
-export type GetUserQuery = {
-  getUser?:  {
-    __typename: "User",
-    id: string,
-    Houses?:  {
-      __typename: "ModelHouseConnection",
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
-    Workorders?:  {
-      __typename: "ModelHouseConnection",
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
-    subscriptionWorkorder?: number | null,
-    name?: string | null,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-    owner?: string | null,
-  } | null,
-};
-
-export type ListUsersQueryVariables = {
-  filter?: ModelUserFilterInput | null,
-  limit?: number | null,
-  nextToken?: string | null,
-};
-
-export type ListUsersQuery = {
-  listUsers?:  {
-    __typename: "ModelUserConnection",
-    items:  Array< {
-      __typename: "User",
-      id: string,
-      subscriptionWorkorder?: number | null,
-      name?: string | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-      owner?: string | null,
-    } | null >,
-    nextToken?: string | null,
-    startedAt?: number | null,
-  } | null,
-};
-
-export type SyncUsersQueryVariables = {
-  filter?: ModelUserFilterInput | null,
-  limit?: number | null,
-  nextToken?: string | null,
-  lastSync?: number | null,
-};
-
-export type SyncUsersQuery = {
-  syncUsers?:  {
-    __typename: "ModelUserConnection",
-    items:  Array< {
-      __typename: "User",
-      id: string,
-      subscriptionWorkorder?: number | null,
-      name?: string | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-      owner?: string | null,
-    } | null >,
-    nextToken?: string | null,
-    startedAt?: number | null,
-  } | null,
-};
-
-export type GetWorkorderQueryVariables = {
-  id: string,
-};
-
-export type GetWorkorderQuery = {
-  getWorkorder?:  {
-    __typename: "Workorder",
-    id: string,
-    userID: string,
-    House?:  {
-      __typename: "House",
-      id: string,
-      userID: string,
-      employeeID?: string | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-    } | null,
-    employeeID?: string | null,
-    completionImage?: Array< string | null > | null,
-    usercompletion?: boolean | null,
-    workercompletion?: boolean | null,
-    money: string,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-    workorderHouseId?: string | null,
-  } | null,
-};
-
-export type ListWorkordersQueryVariables = {
-  filter?: ModelWorkorderFilterInput | null,
-  limit?: number | null,
-  nextToken?: string | null,
-};
-
-export type ListWorkordersQuery = {
-  listWorkorders?:  {
-    __typename: "ModelWorkorderConnection",
-    items:  Array< {
-      __typename: "Workorder",
-      id: string,
-      userID: string,
-      employeeID?: string | null,
-      completionImage?: Array< string | null > | null,
-      usercompletion?: boolean | null,
-      workercompletion?: boolean | null,
-      money: string,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-      workorderHouseId?: string | null,
-    } | null >,
-    nextToken?: string | null,
-    startedAt?: number | null,
-  } | null,
-};
-
-export type SyncWorkordersQueryVariables = {
-  filter?: ModelWorkorderFilterInput | null,
-  limit?: number | null,
-  nextToken?: string | null,
-  lastSync?: number | null,
-};
-
-export type SyncWorkordersQuery = {
-  syncWorkorders?:  {
-    __typename: "ModelWorkorderConnection",
-    items:  Array< {
-      __typename: "Workorder",
-      id: string,
-      userID: string,
-      employeeID?: string | null,
-      completionImage?: Array< string | null > | null,
-      usercompletion?: boolean | null,
-      workercompletion?: boolean | null,
-      money: string,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-      workorderHouseId?: string | null,
-    } | null >,
-    nextToken?: string | null,
-    startedAt?: number | null,
-  } | null,
-};
-
-export type GetHouseQueryVariables = {
-  id: string,
-};
-
-export type GetHouseQuery = {
-  getHouse?:  {
-    __typename: "House",
-    id: string,
-    userID: string,
-    employeeID?: string | null,
-    address?:  {
-      __typename: "Address",
-      address?: string | null,
-      unit?: string | null,
-      postalcode?: string | null,
-      country?: string | null,
-      state?: string | null,
-    } | null,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-  } | null,
-};
-
-export type ListHousesQueryVariables = {
-  filter?: ModelHouseFilterInput | null,
-  limit?: number | null,
-  nextToken?: string | null,
-};
-
-export type ListHousesQuery = {
-  listHouses?:  {
-    __typename: "ModelHouseConnection",
-    items:  Array< {
-      __typename: "House",
-      id: string,
-      userID: string,
-      employeeID?: string | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-    } | null >,
-    nextToken?: string | null,
-    startedAt?: number | null,
-  } | null,
-};
-
-export type SyncHousesQueryVariables = {
-  filter?: ModelHouseFilterInput | null,
-  limit?: number | null,
-  nextToken?: string | null,
-  lastSync?: number | null,
-};
-
-export type SyncHousesQuery = {
-  syncHouses?:  {
-    __typename: "ModelHouseConnection",
-    items:  Array< {
-      __typename: "House",
-      id: string,
-      userID: string,
-      employeeID?: string | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-    } | null >,
-    nextToken?: string | null,
-    startedAt?: number | null,
-  } | null,
-};
-
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
 export type GetRatingQueryVariables = {
   id: string,
 };
@@ -2900,7 +1662,6 @@ export type SyncRatingsQuery = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-<<<<<<< HEAD
       owner?: string | null,
     } | null >,
     nextToken?: string | null,
@@ -2985,10 +1746,6 @@ export type SyncEmployeeProfilesQuery = {
       _deleted?: boolean | null,
       _lastChangedAt: number,
       owner?: string | null,
-||||||| c4450da
-=======
-      owner?: string | null,
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
     } | null >,
     nextToken?: string | null,
     startedAt?: number | null,
@@ -3024,7 +1781,6 @@ export type GetEmployeeQuery = {
       type?: string | null,
       document?: string | null,
     } > | null,
-<<<<<<< HEAD
     systemRating?: number | null,
     payment?:  {
       __typename: "PaymentInfo",
@@ -3037,19 +1793,9 @@ export type GetEmployeeQuery = {
     } | null,
     Houses?:  {
       __typename: "ModelHouseConnection",
-||||||| c4450da
-    ratingValue?: number | null,
-    Ratings?:  {
-      __typename: "ModelRatingConnection",
-=======
-    ratingValue?: number | null,
-    Ratings?:  {
-      __typename: "ModelHouseConnection",
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
       nextToken?: string | null,
       startedAt?: number | null,
     } | null,
-<<<<<<< HEAD
     Workorders?:  {
       __typename: "ModelWorkorderConnection",
       nextToken?: string | null,
@@ -3069,21 +1815,6 @@ export type GetEmployeeQuery = {
       _lastChangedAt: number,
       owner?: string | null,
     } | null,
-||||||| c4450da
-    systemRating?: number | null,
-=======
-    systemRating?: number | null,
-    Houses?:  {
-      __typename: "ModelHouseConnection",
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
-    Workorders?:  {
-      __typename: "ModelHouseConnection",
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -3148,7 +1879,6 @@ export type SyncEmployeesQuery = {
   } | null,
 };
 
-<<<<<<< HEAD
 export type OnCreateHouseSubscriptionVariables = {
   filter?: ModelSubscriptionHouseFilterInput | null,
   owner?: string | null,
@@ -3434,285 +2164,6 @@ export type OnDeleteWorkorderSubscription = {
   } | null,
 };
 
-||||||| c4450da
-=======
-export type OnCreateUserSubscriptionVariables = {
-  filter?: ModelSubscriptionUserFilterInput | null,
-  owner?: string | null,
-};
-
-export type OnCreateUserSubscription = {
-  onCreateUser?:  {
-    __typename: "User",
-    id: string,
-    Houses?:  {
-      __typename: "ModelHouseConnection",
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
-    Workorders?:  {
-      __typename: "ModelHouseConnection",
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
-    subscriptionWorkorder?: number | null,
-    name?: string | null,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-    owner?: string | null,
-  } | null,
-};
-
-export type OnUpdateUserSubscriptionVariables = {
-  filter?: ModelSubscriptionUserFilterInput | null,
-  owner?: string | null,
-};
-
-export type OnUpdateUserSubscription = {
-  onUpdateUser?:  {
-    __typename: "User",
-    id: string,
-    Houses?:  {
-      __typename: "ModelHouseConnection",
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
-    Workorders?:  {
-      __typename: "ModelHouseConnection",
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
-    subscriptionWorkorder?: number | null,
-    name?: string | null,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-    owner?: string | null,
-  } | null,
-};
-
-export type OnDeleteUserSubscriptionVariables = {
-  filter?: ModelSubscriptionUserFilterInput | null,
-  owner?: string | null,
-};
-
-export type OnDeleteUserSubscription = {
-  onDeleteUser?:  {
-    __typename: "User",
-    id: string,
-    Houses?:  {
-      __typename: "ModelHouseConnection",
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
-    Workorders?:  {
-      __typename: "ModelHouseConnection",
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
-    subscriptionWorkorder?: number | null,
-    name?: string | null,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-    owner?: string | null,
-  } | null,
-};
-
-export type OnCreateWorkorderSubscriptionVariables = {
-  filter?: ModelSubscriptionWorkorderFilterInput | null,
-  userID?: string | null,
-};
-
-export type OnCreateWorkorderSubscription = {
-  onCreateWorkorder?:  {
-    __typename: "Workorder",
-    id: string,
-    userID: string,
-    House?:  {
-      __typename: "House",
-      id: string,
-      userID: string,
-      employeeID?: string | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-    } | null,
-    employeeID?: string | null,
-    completionImage?: Array< string | null > | null,
-    usercompletion?: boolean | null,
-    workercompletion?: boolean | null,
-    money: string,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-    workorderHouseId?: string | null,
-  } | null,
-};
-
-export type OnUpdateWorkorderSubscriptionVariables = {
-  filter?: ModelSubscriptionWorkorderFilterInput | null,
-  userID?: string | null,
-};
-
-export type OnUpdateWorkorderSubscription = {
-  onUpdateWorkorder?:  {
-    __typename: "Workorder",
-    id: string,
-    userID: string,
-    House?:  {
-      __typename: "House",
-      id: string,
-      userID: string,
-      employeeID?: string | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-    } | null,
-    employeeID?: string | null,
-    completionImage?: Array< string | null > | null,
-    usercompletion?: boolean | null,
-    workercompletion?: boolean | null,
-    money: string,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-    workorderHouseId?: string | null,
-  } | null,
-};
-
-export type OnDeleteWorkorderSubscriptionVariables = {
-  filter?: ModelSubscriptionWorkorderFilterInput | null,
-  userID?: string | null,
-};
-
-export type OnDeleteWorkorderSubscription = {
-  onDeleteWorkorder?:  {
-    __typename: "Workorder",
-    id: string,
-    userID: string,
-    House?:  {
-      __typename: "House",
-      id: string,
-      userID: string,
-      employeeID?: string | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-    } | null,
-    employeeID?: string | null,
-    completionImage?: Array< string | null > | null,
-    usercompletion?: boolean | null,
-    workercompletion?: boolean | null,
-    money: string,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-    workorderHouseId?: string | null,
-  } | null,
-};
-
-export type OnCreateHouseSubscriptionVariables = {
-  filter?: ModelSubscriptionHouseFilterInput | null,
-  userID?: string | null,
-};
-
-export type OnCreateHouseSubscription = {
-  onCreateHouse?:  {
-    __typename: "House",
-    id: string,
-    userID: string,
-    employeeID?: string | null,
-    address?:  {
-      __typename: "Address",
-      address?: string | null,
-      unit?: string | null,
-      postalcode?: string | null,
-      country?: string | null,
-      state?: string | null,
-    } | null,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-  } | null,
-};
-
-export type OnUpdateHouseSubscriptionVariables = {
-  filter?: ModelSubscriptionHouseFilterInput | null,
-  userID?: string | null,
-};
-
-export type OnUpdateHouseSubscription = {
-  onUpdateHouse?:  {
-    __typename: "House",
-    id: string,
-    userID: string,
-    employeeID?: string | null,
-    address?:  {
-      __typename: "Address",
-      address?: string | null,
-      unit?: string | null,
-      postalcode?: string | null,
-      country?: string | null,
-      state?: string | null,
-    } | null,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-  } | null,
-};
-
-export type OnDeleteHouseSubscriptionVariables = {
-  filter?: ModelSubscriptionHouseFilterInput | null,
-  userID?: string | null,
-};
-
-export type OnDeleteHouseSubscription = {
-  onDeleteHouse?:  {
-    __typename: "House",
-    id: string,
-    userID: string,
-    employeeID?: string | null,
-    address?:  {
-      __typename: "Address",
-      address?: string | null,
-      unit?: string | null,
-      postalcode?: string | null,
-      country?: string | null,
-      state?: string | null,
-    } | null,
-    createdAt: string,
-    updatedAt: string,
-    _version: number,
-    _deleted?: boolean | null,
-    _lastChangedAt: number,
-  } | null,
-};
-
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
 export type OnCreateRatingSubscriptionVariables = {
   filter?: ModelSubscriptionRatingFilterInput | null,
   owner?: string | null,
@@ -3775,7 +2226,6 @@ export type OnDeleteRatingSubscription = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-<<<<<<< HEAD
     owner?: string | null,
   } | null,
 };
@@ -3858,10 +2308,6 @@ export type OnDeleteEmployeeProfileSubscription = {
     _deleted?: boolean | null,
     _lastChangedAt: number,
     owner?: string | null,
-||||||| c4450da
-=======
-    owner?: string | null,
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
   } | null,
 };
 
@@ -3895,7 +2341,6 @@ export type OnCreateEmployeeSubscription = {
       type?: string | null,
       document?: string | null,
     } > | null,
-<<<<<<< HEAD
     systemRating?: number | null,
     payment?:  {
       __typename: "PaymentInfo",
@@ -3908,19 +2353,9 @@ export type OnCreateEmployeeSubscription = {
     } | null,
     Houses?:  {
       __typename: "ModelHouseConnection",
-||||||| c4450da
-    ratingValue?: number | null,
-    Ratings?:  {
-      __typename: "ModelRatingConnection",
-=======
-    ratingValue?: number | null,
-    Ratings?:  {
-      __typename: "ModelHouseConnection",
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
       nextToken?: string | null,
       startedAt?: number | null,
     } | null,
-<<<<<<< HEAD
     Workorders?:  {
       __typename: "ModelWorkorderConnection",
       nextToken?: string | null,
@@ -3940,21 +2375,6 @@ export type OnCreateEmployeeSubscription = {
       _lastChangedAt: number,
       owner?: string | null,
     } | null,
-||||||| c4450da
-    systemRating?: number | null,
-=======
-    systemRating?: number | null,
-    Houses?:  {
-      __typename: "ModelHouseConnection",
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
-    Workorders?:  {
-      __typename: "ModelHouseConnection",
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -3994,7 +2414,6 @@ export type OnUpdateEmployeeSubscription = {
       type?: string | null,
       document?: string | null,
     } > | null,
-<<<<<<< HEAD
     systemRating?: number | null,
     payment?:  {
       __typename: "PaymentInfo",
@@ -4007,19 +2426,9 @@ export type OnUpdateEmployeeSubscription = {
     } | null,
     Houses?:  {
       __typename: "ModelHouseConnection",
-||||||| c4450da
-    ratingValue?: number | null,
-    Ratings?:  {
-      __typename: "ModelRatingConnection",
-=======
-    ratingValue?: number | null,
-    Ratings?:  {
-      __typename: "ModelHouseConnection",
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
       nextToken?: string | null,
       startedAt?: number | null,
     } | null,
-<<<<<<< HEAD
     Workorders?:  {
       __typename: "ModelWorkorderConnection",
       nextToken?: string | null,
@@ -4039,21 +2448,6 @@ export type OnUpdateEmployeeSubscription = {
       _lastChangedAt: number,
       owner?: string | null,
     } | null,
-||||||| c4450da
-    systemRating?: number | null,
-=======
-    systemRating?: number | null,
-    Houses?:  {
-      __typename: "ModelHouseConnection",
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
-    Workorders?:  {
-      __typename: "ModelHouseConnection",
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -4093,7 +2487,6 @@ export type OnDeleteEmployeeSubscription = {
       type?: string | null,
       document?: string | null,
     } > | null,
-<<<<<<< HEAD
     systemRating?: number | null,
     payment?:  {
       __typename: "PaymentInfo",
@@ -4106,19 +2499,9 @@ export type OnDeleteEmployeeSubscription = {
     } | null,
     Houses?:  {
       __typename: "ModelHouseConnection",
-||||||| c4450da
-    ratingValue?: number | null,
-    Ratings?:  {
-      __typename: "ModelRatingConnection",
-=======
-    ratingValue?: number | null,
-    Ratings?:  {
-      __typename: "ModelHouseConnection",
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
       nextToken?: string | null,
       startedAt?: number | null,
     } | null,
-<<<<<<< HEAD
     Workorders?:  {
       __typename: "ModelWorkorderConnection",
       nextToken?: string | null,
@@ -4138,21 +2521,6 @@ export type OnDeleteEmployeeSubscription = {
       _lastChangedAt: number,
       owner?: string | null,
     } | null,
-||||||| c4450da
-    systemRating?: number | null,
-=======
-    systemRating?: number | null,
-    Houses?:  {
-      __typename: "ModelHouseConnection",
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
-    Workorders?:  {
-      __typename: "ModelHouseConnection",
-      nextToken?: string | null,
-      startedAt?: number | null,
-    } | null,
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
     createdAt: string,
     updatedAt: string,
     _version: number,

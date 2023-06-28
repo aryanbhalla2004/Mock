@@ -57,13 +57,7 @@ const DbProvider = ({children}: any) => {
   };
 
   return (
-<<<<<<< HEAD
     <DatabaseContext.Provider value={{updateAttribute, pullDataFilter, pushDataUser, uploadFile, fetchData, pullObj, pushDataUserAPI,listDataByID, pushDataUserReturn}}>
-||||||| c4450da
-    <DatabaseContext.Provider value={{pushDataUser, uploadFile, fetchData, pullObj, pushDataUserAPI}}>
-=======
-    <DatabaseContext.Provider value={{pullDataFilter, pushDataUser, uploadFile, fetchData, pullObj, pushDataUserAPI,listDataByID, pushDataUserReturn}}>
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
       {children}
     </DatabaseContext.Provider>
   )
