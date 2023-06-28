@@ -15,7 +15,7 @@ export const Homepage = () => {
     <>
       <section className='banner-slide-main-page'>
         <video autoPlay loop muted>
-          <source src={video} type="video/mp4" />
+          <source src="https://mock-storage-760ca2fb231245-dev.s3.ca-central-1.amazonaws.com/public/banner.mp4" type="video/mp4" />
         </video>
         <div className='overlay-cover-banner'>
           <div className='content-sizing slide-show-content'>
