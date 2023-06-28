@@ -23,7 +23,7 @@ export const Landing = () => {
     <motion.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
       <Header sectionRefs={sectionRef}/>
       <Outlet context={[sectionRef]}/>
-      <Footer />
+      <Footer sectionRefs={sectionRef}/>
       <BackToTop isVisible={isVisible}/>
     </motion.div>
   )

@@ -25,7 +25,7 @@ export const GhostButton = (props: prop) => {
 
 export const PrimaryLinkBtn = (props: prop) => {
   return (
-    <Link to={props.path} style={props.width === "full" ? { width: '100%' } : { width: 'fit-content' }} className="btn-general">{props.name}</Link>
+    <Link to={props.path} style={props.width === "full" ? { width: '100%' } : { width: 'fit-content' }} className="btn-general primary-button">{props.name}</Link>
   )
 }
 

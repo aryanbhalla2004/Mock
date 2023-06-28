@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import video from '../../../assets/banner.mp4';
 import "./style.css";
-import { PrimaryButton } from '../../../common/components/button/Button';
+import { PrimaryButton, PrimaryLinkBtn } from '../../../common/components/button/Button';
 import home1 from "../../../assets/home.jpg";
 import home2 from "../../../assets/home2.jpg";
 import home3 from "../../../assets/home3.jpg";
@@ -162,7 +162,7 @@ export const Homepage = () => {
 
           <div className='faq-child-contact-info'>
             <h3>Have a question not covered in the FAQ?</h3>
-            <PrimaryButton name="Contact us"/>
+            <PrimaryLinkBtn name="Contact us" path="help-center"/>
           </div>
           
         </div>

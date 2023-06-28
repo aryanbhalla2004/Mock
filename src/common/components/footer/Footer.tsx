@@ -2,8 +2,15 @@ import React from 'react'
 import "./style.css";
 import AuthFooter from '../../../pages/auth/components/footer/AuthFooter';
 import { Link } from 'react-router-dom';
+interface prop {
+  sectionRefs: any
+}
+export const Footer = (props:prop) => {
 
-export const Footer = () => {
+  const scrollTo = (location: any) => {
+    location.current?.scrollIntoView({ behavior: 'smooth' });
+  }
+
   return (
     <>
       <div className='footer-container-main'>
@@ -19,16 +26,16 @@ export const Footer = () => {
           <div className='single-footer-colum about-container-footer'>
             <h3>Company</h3>
             <ul className='list-links-footer'>
-              <li><Link to="/">Our Team</Link></li>
-              <li><Link to="/">Job Benifts</Link></li>
-              <li><Link to="/">Work Terms</Link></li>
-              <li><Link to="/">FAQ</Link></li>
+              <li><Link to="/" onClick={() => scrollTo(props.sectionRefs.working)}>Our Team</Link></li>
+              <li><Link to="/" onClick={() => scrollTo(props.sectionRefs.mission)}>Job Benifts</Link></li>
+              <li><Link to="/" onClick={() => scrollTo(props.sectionRefs.benefits)}>Work Terms</Link></li>
+              <li><Link to="/" onClick={() => scrollTo(props.sectionRefs.faq)}>FAQ</Link></li>
             </ul>
           </div>
           <div className='single-footer-colum about-container-footer'>
             <h3>Support</h3>
             <ul className='list-links-footer'>
-              <li><Link to="/">Help center</Link></li>
+              <li><Link to="/help-center">Help center</Link></li>
               <li><Link to="/">Updates</Link></li>
             </ul>
           </div>

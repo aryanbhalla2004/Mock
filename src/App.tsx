@@ -18,6 +18,9 @@ import SelectHouses from "./pages/backend/selectHouses/selectHouses";
 import MyHouse from "./pages/backend/myHouse/myHouse";
 import MyWork from "./pages/backend/myWork/myWork";
 import { Error404 } from "./pages/frontend/404Error/Error404";
+import { PrivacyPolicy } from "./pages/frontend/privacy-policy/PrivacyPolicy";
+import { TermOfServices } from "./pages/frontend/term-of-services/TermOfServices";
+import { HelpCenter } from "./pages/frontend/help-center/HelpCenter";
 const App = () => {
   const {isSignInComplete, isLogoutEnabled, getUser, isAuthenticated, isLoading, logout, getSession, setIsSignUpInComplete} = useContext(AccountContext);
   const [contentLoader, setContentLoader] = useState(true);
@@ -65,7 +68,10 @@ const App = () => {
 
         <Route path="/" element={<Landing/>}>
           <Route index element={<Homepage />}></Route>
-          <Route path="logout"/>
+          <Route path="privacy-policy" element={<PrivacyPolicy />}/>
+          <Route path="help-center" element={<HelpCenter/>}/>
+          <Route path="term-of-services" element={<TermOfServices />}/>
+          {/* <Route path="logout"/> */}
         </Route>
       </Routes>
     </div> : <LoadingMain />

@@ -1,0 +1,32 @@
+.page-header-container {
+  background-color: var(--lightColor);
+  display: flex;
+  padding: 60px 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-header-wrapper {
+  flex-direction: column;
+  gap: 20px;
+}
+
+.page-header-wrapper > h1 {
+  font-weight: 400;
+  font-size: 2.5rem;
+}
+
+.page-header-wrapper > ul {
+  display: flex;
+  list-style-type: none;
+}
+
+.page-header-wrapper > ul > li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-weight: 300;
+  color: var(--lightTextColor);
+  padding-right: 10px;
+}
