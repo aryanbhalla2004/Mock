@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import video from '../../../assets/banner.mp4';
 import "./style.css";
 import { PrimaryButton } from '../../../common/components/button/Button';
 import home1 from "../../../assets/home.jpg";
 import home2 from "../../../assets/home2.jpg";
 import home3 from "../../../assets/home3.jpg";
+import { useOutletContext } from 'react-router-dom';
 export const Homepage = () => {
+  const [sectionRef] = useOutletContext<any>();
+  useEffect(() => {
+    console.log(sectionRef);
+  }, []);
   return (
     <>
       <section className='banner-slide-main-page'>
@@ -21,7 +26,7 @@ export const Homepage = () => {
         </div>
       </section>
 
-      <section className='about-container' id="work-at-zoobo">
+      <section className='about-container' id="work-at-zoobo" ref={sectionRef.working}>
         <div className='content-sizing about-section'>
           <span  className='primary-text'>Working at Zoobo</span>
           <h1>Be part of our crew the next big thing with Zoobo</h1>
@@ -32,7 +37,7 @@ export const Homepage = () => {
         </div>
       </section>
 
-      <section className='working-for-zoobo-home-page'>
+      <section className='working-for-zoobo-home-page' ref={sectionRef.mission}>
         <div className='content-sizing starting-up'>
           <div className='images-item-about-startup'>
             <div>
@@ -79,7 +84,7 @@ export const Homepage = () => {
         </div> 
       </section>
 
-      <section className='benefits-section-container'>
+      <section className='benefits-section-container' ref={sectionRef.benefits}>
         <div className='content-sizing benefits-wrapper'>
           <span className='primary-text'>Benefits</span>
           <h2>The Advantages and Benefits of Choosing to Work with Zoobo</h2>
@@ -111,7 +116,7 @@ export const Homepage = () => {
       </section>
 
 
-      <section className='benefits-section-container top-border-faq'>
+      <section className='benefits-section-container top-border-faq' ref={sectionRef.faq}>
         <div className='content-sizing benefits-wrapper'>
           <span className='primary-text'>FAQ</span>
           <h2>Frequently Asked Questions: Your Queries Answered</h2>
@@ -155,6 +160,11 @@ export const Homepage = () => {
             </li>
           </ul>
 
+          <div className='faq-child-contact-info'>
+            <h3>Have a question not covered in the FAQ?</h3>
+            <PrimaryButton name="Contact us"/>
+          </div>
+          
         </div>
       </section>
     </>

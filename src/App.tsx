@@ -17,6 +17,7 @@ import Test from "./pages/backend/test/Test";
 import SelectHouses from "./pages/backend/selectHouses/selectHouses";
 import MyHouse from "./pages/backend/myHouse/myHouse";
 import MyWork from "./pages/backend/myWork/myWork";
+import { Error404 } from "./pages/frontend/404Error/Error404";
 const App = () => {
   const {isSignInComplete, isLogoutEnabled, getUser, isAuthenticated, isLoading, logout, getSession, setIsSignUpInComplete} = useContext(AccountContext);
   const [contentLoader, setContentLoader] = useState(true);
@@ -44,7 +45,7 @@ const App = () => {
       <Logout/>
       {/* <ModualPop show={isSignInComplete} child={<SetupWizzard />}/> */}
       <Routes>
-        <Route path="*" element={<h1>Error 404</h1>}></Route>
+        <Route path="*" element={<Error404 />}></Route>
 
         <Route path="/auth" element={!isAuthenticated ? <Auth /> : <Navigate to={"/"} />}>
           <Route index element={!isAuthenticated ? <SignIn/> : <Navigate to={"/"} />} />

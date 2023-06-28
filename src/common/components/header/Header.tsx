@@ -1,11 +1,15 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { Ref, useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import logo from "../../../assets/logo-green.png";
 import "./style.css";
 import { GhostLinkBtn, PrimaryButton } from '../button/Button';
 import { AccountContext } from '../../../setup/contexts/AuthContext';
 import { Loading } from '../loading/Loading';
-export const Header = () => {
+
+interface prop {
+  sectionRefs: any
+}
+export const Header = (props:prop) => {
   const {isAuthenticated, isLoading, getUser, setIsLogoutEnabled} = useContext(AccountContext);
   const [showDrop, setShowDrop] = useState<boolean>(false);
   const [inBox, setInBox] = useState(false);
@@ -22,6 +26,11 @@ export const Header = () => {
     setInBox(false);
     setShowDrop(false);
   }
+
+  const scrollTo = (location: any) => {
+    location.current?.scrollIntoView({ behavior: 'smooth' });
+  }
+
   return (
     <header className='auth-12-header'>
       <div className='content-sizing auth-12-header-wrapper'>
@@ -31,18 +40,18 @@ export const Header = () => {
           </div>
           <nav className='nav-carrer-header'>
             <ul>
-              <li>
-                <Link to="">Working at Zoobo</Link>
+              <li onClick={() => scrollTo(props.sectionRefs.working)}>
+                <Link to="" onClick={() => scrollTo(props.sectionRefs.working)}>Working at Zoobo</Link>
               </li>
              
-              <li>
-                <Link to="">Mission & Values</Link>
+              <li onClick={() => scrollTo(props.sectionRefs.mission)}>
+                <Link to="" onClick={() => scrollTo(props.sectionRefs.mission)}>Mission & Values</Link>
               </li>
-              <li>
-                <Link to="">Benifts</Link>
+              <li onClick={() => scrollTo(props.sectionRefs.benefits)}>
+                <Link to="" onClick={() => scrollTo(props.sectionRefs.benefits)}>Benifts</Link>
               </li>
-              <li>
-                <Link to="">FAQ</Link>
+              <li onClick={() => scrollTo(props.sectionRefs.faq)}>
+                <Link to="" onClick={() => scrollTo(props.sectionRefs.faq)}>FAQ</Link>
               </li>
             </ul>
           </nav>
