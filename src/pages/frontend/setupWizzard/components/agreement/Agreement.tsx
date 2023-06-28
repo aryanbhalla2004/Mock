@@ -10,6 +10,7 @@ interface prop {
   setFormData: (data: any) => void,
   next: () => void,
   back: () => void,
+  onSubmit: () => void,
 }
 export const Agreement = (props: prop) => {
   const EmployeeAgreement = useRef<any>();
@@ -131,14 +132,12 @@ export const Agreement = (props: prop) => {
         </ul>
         <div className='button-action-setup-wizzard'>
           <GhostButton name="Back" onClick={props.back}/>
-          <PrimaryButton name="Finish" onClick={props.next}/>
+          <PrimaryButton name="Finish" onClick={props.onSubmit}/>
         </div> 
       </div>
     </div>
-    {viewAgreement !== "" &&
-        <div className='modal-popup-data'>
-          <div className='aggrement-data-container-pop' id="printable-aggreement">
-            
+        <div className={viewAgreement !== "" ? "show-agreement aggrement-slide-absolute" : "aggrement-slide-absolute"}>
+          <div className={viewAgreement !== "" ? "show-agreement aggrement-data-container-pop" : "aggrement-data-container-pop" } id="printable-aggreement">
             {viewAgreement === "EMPLOYEE" && <div>
               <h1>Employeement Aggremment</h1>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores nam ea sequi deleniti pariatur reprehenderit ipsum! Optio, ut mollitia. Ullam perspiciatis similique dolorem deleniti. Repellendus deserunt amet aut non.</p>
@@ -206,9 +205,7 @@ export const Agreement = (props: prop) => {
               <p>Sorry, your browser doesn't support embedded PDFs.</p>
             </object>  */}
           </div> 
-         
         </div>
-      }
     </>
     
   )

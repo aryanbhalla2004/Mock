@@ -35,3 +35,58 @@
   transition: .3s all ease-in-out !important;
   opacity: 1;
 }
+
+.address-form-container-setupWizzared {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+}
+
+.address-form-container-setupWizzared > div {
+  display: flex;
+  width: 100%;
+  gap: 0;
+  flex-direction: column;
+}
+
+.col-2-fields{
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 20px;
+  width: 100%;
+}
+
+.flex-box-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 100% !important;
+  
+}
+
+.aggrement-slide-absolute {
+  position: absolute;
+  border: 1px solid;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  opacity: 0;
+  visibility: hidden;
+  transition: .3s all ease-in-out;
+  justify-content: flex-end;
+  background-color: rgba(0, 0, 0, .5);
+}
+
+
+.aggrement-slide-absolute > div {
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: .3s all ease-in-out;
+  max-height: none;
+}
+
+.show-agreement {
+  opacity: 1  !important;
+  visibility: visible !important;
+}

@@ -244,7 +244,7 @@ export default function WorkorderUpdateForm(props) {
   const completionImageRef = React.createRef();
   const validations = {
     userID: [{ type: "Required" }],
-    employeeID: [],
+    employeeID: [{ type: "Required" }],
     completionImage: [],
     usercompletion: [],
     workercompletion: [],
@@ -359,7 +359,7 @@ export default function WorkorderUpdateForm(props) {
       ></TextField>
       <TextField
         label="Employee id"
-        isRequired={false}
+        isRequired={true}
         isReadOnly={false}
         value={employeeID}
         onChange={(e) => {

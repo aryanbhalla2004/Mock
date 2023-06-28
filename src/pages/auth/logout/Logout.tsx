@@ -8,11 +8,15 @@ import { toast } from 'react-toastify';
 export const Logout = () => {
   const navigate = useNavigate();
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
+  const [userInfo, setUserInfo] = useState<any>(null);
   const {isLogoutEnabled, setIsLogoutEnabled, logout, isAuthenticated, getUser} = useContext(AccountContext);
   
   useEffect(() => {
     if(!isAuthenticated || getUser() != null) {
       setIsLogoutEnabled(false);
+    } else {
+      
+      setUserInfo(getUser());
     }
   }, []);
   
@@ -47,7 +51,7 @@ export const Logout = () => {
           </label>
         </div>
         <div className='logout-pop-button-action'>
-          <span>Logged in as Aryan Bhalla</span>
+          <span>Logged in as {getUser() && getUser().attributes?.given_name} {getUser() && getUser().attributes?.family_name}</span>
           <PrimaryButton name="Logout" width='full' loading={formSubmitted} onClick={() => logoutUser()}/>
         </div>
         <button className='close-button-pop-up' onClick={() => setIsLogoutEnabled(false)}><i className="bi bi-x"></i></button>

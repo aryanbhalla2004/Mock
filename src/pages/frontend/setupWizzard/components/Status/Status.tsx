@@ -8,6 +8,7 @@ interface prop {
   formData: any,
   setFormData: (data: any) => void,
   next: () => void,
+  back: () => void,
 }
 
 export const Status = (props: prop) => {

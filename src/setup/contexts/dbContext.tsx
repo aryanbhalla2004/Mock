@@ -32,7 +32,16 @@ const DbProvider = ({children}: any) => {
     return await API.graphql({query: where, variables: { [type]: id }, authMode: "AMAZON_COGNITO_USER_POOLS"});
   };
   
-  const  uploadFile = async (key:string, file:File, levelPr:any) => { 
+  const updateAttribute = async (key:any, value:any) => {
+    return Auth.currentAuthenticatedUser().then(item => {
+      Auth.updateUserAttributes(item, {
+        [key]: value
+      });
+    })
+   
+  }
+
+  const uploadFile = async (key:string, file:File, levelPr:any) => { 
     try {
        const itm = await Storage.put(key, file, {
          level: levelPr,
@@ -48,7 +57,7 @@ const DbProvider = ({children}: any) => {
   };
 
   return (
-    <DatabaseContext.Provider value={{pullDataFilter, pushDataUser, uploadFile, fetchData, pullObj, pushDataUserAPI,listDataByID, pushDataUserReturn}}>
+    <DatabaseContext.Provider value={{updateAttribute, pullDataFilter, pushDataUser, uploadFile, fetchData, pullObj, pushDataUserAPI,listDataByID, pushDataUserReturn}}>
       {children}
     </DatabaseContext.Provider>
   )

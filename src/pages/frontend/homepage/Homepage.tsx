@@ -115,8 +115,46 @@ export const Homepage = () => {
         <div className='content-sizing benefits-wrapper'>
           <span className='primary-text'>FAQ</span>
           <h2>Frequently Asked Questions: Your Queries Answered</h2>
-          <br/>
-          <p>//Jay Code</p>
+
+          <ul className='faq-list-container-main-page'>
+            <li className="faq">
+              <div className="question">
+                <h3>How and when was Civi started?</h3>
+                <i className="bi bi-chevron-down"></i>
+              </div> 
+              <div className="answer">
+                <p>Zoobo is a professional snow removal company that provides high-quality services to its customers. Our experienced team of snow removal specialists is dedicated to ensuring that our clients receive prompt, efficient and effective service. We use state-of-the-art equipment and the latest techniques to provide fast and reliable snow removal services.</p>
+              </div>
+            </li>
+            <li className="faq">
+              <div className="question">
+                <h3>How can I join your team?</h3>
+                <i className="bi bi-chevron-down"></i>
+              </div> 
+              <div className="answer">
+                <p>Zoobo is a professional snow removal company that provides high-quality services to its customers. Our experienced team of snow removal specialists is dedicated to ensuring that our clients receive prompt, efficient and effective service. We use state-of-the-art equipment and the latest techniques to provide fast and reliable snow removal services.</p>
+              </div>
+            </li>
+            <li className="faq">
+              <div className="question">
+                <h3>How is Civi different from other places to post jobs?</h3>
+                <i className="bi bi-chevron-down"></i>
+              </div> 
+              <div className="answer">
+                <p>Zoobo is a professional snow removal company that provides high-quality services to its customers. Our experienced team of snow removal specialists is dedicated to ensuring that our clients receive prompt, efficient and effective service. We use state-of-the-art equipment and the latest techniques to provide fast and reliable snow removal services.</p>
+              </div>
+            </li>
+            <li className="faq">
+              <div className="question">
+                <h3>What types of candidates can I find on Civi?</h3>
+                <i className="bi bi-chevron-down"></i>
+              </div> 
+              <div className="answer">
+                <p>Zoobo is a professional snow removal company that provides high-quality services to its customers. Our experienced team of snow removal specialists is dedicated to ensuring that our clients receive prompt, efficient and effective service. We use state-of-the-art equipment and the latest techniques to provide fast and reliable snow removal services.</p>
+              </div>
+            </li>
+          </ul>
+
         </div>
       </section>
     </>

@@ -2,6 +2,90 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const createHouse = /* GraphQL */ `
+  mutation CreateHouse(
+    $input: CreateHouseInput!
+    $condition: ModelHouseConditionInput
+  ) {
+    createHouse(input: $input, condition: $condition) {
+      id
+      userID
+      employeeID
+      address {
+        address
+        unit
+        postalCode
+        country
+        state
+        city
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const updateHouse = /* GraphQL */ `
+  mutation UpdateHouse(
+    $input: UpdateHouseInput!
+    $condition: ModelHouseConditionInput
+  ) {
+    updateHouse(input: $input, condition: $condition) {
+      id
+      userID
+      employeeID
+      address {
+        address
+        unit
+        postalCode
+        country
+        state
+        city
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const deleteHouse = /* GraphQL */ `
+  mutation DeleteHouse(
+    $input: DeleteHouseInput!
+    $condition: ModelHouseConditionInput
+  ) {
+    deleteHouse(input: $input, condition: $condition) {
+      id
+      userID
+      employeeID
+      address {
+        address
+        unit
+        postalCode
+        country
+        state
+        city
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+      __typename
+    }
+  }
+`;
 export const createUser = /* GraphQL */ `
   mutation CreateUser(
     $input: CreateUserInput!
@@ -106,6 +190,7 @@ export const createWorkorder = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
+        owner
         __typename
       }
       employeeID
@@ -140,6 +225,7 @@ export const updateWorkorder = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
+        owner
         __typename
       }
       employeeID
@@ -174,6 +260,7 @@ export const deleteWorkorder = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
+        owner
         __typename
       }
       employeeID
@@ -191,84 +278,6 @@ export const deleteWorkorder = /* GraphQL */ `
     }
   }
 `;
-export const createHouse = /* GraphQL */ `
-  mutation CreateHouse(
-    $input: CreateHouseInput!
-    $condition: ModelHouseConditionInput
-  ) {
-    createHouse(input: $input, condition: $condition) {
-      id
-      userID
-      employeeID
-      address {
-        address
-        unit
-        postalcode
-        country
-        state
-        __typename
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      __typename
-    }
-  }
-`;
-export const updateHouse = /* GraphQL */ `
-  mutation UpdateHouse(
-    $input: UpdateHouseInput!
-    $condition: ModelHouseConditionInput
-  ) {
-    updateHouse(input: $input, condition: $condition) {
-      id
-      userID
-      employeeID
-      address {
-        address
-        unit
-        postalcode
-        country
-        state
-        __typename
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      __typename
-    }
-  }
-`;
-export const deleteHouse = /* GraphQL */ `
-  mutation DeleteHouse(
-    $input: DeleteHouseInput!
-    $condition: ModelHouseConditionInput
-  ) {
-    deleteHouse(input: $input, condition: $condition) {
-      id
-      userID
-      employeeID
-      address {
-        address
-        unit
-        postalcode
-        country
-        state
-        __typename
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      __typename
-    }
-  }
-`;
 export const createRating = /* GraphQL */ `
   mutation CreateRating(
     $input: CreateRatingInput!
@@ -279,7 +288,7 @@ export const createRating = /* GraphQL */ `
       description
       Owner
       rating
-      employeeID
+      employeeprofileID
       createdAt
       updatedAt
       _version
@@ -300,7 +309,7 @@ export const updateRating = /* GraphQL */ `
       description
       Owner
       rating
-      employeeID
+      employeeprofileID
       createdAt
       updatedAt
       _version
@@ -321,7 +330,85 @@ export const deleteRating = /* GraphQL */ `
       description
       Owner
       rating
-      employeeID
+      employeeprofileID
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const createEmployeeProfile = /* GraphQL */ `
+  mutation CreateEmployeeProfile(
+    $input: CreateEmployeeProfileInput!
+    $condition: ModelEmployeeProfileConditionInput
+  ) {
+    createEmployeeProfile(input: $input, condition: $condition) {
+      id
+      firstName
+      lastName
+      phoneNumber
+      dob
+      Ratings {
+        nextToken
+        startedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const updateEmployeeProfile = /* GraphQL */ `
+  mutation UpdateEmployeeProfile(
+    $input: UpdateEmployeeProfileInput!
+    $condition: ModelEmployeeProfileConditionInput
+  ) {
+    updateEmployeeProfile(input: $input, condition: $condition) {
+      id
+      firstName
+      lastName
+      phoneNumber
+      dob
+      Ratings {
+        nextToken
+        startedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const deleteEmployeeProfile = /* GraphQL */ `
+  mutation DeleteEmployeeProfile(
+    $input: DeleteEmployeeProfileInput!
+    $condition: ModelEmployeeProfileConditionInput
+  ) {
+    deleteEmployeeProfile(input: $input, condition: $condition) {
+      id
+      firstName
+      lastName
+      phoneNumber
+      dob
+      Ratings {
+        nextToken
+        startedAt
+        __typename
+      }
       createdAt
       updatedAt
       _version
@@ -340,16 +427,13 @@ export const createEmployee = /* GraphQL */ `
     createEmployee(input: $input, condition: $condition) {
       id
       cognitoUser
-      firstName
-      lastName
-      phoneNumber
-      dob
       address {
         address
         unit
-        postalcode
+        postalCode
         country
         state
+        city
         __typename
       }
       workingStatus
@@ -363,13 +447,16 @@ export const createEmployee = /* GraphQL */ `
         document
         __typename
       }
-      ratingValue
-      Ratings {
-        nextToken
-        startedAt
+      systemRating
+      payment {
+        type
+        email
+        accountNum
+        fin
+        branchNum
+        accountName
         __typename
       }
-      systemRating
       Houses {
         nextToken
         startedAt
@@ -380,12 +467,26 @@ export const createEmployee = /* GraphQL */ `
         startedAt
         __typename
       }
+      EmployeeProfile {
+        id
+        firstName
+        lastName
+        phoneNumber
+        dob
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+        __typename
+      }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
-      owner
+      employeeEmployeeProfileId
       __typename
     }
   }
@@ -398,16 +499,13 @@ export const updateEmployee = /* GraphQL */ `
     updateEmployee(input: $input, condition: $condition) {
       id
       cognitoUser
-      firstName
-      lastName
-      phoneNumber
-      dob
       address {
         address
         unit
-        postalcode
+        postalCode
         country
         state
+        city
         __typename
       }
       workingStatus
@@ -421,13 +519,16 @@ export const updateEmployee = /* GraphQL */ `
         document
         __typename
       }
-      ratingValue
-      Ratings {
-        nextToken
-        startedAt
+      systemRating
+      payment {
+        type
+        email
+        accountNum
+        fin
+        branchNum
+        accountName
         __typename
       }
-      systemRating
       Houses {
         nextToken
         startedAt
@@ -438,12 +539,26 @@ export const updateEmployee = /* GraphQL */ `
         startedAt
         __typename
       }
+      EmployeeProfile {
+        id
+        firstName
+        lastName
+        phoneNumber
+        dob
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+        __typename
+      }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
-      owner
+      employeeEmployeeProfileId
       __typename
     }
   }
@@ -456,16 +571,13 @@ export const deleteEmployee = /* GraphQL */ `
     deleteEmployee(input: $input, condition: $condition) {
       id
       cognitoUser
-      firstName
-      lastName
-      phoneNumber
-      dob
       address {
         address
         unit
-        postalcode
+        postalCode
         country
         state
+        city
         __typename
       }
       workingStatus
@@ -479,13 +591,16 @@ export const deleteEmployee = /* GraphQL */ `
         document
         __typename
       }
-      ratingValue
-      Ratings {
-        nextToken
-        startedAt
+      systemRating
+      payment {
+        type
+        email
+        accountNum
+        fin
+        branchNum
+        accountName
         __typename
       }
-      systemRating
       Houses {
         nextToken
         startedAt
@@ -496,12 +611,26 @@ export const deleteEmployee = /* GraphQL */ `
         startedAt
         __typename
       }
+      EmployeeProfile {
+        id
+        firstName
+        lastName
+        phoneNumber
+        dob
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+        __typename
+      }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
-      owner
+      employeeEmployeeProfileId
       __typename
     }
   }

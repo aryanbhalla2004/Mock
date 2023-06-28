@@ -2,6 +2,90 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const onCreateHouse = /* GraphQL */ `
+  subscription OnCreateHouse(
+    $filter: ModelSubscriptionHouseFilterInput
+    $owner: String
+  ) {
+    onCreateHouse(filter: $filter, owner: $owner) {
+      id
+      userID
+      employeeID
+      address {
+        address
+        unit
+        postalCode
+        country
+        state
+        city
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const onUpdateHouse = /* GraphQL */ `
+  subscription OnUpdateHouse(
+    $filter: ModelSubscriptionHouseFilterInput
+    $owner: String
+  ) {
+    onUpdateHouse(filter: $filter, owner: $owner) {
+      id
+      userID
+      employeeID
+      address {
+        address
+        unit
+        postalCode
+        country
+        state
+        city
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const onDeleteHouse = /* GraphQL */ `
+  subscription OnDeleteHouse(
+    $filter: ModelSubscriptionHouseFilterInput
+    $owner: String
+  ) {
+    onDeleteHouse(filter: $filter, owner: $owner) {
+      id
+      userID
+      employeeID
+      address {
+        address
+        unit
+        postalCode
+        country
+        state
+        city
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+      __typename
+    }
+  }
+`;
 export const onCreateUser = /* GraphQL */ `
   subscription OnCreateUser(
     $filter: ModelSubscriptionUserFilterInput
@@ -106,6 +190,7 @@ export const onCreateWorkorder = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
+        owner
         __typename
       }
       employeeID
@@ -140,6 +225,7 @@ export const onUpdateWorkorder = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
+        owner
         __typename
       }
       employeeID
@@ -174,6 +260,7 @@ export const onDeleteWorkorder = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
+        owner
         __typename
       }
       employeeID
@@ -191,84 +278,6 @@ export const onDeleteWorkorder = /* GraphQL */ `
     }
   }
 `;
-export const onCreateHouse = /* GraphQL */ `
-  subscription OnCreateHouse(
-    $filter: ModelSubscriptionHouseFilterInput
-    $userID: String
-  ) {
-    onCreateHouse(filter: $filter, userID: $userID) {
-      id
-      userID
-      employeeID
-      address {
-        address
-        unit
-        postalcode
-        country
-        state
-        __typename
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      __typename
-    }
-  }
-`;
-export const onUpdateHouse = /* GraphQL */ `
-  subscription OnUpdateHouse(
-    $filter: ModelSubscriptionHouseFilterInput
-    $userID: String
-  ) {
-    onUpdateHouse(filter: $filter, userID: $userID) {
-      id
-      userID
-      employeeID
-      address {
-        address
-        unit
-        postalcode
-        country
-        state
-        __typename
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      __typename
-    }
-  }
-`;
-export const onDeleteHouse = /* GraphQL */ `
-  subscription OnDeleteHouse(
-    $filter: ModelSubscriptionHouseFilterInput
-    $userID: String
-  ) {
-    onDeleteHouse(filter: $filter, userID: $userID) {
-      id
-      userID
-      employeeID
-      address {
-        address
-        unit
-        postalcode
-        country
-        state
-        __typename
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      __typename
-    }
-  }
-`;
 export const onCreateRating = /* GraphQL */ `
   subscription OnCreateRating(
     $filter: ModelSubscriptionRatingFilterInput
@@ -279,7 +288,7 @@ export const onCreateRating = /* GraphQL */ `
       description
       Owner
       rating
-      employeeID
+      employeeprofileID
       createdAt
       updatedAt
       _version
@@ -300,7 +309,7 @@ export const onUpdateRating = /* GraphQL */ `
       description
       Owner
       rating
-      employeeID
+      employeeprofileID
       createdAt
       updatedAt
       _version
@@ -321,7 +330,85 @@ export const onDeleteRating = /* GraphQL */ `
       description
       Owner
       rating
-      employeeID
+      employeeprofileID
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const onCreateEmployeeProfile = /* GraphQL */ `
+  subscription OnCreateEmployeeProfile(
+    $filter: ModelSubscriptionEmployeeProfileFilterInput
+    $owner: String
+  ) {
+    onCreateEmployeeProfile(filter: $filter, owner: $owner) {
+      id
+      firstName
+      lastName
+      phoneNumber
+      dob
+      Ratings {
+        nextToken
+        startedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const onUpdateEmployeeProfile = /* GraphQL */ `
+  subscription OnUpdateEmployeeProfile(
+    $filter: ModelSubscriptionEmployeeProfileFilterInput
+    $owner: String
+  ) {
+    onUpdateEmployeeProfile(filter: $filter, owner: $owner) {
+      id
+      firstName
+      lastName
+      phoneNumber
+      dob
+      Ratings {
+        nextToken
+        startedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const onDeleteEmployeeProfile = /* GraphQL */ `
+  subscription OnDeleteEmployeeProfile(
+    $filter: ModelSubscriptionEmployeeProfileFilterInput
+    $owner: String
+  ) {
+    onDeleteEmployeeProfile(filter: $filter, owner: $owner) {
+      id
+      firstName
+      lastName
+      phoneNumber
+      dob
+      Ratings {
+        nextToken
+        startedAt
+        __typename
+      }
       createdAt
       updatedAt
       _version
@@ -335,21 +422,18 @@ export const onDeleteRating = /* GraphQL */ `
 export const onCreateEmployee = /* GraphQL */ `
   subscription OnCreateEmployee(
     $filter: ModelSubscriptionEmployeeFilterInput
-    $owner: String
+    $cognitoUser: String
   ) {
-    onCreateEmployee(filter: $filter, owner: $owner) {
+    onCreateEmployee(filter: $filter, cognitoUser: $cognitoUser) {
       id
       cognitoUser
-      firstName
-      lastName
-      phoneNumber
-      dob
       address {
         address
         unit
-        postalcode
+        postalCode
         country
         state
+        city
         __typename
       }
       workingStatus
@@ -363,13 +447,16 @@ export const onCreateEmployee = /* GraphQL */ `
         document
         __typename
       }
-      ratingValue
-      Ratings {
-        nextToken
-        startedAt
+      systemRating
+      payment {
+        type
+        email
+        accountNum
+        fin
+        branchNum
+        accountName
         __typename
       }
-      systemRating
       Houses {
         nextToken
         startedAt
@@ -380,12 +467,26 @@ export const onCreateEmployee = /* GraphQL */ `
         startedAt
         __typename
       }
+      EmployeeProfile {
+        id
+        firstName
+        lastName
+        phoneNumber
+        dob
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+        __typename
+      }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
-      owner
+      employeeEmployeeProfileId
       __typename
     }
   }
@@ -393,21 +494,18 @@ export const onCreateEmployee = /* GraphQL */ `
 export const onUpdateEmployee = /* GraphQL */ `
   subscription OnUpdateEmployee(
     $filter: ModelSubscriptionEmployeeFilterInput
-    $owner: String
+    $cognitoUser: String
   ) {
-    onUpdateEmployee(filter: $filter, owner: $owner) {
+    onUpdateEmployee(filter: $filter, cognitoUser: $cognitoUser) {
       id
       cognitoUser
-      firstName
-      lastName
-      phoneNumber
-      dob
       address {
         address
         unit
-        postalcode
+        postalCode
         country
         state
+        city
         __typename
       }
       workingStatus
@@ -421,13 +519,16 @@ export const onUpdateEmployee = /* GraphQL */ `
         document
         __typename
       }
-      ratingValue
-      Ratings {
-        nextToken
-        startedAt
+      systemRating
+      payment {
+        type
+        email
+        accountNum
+        fin
+        branchNum
+        accountName
         __typename
       }
-      systemRating
       Houses {
         nextToken
         startedAt
@@ -438,12 +539,26 @@ export const onUpdateEmployee = /* GraphQL */ `
         startedAt
         __typename
       }
+      EmployeeProfile {
+        id
+        firstName
+        lastName
+        phoneNumber
+        dob
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+        __typename
+      }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
-      owner
+      employeeEmployeeProfileId
       __typename
     }
   }
@@ -451,21 +566,18 @@ export const onUpdateEmployee = /* GraphQL */ `
 export const onDeleteEmployee = /* GraphQL */ `
   subscription OnDeleteEmployee(
     $filter: ModelSubscriptionEmployeeFilterInput
-    $owner: String
+    $cognitoUser: String
   ) {
-    onDeleteEmployee(filter: $filter, owner: $owner) {
+    onDeleteEmployee(filter: $filter, cognitoUser: $cognitoUser) {
       id
       cognitoUser
-      firstName
-      lastName
-      phoneNumber
-      dob
       address {
         address
         unit
-        postalcode
+        postalCode
         country
         state
+        city
         __typename
       }
       workingStatus
@@ -479,13 +591,16 @@ export const onDeleteEmployee = /* GraphQL */ `
         document
         __typename
       }
-      ratingValue
-      Ratings {
-        nextToken
-        startedAt
+      systemRating
+      payment {
+        type
+        email
+        accountNum
+        fin
+        branchNum
+        accountName
         __typename
       }
-      systemRating
       Houses {
         nextToken
         startedAt
@@ -496,12 +611,26 @@ export const onDeleteEmployee = /* GraphQL */ `
         startedAt
         __typename
       }
+      EmployeeProfile {
+        id
+        firstName
+        lastName
+        phoneNumber
+        dob
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+        __typename
+      }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
-      owner
+      employeeEmployeeProfileId
       __typename
     }
   }

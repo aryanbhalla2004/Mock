@@ -22,17 +22,9 @@ const Dashboard = () => {
           <nav className='dashboard-nav'>
             <span>Work</span>
             <ul>
-<<<<<<< HEAD
-              <li><Link to="/dashboard"><i className="bi bi-binoculars-fill"></i> My Work</Link></li>
-              <li><Link to="/dashboard/selectHouses"><i className="bi bi-speedometer"></i>Select Houses</Link></li>
-||||||| c4450da
-              <li><Link to="/dashboard"><i className="bi bi-binoculars-fill"></i> My Work</Link></li>
-              <li><Link to="/dashboard"><i className="bi bi-speedometer"></i>Houses</Link></li>
-=======
               <li><Link to="/dashboard/myHouse"><i className="bi bi-binoculars-fill"></i> My Houses</Link></li>
               <li><Link to="/dashboard/selectHouses"><i className="bi bi-speedometer"></i>Select Houses</Link></li>
               <li><Link to="/dashboard/myWork"><i className="bi bi-speedometer"></i>My Work</Link></li>
->>>>>>> ea0b38ab51142ea05bc23083aa4faad9b4246ed6
               <li><Link to="/dashboard"><i className="bi bi-columns-gap"></i> Payment</Link></li>
               <li><Link to="/dashboard"><i className="bi bi-speedometer2"></i>Analytics</Link></li>
               <li><Link to="/dashboard/test"><i className="bi bi-speedometer2"></i>TEST</Link></li>

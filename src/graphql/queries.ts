@@ -2,6 +2,87 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const getHouse = /* GraphQL */ `
+  query GetHouse($id: ID!) {
+    getHouse(id: $id) {
+      id
+      userID
+      employeeID
+      address {
+        address
+        unit
+        postalCode
+        country
+        state
+        city
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const listHouses = /* GraphQL */ `
+  query ListHouses(
+    $filter: ModelHouseFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listHouses(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        userID
+        employeeID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+        __typename
+      }
+      nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
+export const syncHouses = /* GraphQL */ `
+  query SyncHouses(
+    $filter: ModelHouseFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncHouses(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        userID
+        employeeID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+        __typename
+      }
+      nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
 export const getUser = /* GraphQL */ `
   query GetUser($id: ID!) {
     getUser(id: $id) {
@@ -98,6 +179,7 @@ export const getWorkorder = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
+        owner
         __typename
       }
       employeeID
@@ -179,83 +261,6 @@ export const syncWorkorders = /* GraphQL */ `
     }
   }
 `;
-export const getHouse = /* GraphQL */ `
-  query GetHouse($id: ID!) {
-    getHouse(id: $id) {
-      id
-      userID
-      employeeID
-      address {
-        address
-        unit
-        postalcode
-        country
-        state
-        __typename
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      __typename
-    }
-  }
-`;
-export const listHouses = /* GraphQL */ `
-  query ListHouses(
-    $filter: ModelHouseFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listHouses(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        userID
-        employeeID
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        __typename
-      }
-      nextToken
-      startedAt
-      __typename
-    }
-  }
-`;
-export const syncHouses = /* GraphQL */ `
-  query SyncHouses(
-    $filter: ModelHouseFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncHouses(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        userID
-        employeeID
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        __typename
-      }
-      nextToken
-      startedAt
-      __typename
-    }
-  }
-`;
 export const getRating = /* GraphQL */ `
   query GetRating($id: ID!) {
     getRating(id: $id) {
@@ -263,7 +268,7 @@ export const getRating = /* GraphQL */ `
       description
       Owner
       rating
-      employeeID
+      employeeprofileID
       createdAt
       updatedAt
       _version
@@ -286,7 +291,7 @@ export const listRatings = /* GraphQL */ `
         description
         Owner
         rating
-        employeeID
+        employeeprofileID
         createdAt
         updatedAt
         _version
@@ -319,7 +324,94 @@ export const syncRatings = /* GraphQL */ `
         description
         Owner
         rating
-        employeeID
+        employeeprofileID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+        __typename
+      }
+      nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
+export const getEmployeeProfile = /* GraphQL */ `
+  query GetEmployeeProfile($id: ID!) {
+    getEmployeeProfile(id: $id) {
+      id
+      firstName
+      lastName
+      phoneNumber
+      dob
+      Ratings {
+        nextToken
+        startedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const listEmployeeProfiles = /* GraphQL */ `
+  query ListEmployeeProfiles(
+    $filter: ModelEmployeeProfileFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listEmployeeProfiles(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        firstName
+        lastName
+        phoneNumber
+        dob
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+        __typename
+      }
+      nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
+export const syncEmployeeProfiles = /* GraphQL */ `
+  query SyncEmployeeProfiles(
+    $filter: ModelEmployeeProfileFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncEmployeeProfiles(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        firstName
+        lastName
+        phoneNumber
+        dob
         createdAt
         updatedAt
         _version
@@ -339,16 +431,13 @@ export const getEmployee = /* GraphQL */ `
     getEmployee(id: $id) {
       id
       cognitoUser
-      firstName
-      lastName
-      phoneNumber
-      dob
       address {
         address
         unit
-        postalcode
+        postalCode
         country
         state
+        city
         __typename
       }
       workingStatus
@@ -362,13 +451,16 @@ export const getEmployee = /* GraphQL */ `
         document
         __typename
       }
-      ratingValue
-      Ratings {
-        nextToken
-        startedAt
+      systemRating
+      payment {
+        type
+        email
+        accountNum
+        fin
+        branchNum
+        accountName
         __typename
       }
-      systemRating
       Houses {
         nextToken
         startedAt
@@ -379,12 +471,26 @@ export const getEmployee = /* GraphQL */ `
         startedAt
         __typename
       }
+      EmployeeProfile {
+        id
+        firstName
+        lastName
+        phoneNumber
+        dob
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        owner
+        __typename
+      }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
-      owner
+      employeeEmployeeProfileId
       __typename
     }
   }
@@ -399,19 +505,14 @@ export const listEmployees = /* GraphQL */ `
       items {
         id
         cognitoUser
-        firstName
-        lastName
-        phoneNumber
-        dob
         workingStatus
-        ratingValue
         systemRating
         createdAt
         updatedAt
         _version
         _deleted
         _lastChangedAt
-        owner
+        employeeEmployeeProfileId
         __typename
       }
       nextToken
@@ -436,19 +537,14 @@ export const syncEmployees = /* GraphQL */ `
       items {
         id
         cognitoUser
-        firstName
-        lastName
-        phoneNumber
-        dob
         workingStatus
-        ratingValue
         systemRating
         createdAt
         updatedAt
         _version
         _deleted
         _lastChangedAt
-        owner
+        employeeEmployeeProfileId
         __typename
       }
       nextToken
