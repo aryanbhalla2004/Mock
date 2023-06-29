@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import video from '../../../assets/banner.mp4';
 import "./style.css";
 import { PrimaryButton, PrimaryLinkBtn } from '../../../common/components/button/Button';
@@ -7,10 +7,17 @@ import home2 from "../../../assets/home2.jpg";
 import home3 from "../../../assets/home3.jpg";
 import { useOutletContext } from 'react-router-dom';
 export const Homepage = () => {
+  const [faqOpenSection, setFaqOpenSection] = useState<String>("");
   const [sectionRef] = useOutletContext<any>();
-  useEffect(() => {
-    console.log(sectionRef);
-  }, []);
+
+  const openBox = (location: String) => {
+    if(faqOpenSection === location) {
+      setFaqOpenSection("");
+    } else {
+      setFaqOpenSection(location);
+    }
+  }
+
   return (
     <>
       <section className='banner-slide-main-page'>
@@ -122,7 +129,7 @@ export const Homepage = () => {
           <h2>Frequently Asked Questions: Your Queries Answered</h2>
 
           <ul className='faq-list-container-main-page'>
-            <li className="faq">
+            <li className={faqOpenSection === "one" ? "active faq" : "faq"} onClick={() => openBox("one")}>
               <div className="question">
                 <h3>How and when was Civi started?</h3>
                 <i className="bi bi-chevron-down"></i>
@@ -131,7 +138,7 @@ export const Homepage = () => {
                 <p>Zoobo is a professional snow removal company that provides high-quality services to its customers. Our experienced team of snow removal specialists is dedicated to ensuring that our clients receive prompt, efficient and effective service. We use state-of-the-art equipment and the latest techniques to provide fast and reliable snow removal services.</p>
               </div>
             </li>
-            <li className="faq">
+            <li className={faqOpenSection === "two" ? "active faq" : "faq"} onClick={() => openBox("two")}>
               <div className="question">
                 <h3>How can I join your team?</h3>
                 <i className="bi bi-chevron-down"></i>
@@ -140,7 +147,7 @@ export const Homepage = () => {
                 <p>Zoobo is a professional snow removal company that provides high-quality services to its customers. Our experienced team of snow removal specialists is dedicated to ensuring that our clients receive prompt, efficient and effective service. We use state-of-the-art equipment and the latest techniques to provide fast and reliable snow removal services.</p>
               </div>
             </li>
-            <li className="faq">
+            <li className={faqOpenSection === "three" ? "active faq" : "faq"} onClick={() => openBox("three")}>
               <div className="question">
                 <h3>How is Civi different from other places to post jobs?</h3>
                 <i className="bi bi-chevron-down"></i>
@@ -149,7 +156,7 @@ export const Homepage = () => {
                 <p>Zoobo is a professional snow removal company that provides high-quality services to its customers. Our experienced team of snow removal specialists is dedicated to ensuring that our clients receive prompt, efficient and effective service. We use state-of-the-art equipment and the latest techniques to provide fast and reliable snow removal services.</p>
               </div>
             </li>
-            <li className="faq">
+            <li className={faqOpenSection === "four" ? "active faq" : "faq"} onClick={() => openBox("four")}>
               <div className="question">
                 <h3>What types of candidates can I find on Civi?</h3>
                 <i className="bi bi-chevron-down"></i>

@@ -257,7 +257,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 80px 0;
+  padding: 150px 0;
 }
 
 .benefits-wrapper > div > ul {
@@ -265,7 +265,7 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   padding: 0 60px;
   gap: 30px;
-  margin-top: 60px;
+  margin-top: 80px;
   list-style-type: none;
 }
 
@@ -278,7 +278,6 @@
   justify-content: center;
   cursor: pointer;
   transition: .3s;
-  
   border-radius: 4px;
 }
 
@@ -320,7 +319,7 @@
 .faq-list-container-main-page {
   display: flex;
   flex-direction: column;
-  margin: 60px 0 30px 0;
+  margin: 30px 0 30px 0;
   list-style-type: none;
 }
 
@@ -348,12 +347,13 @@
 .question > i {
   color: var(--primary);
   font-size: 1.2rem;
+  transition: .3s;
 }
 
 .answer {
  max-height: 0; 
  overflow: hidden;
- transition: max-height 1.4s ease;
+ transition: max-height .6s ease;
 }
 
 .answer p {
@@ -364,11 +364,12 @@
 
 .faq.active .answer{
   max-height: 300px;
-  animation: fade 1s ease-in-out;
+  animation: fade .6s ease-in-out;
 }
 
-.faq.active svg{
+.faq.active > .question > i{
   transform: rotate(180deg);
+  transition: .3s;
 }
 
 @keyframes fade{
