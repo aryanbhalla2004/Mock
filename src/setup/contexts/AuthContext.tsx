@@ -1,7 +1,9 @@
 import React, {createContext, useEffect, useState} from 'react';
-import { Auth } from "aws-amplify";
+import { API, Auth } from "aws-amplify";
 // import { useDispatch } from 'react-redux';
 import { CognitoUser } from "@aws-amplify/auth";
+import { Employee } from '../../API';
+import { getEmployee } from '../../graphql/queries';
 // import { login as rLogin} from '../../setup/auth/userSlice';
 // import { logout as rLogout } from '../../setup/auth/userSlice';
 const AccountContext = createContext<any>(null);
@@ -27,6 +29,7 @@ interface userIdentity {
 
 const AccountProvider = ({children}: any) => {
   const [user, setUser] = useState<any>(null);
+  const [employeeProfile, setEmployeeProfile] = useState<Employee | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isSignInComplete, setIsSignUpInComplete] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
@@ -35,6 +38,15 @@ const AccountProvider = ({children}: any) => {
   useEffect(() => {
     getSession();
   }, []);
+
+  const getEmployeeProfile = async () => {
+    try {
+      const data = await API.graphql({query: getEmployee, variables: { id: ""}, authMode: "AMAZON_COGNITO_USER_POOLS"});
+      console.log(data);
+    } catch (e) {
+      return e
+    }
+  }
 
   const getSession = async () => {
     try {
@@ -165,7 +177,7 @@ const AccountProvider = ({children}: any) => {
   }
 
   return (
-    <AccountContext.Provider value={{isSignInComplete, setIsSignUpInComplete, createNewPassword, setIsLogoutEnabled, isLogoutEnabled, getUser, isLoading, isAuthenticated, getSession, login, forgotPassword, verifyMFACode, register, completeUserPassword, sendMFACode, logout, fetchDevices, setIsAuthenticated}}>
+    <AccountContext.Provider value={{getEmployeeProfile, isSignInComplete, setIsSignUpInComplete, createNewPassword, setIsLogoutEnabled, isLogoutEnabled, getUser, isLoading, isAuthenticated, getSession, login, forgotPassword, verifyMFACode, register, completeUserPassword, sendMFACode, logout, fetchDevices, setIsAuthenticated}}>
       {children}
     </AccountContext.Provider>
   )

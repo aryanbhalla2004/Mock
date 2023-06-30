@@ -27,7 +27,7 @@ export const Homepage = () => {
         <div className='overlay-cover-banner'>
           <div className='content-sizing slide-show-content'>
             <h1>Get Started with <span className='primary-text'>Zoobo</span> <br/>and Grow with Us in Canada.</h1>
-            <p>Our bright and airy offices serve to create an open environment where collaboration is the default, and ideas are freely exchanged to create a culture of inclusivity and innovation.</p>
+            <p>We are thrilled to offer exciting opportunities in the snow cleaning industry. Join our team and be part of a dynamic workforce dedicated to providing exceptional service, fostering teamwork, and embracing growth.</p>
             <PrimaryButton name="Explore Zoobo"/>
           </div>
         </div>
@@ -38,8 +38,14 @@ export const Homepage = () => {
           <span  className='primary-text'>Working at Zoobo</span>
           <h1>Be part of our crew the next big thing with Zoobo</h1>
           <div className='about-content-data'>
-            <p>Founded in 2012, SkipTheDishes is headquartered in the Heart of Canada, Winnipeg, Manitoba – with additional offices in Toronto, Calgary and Saskatoon. Now a division of Just Eat Takeaway.com, our headquarters are the home to over 3900 staff supporting the company across all pillars from customer service and account management to technology and senior leadership. </p>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus quae nulla consequatur, blanditiis fuga commodi deleniti minima eos ducimus dolore nobis eum sed illum temporibus. Minus at perspiciatis asperiores tenetur?</p>
+            <p>As a snow remover, your role is crucial in ensuring safe and accessible environments
+              during the winter season. You will be responsible for efficiently clearing snow from
+              driveways, walkways, and other designated areas, using various tools and equipment.
+              Attention to detail, reliability, and the ability to work in cold weather conditions are
+              essential to deliver high-quality service and help customers navigate through the winter
+              months with peace of mind. 
+            </p>
+            <p>You can also expect varied workloads as you may get a variety of customers with different residential areas, ranging from small sidewalks to large driveways. We expect that the schedule is flexible as snowfall is unpredictable. Physical demand requires you to have physical strength and endurance while operating machines and other machinery.</p>
           </div>
         </div>
       </section>
@@ -100,22 +106,22 @@ export const Homepage = () => {
               <li>
                 <i className="bi bi-clock-history"></i>
                 <h3>Flexible Work</h3>
-                <p>Premium medical, dental, and vision insurance plans, including fertility reimbursement. Monthly gym and wellness reimbursement.</p>
+                <p>Due to weather being unpredictable we ask that you have a flexible schedule so that customers can receive their service.</p>
               </li>
               <li>
-                <i className="bi bi-headset"></i>
-                <h3>Live Support</h3>
-                <p>Premium medical, dental, and vision insurance plans, including fertility reimbursement. Monthly gym and wellness reimbursement.</p> 
+                <i className="bi bi-list-check"></i>
+                <h3>Job variety</h3>
+                <p>this company serve a large number of clients from different residential area, and you will have more exposure and provide employees with a vast amount of job sites.</p> 
               </li>
               <li>
                 <i className="bi bi-wallet2"></i>
                 <h3>Any-Time Payment</h3>
-                <p>Premium medical, dental, and vision insurance plans, including fertility reimbursement. Monthly gym and wellness reimbursement.</p>   
+                <p>Anytime pay as soon as you finish the job you will receive the money that you have earned after 24 hours and before 48 hours.</p>   
               </li>
               <li>
                 <i className="bi bi-shield-plus"></i>
                 <h3>Standby Payment</h3>
-                <p>Premium medical, dental, and vision insurance plans, including fertility reimbursement. Monthly gym and wellness reimbursement.</p>
+                <p>Even if you can’t find work due to a weather-related incident you will receive a small sum.</p>
               </li>
             </ul>
           </div>
@@ -131,38 +137,38 @@ export const Homepage = () => {
           <ul className='faq-list-container-main-page'>
             <li className={faqOpenSection === "one" ? "active faq" : "faq"} onClick={() => openBox("one")}>
               <div className="question">
-                <h3>How and when was Civi started?</h3>
+                <h3>What qualifications or experience do I need to work?</h3>
                 <i className="bi bi-chevron-down"></i>
               </div> 
               <div className="answer">
-                <p>Zoobo is a professional snow removal company that provides high-quality services to its customers. Our experienced team of snow removal specialists is dedicated to ensuring that our clients receive prompt, efficient and effective service. We use state-of-the-art equipment and the latest techniques to provide fast and reliable snow removal services.</p>
+                <p>It is recommended that you have a driver’s license so that it is easier to get from place to place but the license is not required for the job.</p>
               </div>
             </li>
             <li className={faqOpenSection === "two" ? "active faq" : "faq"} onClick={() => openBox("two")}>
               <div className="question">
-                <h3>How can I join your team?</h3>
+                <h3>Will the company provide the necessary equipment and gear?</h3>
                 <i className="bi bi-chevron-down"></i>
               </div> 
               <div className="answer">
-                <p>Zoobo is a professional snow removal company that provides high-quality services to its customers. Our experienced team of snow removal specialists is dedicated to ensuring that our clients receive prompt, efficient and effective service. We use state-of-the-art equipment and the latest techniques to provide fast and reliable snow removal services.</p>
+                <p>The company expects employees to bring their own equipment and gear or is needed they can borrow the equipment that can be provided.</p>
               </div>
             </li>
             <li className={faqOpenSection === "three" ? "active faq" : "faq"} onClick={() => openBox("three")}>
               <div className="question">
-                <h3>How is Civi different from other places to post jobs?</h3>
+                <h3>What is the company&#39;s approach to teamwork and collaboration among snow cleaning employees?</h3>
                 <i className="bi bi-chevron-down"></i>
               </div> 
               <div className="answer">
-                <p>Zoobo is a professional snow removal company that provides high-quality services to its customers. Our experienced team of snow removal specialists is dedicated to ensuring that our clients receive prompt, efficient and effective service. We use state-of-the-art equipment and the latest techniques to provide fast and reliable snow removal services.</p>
+                <p>Effective teamwork and collaboration are vital in the snow cleaning business to ensure efficient operations and timely completion of tasks. We do not limit our employees to just ne, if need be they can ask a friend to help them and they can do the job together.</p>
               </div>
             </li>
             <li className={faqOpenSection === "four" ? "active faq" : "faq"} onClick={() => openBox("four")}>
               <div className="question">
-                <h3>What types of candidates can I find on Civi?</h3>
+                <h3>How does the company handle work assignments for snow cleaning employees?</h3>
                 <i className="bi bi-chevron-down"></i>
               </div> 
               <div className="answer">
-                <p>Zoobo is a professional snow removal company that provides high-quality services to its customers. Our experienced team of snow removal specialists is dedicated to ensuring that our clients receive prompt, efficient and effective service. We use state-of-the-art equipment and the latest techniques to provide fast and reliable snow removal services.</p>
+                <p>we have a well-structured system for handling work assignments for snow- cleaning employees. When it comes to allocating tasks, you will have an app downloaded which will show you all the potential houses that you could work with.</p>
               </div>
             </li>
           </ul>

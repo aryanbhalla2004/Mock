@@ -1,0 +1,23 @@
+.search-container-select-house { 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-radius: 4px;
+  background-color: var(--primaryTransparent);
+}
+
+.flex-distance-filter-container {
+  display: flex;
+  gap: 10px;
+}
+
+.search-container {
+  max-width: 400px;
+  width: 100%;
+}
+
+.search-container > div {
+  margin-bottom: 0;
+  width: 100%;
+}

@@ -17,7 +17,11 @@ export const Footer = (props:prop) => {
         <div className='content-sizing footer-main-wrapper'>
           <div className='single-footer-colum about-container-footer'>
             <h3>About Us</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam mauris risus, lobortis a commodo at, varius sit amet ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam mauris risus, lobortis a commodo at, varius sit amet ipsum.</p>
+            <p>Join our snow cleaning company and become part of a dedicated team committed to
+              excellence. We offer employment opportunities in the snow cleaning industry, where
+              teamwork is valued. With a supportive work environment, our company creates a
+              fulfilling and dynamic workplace for employees.
+            </p>
             <ul className='list-links-footer'>
               <li><Link to="/"><i className="bi bi-telephone"></i> (431)-373-3690</Link></li>
               <li><Link to="/"><i className="bi bi-envelope"></i> info@zoobo.ca</Link></li>

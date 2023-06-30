@@ -114,3 +114,13 @@
   background-color: var(--primaryHover);
 }
 
+.content-dashboard-data {
+  display: flex;
+  justify-content: center;
+}
+
+.single-pages-content-sizing-limit-width {
+  max-width: 1700px;
+  width: 100%;
+  padding: 30px;
+}
