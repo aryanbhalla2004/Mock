@@ -23,11 +23,11 @@ import { TermOfServices } from "./pages/frontend/term-of-services/TermOfServices
 import { HelpCenter } from "./pages/frontend/help-center/HelpCenter";
 const App = () => {
   const {isSignInComplete, isLogoutEnabled, getUser, isAuthenticated, isLoading, logout, getSession, setIsSignUpInComplete} = useContext(AccountContext);
-  const [contentLoader, setContentLoader] = useState(true);
+  // const [contentLoader, setContentLoader] = useState(true);
   
   useEffect(() => {
     console.log(isLoading + " Is Loading State");
-    console.log(contentLoader + " content Loader state");
+    //console.log(contentLoader + " content Loader state");
     if(isAuthenticated) {
       const data = getUser();
       if(data !== null) {
@@ -39,14 +39,14 @@ const App = () => {
     }
   }, [isAuthenticated]);
 
-  useEffect(() => {
-    window.addEventListener('load', () => {
-      setContentLoader(false);
-    });
-  }, []);
+  // useEffect(() => {
+  //   window.addEventListener('load', () => {
+  //     setContentLoader(false);
+  //   });
+  // }, []);
   
   return (
-    !contentLoader && !isLoading ? <div className="slow-animate-pop-loading">
+   !isLoading ? <div className="slow-animate-pop-loading">
       <Logout/>
       <ModualPop show={isSignInComplete} child={<SetupWizzard />}/>
       <Routes>
