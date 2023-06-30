@@ -1,0 +1,7 @@
+.agreement-style {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  line-height: 25px;
+  text-align: left !important;
+}

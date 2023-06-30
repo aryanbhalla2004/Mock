@@ -3,6 +3,7 @@ import SignatureCanvas from 'react-signature-canvas';
 import { PrimaryButton, GhostButton} from '../../../../../common/components/button/Button';
 import { IEmployeeSignUpForm } from '../../../../../common/interfaces/CommonInterfaces';
 import { print } from '../../../../../common/util/html2PDF';
+import { EmployeementAgreementPDF } from './EmployeementAgreement';
 interface prop {
   formData: any,
   signatureData: any,
@@ -117,18 +118,6 @@ export const Agreement = (props: prop) => {
             </div>
             }
           </li>
-          <li>
-            <div className='agreement-info-wraper-inside'>
-              <h2>Term and Privacy Policy</h2>
-              <p>By clicking the sign button, you acknowledge that you have read and agree to our Terms and Conditions and Privacy Policy, which outline how we collect, use, and protect your personal information.</p>
-            </div>
-            {props.signatureData.twoFile === "" && <button onClick={e => setViewAgreement("TERMS")} type='button' className='btn-general ghost-button'><i className="bi bi-pencil-square"></i> Sign Agreement</button>}
-            {props.signatureData.twoFile !== "" && <div className='signed-colm-container'>
-            <button onClick={e => download("twoFile")} type='button' className='btn-general dark-button'><i className="bi bi-file-earmark-arrow-down"></i> Download a Copy</button>
-            <button onClick={e => setViewAgreement("TERMS")} type='button' className='btn-general primary-button'><i className="bi bi-check-circle"></i> View Sign</button>
-            </div>
-            }
-          </li>
         </ul>
         <div className='button-action-setup-wizzard'>
           <GhostButton name="Back" onClick={props.back}/>
@@ -138,25 +127,7 @@ export const Agreement = (props: prop) => {
     </div>
         <div className={viewAgreement !== "" ? "show-agreement aggrement-slide-absolute" : "aggrement-slide-absolute"}>
           <div className={viewAgreement !== "" ? "show-agreement aggrement-data-container-pop" : "aggrement-data-container-pop" } id="printable-aggreement">
-            {viewAgreement === "EMPLOYEE" && <div>
-              <h1>Employeement Aggremment</h1>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores nam ea sequi deleniti pariatur reprehenderit ipsum! Optio, ut mollitia. Ullam perspiciatis similique dolorem deleniti. Repellendus deserunt amet aut non.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores nam ea sequi deleniti pariatur reprehenderit ipsum! Optio, ut mollitia. Ullam perspiciatis similique dolorem deleniti. Repellendus deserunt amet aut non.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores nam ea sequi deleniti pariatur reprehenderit ipsum! Optio, ut mollitia. Ullam perspiciatis similique dolorem deleniti. Repellendus deserunt amet aut non.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores nam ea sequi deleniti pariatur reprehenderit ipsum! Optio, ut mollitia. Ullam perspiciatis similique dolorem deleniti. Repellendus deserunt amet aut non.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores nam ea sequi deleniti pariatur reprehenderit ipsum! Optio, ut mollitia. Ullam perspiciatis similique dolorem deleniti. Repellendus deserunt amet aut non.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores nam ea sequi deleniti pariatur reprehenderit ipsum! Optio, ut mollitia. Ullam perspiciatis similique dolorem deleniti. Repellendus deserunt amet aut non.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores nam ea sequi deleniti pariatur reprehenderit ipsum! Optio, ut mollitia. Ullam perspiciatis similique dolorem deleniti. Repellendus deserunt amet aut non.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores nam ea sequi deleniti pariatur reprehenderit ipsum! Optio, ut mollitia. Ullam perspiciatis similique dolorem deleniti. Repellendus deserunt amet aut non.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores nam ea sequi deleniti pariatur reprehenderit ipsum! Optio, ut mollitia. Ullam perspiciatis similique dolorem deleniti. Repellendus deserunt amet aut non.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores nam ea sequi deleniti pariatur reprehenderit ipsum! Optio, ut mollitia. Ullam perspiciatis similique dolorem deleniti. Repellendus deserunt amet aut non.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores nam ea sequi deleniti pariatur reprehenderit ipsum! Optio, ut mollitia. Ullam perspiciatis similique dolorem deleniti. Repellendus deserunt amet aut non.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores nam ea sequi deleniti pariatur reprehenderit ipsum! Optio, ut mollitia. Ullam perspiciatis similique dolorem deleniti. Repellendus deserunt amet aut non.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores nam ea sequi deleniti pariatur reprehenderit ipsum! Optio, ut mollitia. Ullam perspiciatis similique dolorem deleniti. Repellendus deserunt amet aut non.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores nam ea sequi deleniti pariatur reprehenderit ipsum! Optio, ut mollitia. Ullam perspiciatis similique dolorem deleniti. Repellendus deserunt amet aut non.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores nam ea sequi deleniti pariatur reprehenderit ipsum! Optio, ut mollitia. Ullam perspiciatis similique dolorem deleniti. Repellendus deserunt amet aut non.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores nam ea sequi deleniti pariatur reprehenderit ipsum! Optio, ut mollitia. Ullam perspiciatis similique dolorem deleniti. Repellendus deserunt amet aut non.</p>
-            </div>}
+            {viewAgreement === "EMPLOYEE" && <EmployeementAgreementPDF/>}
 
             {viewAgreement === "EMPLOYEE" && <div className='signature-holder-agrement-container'>
               {!showSign && props.signatureData.oneCode === "" && <div className='sign-box' onClick={e => setShowSign(true)}><i className="bi bi-pen-fill"></i> Sign Here</div>}
@@ -165,35 +136,6 @@ export const Agreement = (props: prop) => {
               <p>{props.formData.lName}, {props.formData.fName} <div>{props.signatureData.oneCode === "" && <><button onClick={saveSiganture}>Save</button><button onClick={clear}>Clear</button></>}{props.signatureData.oneCode !== "" && <button onClick={deleteSignature}>Delete Signature</button>}</div></p>
             </div>}
 
-            {viewAgreement === "TERMS" && <div>
-              <h1>Terms and Condition Aggreement</h1>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores nam ea sequi deleniti pariatur reprehenderit ipsum! Optio, ut mollitia. Ullam perspiciatis similique dolorem deleniti. Repellendus deserunt amet aut non.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores nam ea sequi deleniti pariatur reprehenderit ipsum! Optio, ut mollitia. Ullam perspiciatis similique dolorem deleniti. Repellendus deserunt amet aut non.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores nam ea sequi deleniti pariatur reprehenderit ipsum! Optio, ut mollitia. Ullam perspiciatis similique dolorem deleniti. Repellendus deserunt amet aut non.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores nam ea sequi deleniti pariatur reprehenderit ipsum! Optio, ut mollitia. Ullam perspiciatis similique dolorem deleniti. Repellendus deserunt amet aut non.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores nam ea sequi deleniti pariatur reprehenderit ipsum! Optio, ut mollitia. Ullam perspiciatis similique dolorem deleniti. Repellendus deserunt amet aut non.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores nam ea sequi deleniti pariatur reprehenderit ipsum! Optio, ut mollitia. Ullam perspiciatis similique dolorem deleniti. Repellendus deserunt amet aut non.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores nam ea sequi deleniti pariatur reprehenderit ipsum! Optio, ut mollitia. Ullam perspiciatis similique dolorem deleniti. Repellendus deserunt amet aut non.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores nam ea sequi deleniti pariatur reprehenderit ipsum! Optio, ut mollitia. Ullam perspiciatis similique dolorem deleniti. Repellendus deserunt amet aut non.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores nam ea sequi deleniti pariatur reprehenderit ipsum! Optio, ut mollitia. Ullam perspiciatis similique dolorem deleniti. Repellendus deserunt amet aut non.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores nam ea sequi deleniti pariatur reprehenderit ipsum! Optio, ut mollitia. Ullam perspiciatis similique dolorem deleniti. Repellendus deserunt amet aut non.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores nam ea sequi deleniti pariatur reprehenderit ipsum! Optio, ut mollitia. Ullam perspiciatis similique dolorem deleniti. Repellendus deserunt amet aut non.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores nam ea sequi deleniti pariatur reprehenderit ipsum! Optio, ut mollitia. Ullam perspiciatis similique dolorem deleniti. Repellendus deserunt amet aut non.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores nam ea sequi deleniti pariatur reprehenderit ipsum! Optio, ut mollitia. Ullam perspiciatis similique dolorem deleniti. Repellendus deserunt amet aut non.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores nam ea sequi deleniti pariatur reprehenderit ipsum! Optio, ut mollitia. Ullam perspiciatis similique dolorem deleniti. Repellendus deserunt amet aut non.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores nam ea sequi deleniti pariatur reprehenderit ipsum! Optio, ut mollitia. Ullam perspiciatis similique dolorem deleniti. Repellendus deserunt amet aut non.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores nam ea sequi deleniti pariatur reprehenderit ipsum! Optio, ut mollitia. Ullam perspiciatis similique dolorem deleniti. Repellendus deserunt amet aut non.</p>
-            </div>}
-
-            {viewAgreement === "TERMS" && <div className='signature-holder-agrement-container'>
-              {!showSign && props.signatureData.twoCode === "" && <div className='sign-box' onClick={e => setShowSign(true)}><i className="bi bi-pen-fill"></i> Sign Here</div>}
-              {showSign && props.signatureData.twoCode === "" && <SignatureCanvas ref={props.signatureData.twoRef} penColor='green' canvasProps={{width: 300, height: 100, className: 'sigCanvas'}} />}
-              {props.signatureData.twoCode !== "" && <img src={props.signatureData.twoCode} width="250" height={70}/>}
-              <p>{props.formData.lName}, {props.formData.fName} <div>{props.signatureData.twoCode === "" && <><button onClick={saveSiganture}>Save</button><button onClick={clear}>Clear</button></>}{props.signatureData.twoCode !== "" && <button onClick={deleteSignature}>Delete Signature</button>}</div></p>
-            </div>}
-
-            
-          
             <div className='sign-concent-name'>
               <p><input placeholder="Your Name"/>, I hereby acknowledge that I have read, fully understand, and agree to comply with all the terms, conditions, and obligations outlined in the agreement.</p>
               <div>

@@ -1,0 +1,14 @@
+.hiring-alter-container {
+  background-color: var(--darkColor);
+  color: var(--lightColor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 300;
+  font-size: .9rem;
+  padding: 13px 0;
+}
+
+.hiring-alter-container > p > a {
+  color: var(--primary);
+}

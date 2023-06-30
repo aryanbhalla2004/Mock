@@ -4,7 +4,22 @@
   justify-content: center;
   padding: 60px 0;
 }
-/* 
-.term-wrapper {
 
-} */
+.privacy-wrapper {
+  display: flex;
+  gap: 25px;
+  font-weight: 300;
+  flex-direction: column;
+}
+
+.privacy-wrapper > h1, .privacy-wrapper > h2 { 
+  font-weight: 500;
+}
+
+.privacy-wrapper > ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  line-height: 25px;
+  padding-left: 30px;
+}

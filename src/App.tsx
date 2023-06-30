@@ -48,7 +48,7 @@ const App = () => {
   return (
    !isLoading ? <div className="slow-animate-pop-loading">
       <Logout/>
-      <ModualPop show={isSignInComplete} child={<SetupWizzard />}/>
+      {/* <ModualPop show={isSignInComplete} child={<SetupWizzard />}/> */}
       <Routes>
         <Route path="*" element={<Error404 />}></Route>
 

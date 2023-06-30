@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom'
 import { motion } from "framer-motion";
 import { Footer } from '../../../common/components/footer/Footer';
 import { BackToTop } from '../../../common/components/back-to-top/BackToTop';
+import { HiringAlert } from '../../../common/components/hiring-alert/HiringAlert';
 
 export const Landing = () => {
   const sectionRef = {working: useRef<any>(null), mission: useRef<any>(null), benefits:useRef<any>(null), faq: useRef<any>(null)};
@@ -21,6 +22,7 @@ export const Landing = () => {
   
   return (
     <motion.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
+      <HiringAlert />
       <Header sectionRefs={sectionRef}/>
       <Outlet context={[sectionRef]}/>
       <Footer sectionRefs={sectionRef}/>
