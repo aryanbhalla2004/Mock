@@ -352,6 +352,12 @@ export const getEmployeeProfile = /* GraphQL */ `
         startedAt
         __typename
       }
+      profilePicture {
+        type
+        document
+        __typename
+      }
+      status
       createdAt
       updatedAt
       _version
@@ -379,6 +385,7 @@ export const listEmployeeProfiles = /* GraphQL */ `
         lastName
         phoneNumber
         dob
+        status
         createdAt
         updatedAt
         _version
@@ -412,6 +419,7 @@ export const syncEmployeeProfiles = /* GraphQL */ `
         lastName
         phoneNumber
         dob
+        status
         createdAt
         updatedAt
         _version
@@ -477,6 +485,7 @@ export const getEmployee = /* GraphQL */ `
         lastName
         phoneNumber
         dob
+        status
         createdAt
         updatedAt
         _version
@@ -485,6 +494,8 @@ export const getEmployee = /* GraphQL */ `
         owner
         __typename
       }
+      identityId
+      status
       createdAt
       updatedAt
       _version
@@ -507,6 +518,8 @@ export const listEmployees = /* GraphQL */ `
         cognitoUser
         workingStatus
         systemRating
+        identityId
+        status
         createdAt
         updatedAt
         _version
@@ -539,6 +552,8 @@ export const syncEmployees = /* GraphQL */ `
         cognitoUser
         workingStatus
         systemRating
+        identityId
+        status
         createdAt
         updatedAt
         _version

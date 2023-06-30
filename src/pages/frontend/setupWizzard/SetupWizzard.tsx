@@ -6,7 +6,7 @@ import { Status } from './components/Status/Status';
 import { FileUpload } from './components/file-upload/FileUpload';
 import { PreferedPayment } from './components/prefered-payment/PreferedPayment';
 import { Agreement } from './components/agreement/Agreement';
-import { AddressInput, CreateEmployeeInput, CreateEmployeeProfileInput, DocumentInput, Employee, PaymentInfoInput } from '../../../API';
+import { AddressInput, CreateEmployeeInput, CreateEmployeeProfileInput, DocumentInput, Employee, EmployeeStatus, PaymentInfoInput } from '../../../API';
 import { AddressForm } from './components/addressInfo/AddressForm';
 import { AccountContext } from '../../../setup/contexts/AuthContext';
 import { DatabaseContext } from '../../../setup/contexts/dbContext';
@@ -66,7 +66,6 @@ export const SetupWizzard = () => {
     try {
       const userInfo = await getUser();
       let mainDoc, profileDoc;
-
       if(formData.proof.mainDocument != null && formData.proof.addressDocument != null) {
         const mainExtension = getFileExtension(formData.proof.mainDocument);
         const addressExtension = getFileExtension(formData.proof.addressDocument);
@@ -100,6 +99,8 @@ export const SetupWizzard = () => {
         cognitoUser: userInfo.username,
         address: addressEmployee,
         workingStatus: formData.WorkingStatus,
+        identityId: "",
+        status: EmployeeStatus.WAITING,
         documents: [mainDocument, profileDocument],
         // agreement?: Array< DocumentInput > | null,
         systemRating: 5,
@@ -109,6 +110,7 @@ export const SetupWizzard = () => {
 
       const employeeProfile:CreateEmployeeProfileInput = {
         id: userInfo.username,
+        status: EmployeeStatus.WAITING,
         firstName: userInfo.attributes['given_name'],
         lastName: userInfo.attributes['family_name'],
         phoneNumber: userInfo.attributes['custom:phoneNumber'],

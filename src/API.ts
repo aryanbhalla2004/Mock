@@ -318,18 +318,38 @@ export type CreateEmployeeProfileInput = {
   lastName?: string | null,
   phoneNumber?: string | null,
   dob?: string | null,
+  profilePicture?: DocumentInput | null,
+  status: EmployeeStatus,
   _version?: number | null,
 };
+
+export type DocumentInput = {
+  type?: string | null,
+  document?: string | null,
+};
+
+export enum EmployeeStatus {
+  VERFIED = "VERFIED",
+  WAITING = "WAITING",
+  SUSPENDED = "SUSPENDED",
+}
+
 
 export type ModelEmployeeProfileConditionInput = {
   firstName?: ModelStringInput | null,
   lastName?: ModelStringInput | null,
   phoneNumber?: ModelStringInput | null,
   dob?: ModelStringInput | null,
+  status?: ModelEmployeeStatusInput | null,
   and?: Array< ModelEmployeeProfileConditionInput | null > | null,
   or?: Array< ModelEmployeeProfileConditionInput | null > | null,
   not?: ModelEmployeeProfileConditionInput | null,
   _deleted?: ModelBooleanInput | null,
+};
+
+export type ModelEmployeeStatusInput = {
+  eq?: EmployeeStatus | null,
+  ne?: EmployeeStatus | null,
 };
 
 export type EmployeeProfile = {
@@ -340,6 +360,8 @@ export type EmployeeProfile = {
   phoneNumber?: string | null,
   dob?: string | null,
   Ratings?: ModelRatingConnection | null,
+  profilePicture?: Document | null,
+  status: EmployeeStatus,
   createdAt: string,
   updatedAt: string,
   _version: number,
@@ -355,12 +377,20 @@ export type ModelRatingConnection = {
   startedAt?: number | null,
 };
 
+export type Document = {
+  __typename: "Document",
+  type?: string | null,
+  document?: string | null,
+};
+
 export type UpdateEmployeeProfileInput = {
   id: string,
   firstName?: string | null,
   lastName?: string | null,
   phoneNumber?: string | null,
   dob?: string | null,
+  profilePicture?: DocumentInput | null,
+  status?: EmployeeStatus | null,
   _version?: number | null,
 };
 
@@ -377,14 +407,11 @@ export type CreateEmployeeInput = {
   documents?: Array< DocumentInput > | null,
   agreement?: Array< DocumentInput > | null,
   systemRating?: number | null,
-  payment?: PaymentInfoInput | null,
+  payment: PaymentInfoInput,
+  identityId: string,
+  status: EmployeeStatus,
   _version?: number | null,
   employeeEmployeeProfileId?: string | null,
-};
-
-export type DocumentInput = {
-  type?: string | null,
-  document?: string | null,
 };
 
 export type PaymentInfoInput = {
@@ -400,6 +427,8 @@ export type ModelEmployeeConditionInput = {
   cognitoUser?: ModelIDInput | null,
   workingStatus?: ModelStringInput | null,
   systemRating?: ModelFloatInput | null,
+  identityId?: ModelStringInput | null,
+  status?: ModelEmployeeStatusInput | null,
   and?: Array< ModelEmployeeConditionInput | null > | null,
   or?: Array< ModelEmployeeConditionInput | null > | null,
   not?: ModelEmployeeConditionInput | null,
@@ -416,22 +445,18 @@ export type Employee = {
   documents?:  Array<Document > | null,
   agreement?:  Array<Document > | null,
   systemRating?: number | null,
-  payment?: PaymentInfo | null,
+  payment: PaymentInfo,
   Houses?: ModelHouseConnection | null,
   Workorders?: ModelWorkorderConnection | null,
   EmployeeProfile?: EmployeeProfile | null,
+  identityId: string,
+  status: EmployeeStatus,
   createdAt: string,
   updatedAt: string,
   _version: number,
   _deleted?: boolean | null,
   _lastChangedAt: number,
   employeeEmployeeProfileId?: string | null,
-};
-
-export type Document = {
-  __typename: "Document",
-  type?: string | null,
-  document?: string | null,
 };
 
 export type PaymentInfo = {
@@ -460,6 +485,8 @@ export type UpdateEmployeeInput = {
   agreement?: Array< DocumentInput > | null,
   systemRating?: number | null,
   payment?: PaymentInfoInput | null,
+  identityId?: string | null,
+  status?: EmployeeStatus | null,
   _version?: number | null,
   employeeEmployeeProfileId?: string | null,
 };
@@ -529,6 +556,7 @@ export type ModelEmployeeProfileFilterInput = {
   lastName?: ModelStringInput | null,
   phoneNumber?: ModelStringInput | null,
   dob?: ModelStringInput | null,
+  status?: ModelEmployeeStatusInput | null,
   and?: Array< ModelEmployeeProfileFilterInput | null > | null,
   or?: Array< ModelEmployeeProfileFilterInput | null > | null,
   not?: ModelEmployeeProfileFilterInput | null,
@@ -547,6 +575,8 @@ export type ModelEmployeeFilterInput = {
   cognitoUser?: ModelIDInput | null,
   workingStatus?: ModelStringInput | null,
   systemRating?: ModelFloatInput | null,
+  identityId?: ModelStringInput | null,
+  status?: ModelEmployeeStatusInput | null,
   and?: Array< ModelEmployeeFilterInput | null > | null,
   or?: Array< ModelEmployeeFilterInput | null > | null,
   not?: ModelEmployeeFilterInput | null,
@@ -667,6 +697,7 @@ export type ModelSubscriptionEmployeeProfileFilterInput = {
   lastName?: ModelSubscriptionStringInput | null,
   phoneNumber?: ModelSubscriptionStringInput | null,
   dob?: ModelSubscriptionStringInput | null,
+  status?: ModelSubscriptionStringInput | null,
   and?: Array< ModelSubscriptionEmployeeProfileFilterInput | null > | null,
   or?: Array< ModelSubscriptionEmployeeProfileFilterInput | null > | null,
   _deleted?: ModelBooleanInput | null,
@@ -676,6 +707,8 @@ export type ModelSubscriptionEmployeeFilterInput = {
   id?: ModelSubscriptionIDInput | null,
   workingStatus?: ModelSubscriptionStringInput | null,
   systemRating?: ModelSubscriptionFloatInput | null,
+  identityId?: ModelSubscriptionStringInput | null,
+  status?: ModelSubscriptionStringInput | null,
   and?: Array< ModelSubscriptionEmployeeFilterInput | null > | null,
   or?: Array< ModelSubscriptionEmployeeFilterInput | null > | null,
   _deleted?: ModelBooleanInput | null,
@@ -1050,6 +1083,12 @@ export type CreateEmployeeProfileMutation = {
       nextToken?: string | null,
       startedAt?: number | null,
     } | null,
+    profilePicture?:  {
+      __typename: "Document",
+      type?: string | null,
+      document?: string | null,
+    } | null,
+    status: EmployeeStatus,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -1077,6 +1116,12 @@ export type UpdateEmployeeProfileMutation = {
       nextToken?: string | null,
       startedAt?: number | null,
     } | null,
+    profilePicture?:  {
+      __typename: "Document",
+      type?: string | null,
+      document?: string | null,
+    } | null,
+    status: EmployeeStatus,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -1104,6 +1149,12 @@ export type DeleteEmployeeProfileMutation = {
       nextToken?: string | null,
       startedAt?: number | null,
     } | null,
+    profilePicture?:  {
+      __typename: "Document",
+      type?: string | null,
+      document?: string | null,
+    } | null,
+    status: EmployeeStatus,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -1144,7 +1195,7 @@ export type CreateEmployeeMutation = {
       document?: string | null,
     } > | null,
     systemRating?: number | null,
-    payment?:  {
+    payment:  {
       __typename: "PaymentInfo",
       type: string,
       email?: string | null,
@@ -1152,7 +1203,7 @@ export type CreateEmployeeMutation = {
       fin?: string | null,
       branchNum?: string | null,
       accountName?: string | null,
-    } | null,
+    },
     Houses?:  {
       __typename: "ModelHouseConnection",
       nextToken?: string | null,
@@ -1170,6 +1221,7 @@ export type CreateEmployeeMutation = {
       lastName?: string | null,
       phoneNumber?: string | null,
       dob?: string | null,
+      status: EmployeeStatus,
       createdAt: string,
       updatedAt: string,
       _version: number,
@@ -1177,6 +1229,8 @@ export type CreateEmployeeMutation = {
       _lastChangedAt: number,
       owner?: string | null,
     } | null,
+    identityId: string,
+    status: EmployeeStatus,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -1217,7 +1271,7 @@ export type UpdateEmployeeMutation = {
       document?: string | null,
     } > | null,
     systemRating?: number | null,
-    payment?:  {
+    payment:  {
       __typename: "PaymentInfo",
       type: string,
       email?: string | null,
@@ -1225,7 +1279,7 @@ export type UpdateEmployeeMutation = {
       fin?: string | null,
       branchNum?: string | null,
       accountName?: string | null,
-    } | null,
+    },
     Houses?:  {
       __typename: "ModelHouseConnection",
       nextToken?: string | null,
@@ -1243,6 +1297,7 @@ export type UpdateEmployeeMutation = {
       lastName?: string | null,
       phoneNumber?: string | null,
       dob?: string | null,
+      status: EmployeeStatus,
       createdAt: string,
       updatedAt: string,
       _version: number,
@@ -1250,6 +1305,8 @@ export type UpdateEmployeeMutation = {
       _lastChangedAt: number,
       owner?: string | null,
     } | null,
+    identityId: string,
+    status: EmployeeStatus,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -1290,7 +1347,7 @@ export type DeleteEmployeeMutation = {
       document?: string | null,
     } > | null,
     systemRating?: number | null,
-    payment?:  {
+    payment:  {
       __typename: "PaymentInfo",
       type: string,
       email?: string | null,
@@ -1298,7 +1355,7 @@ export type DeleteEmployeeMutation = {
       fin?: string | null,
       branchNum?: string | null,
       accountName?: string | null,
-    } | null,
+    },
     Houses?:  {
       __typename: "ModelHouseConnection",
       nextToken?: string | null,
@@ -1316,6 +1373,7 @@ export type DeleteEmployeeMutation = {
       lastName?: string | null,
       phoneNumber?: string | null,
       dob?: string | null,
+      status: EmployeeStatus,
       createdAt: string,
       updatedAt: string,
       _version: number,
@@ -1323,6 +1381,8 @@ export type DeleteEmployeeMutation = {
       _lastChangedAt: number,
       owner?: string | null,
     } | null,
+    identityId: string,
+    status: EmployeeStatus,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -1686,6 +1746,12 @@ export type GetEmployeeProfileQuery = {
       nextToken?: string | null,
       startedAt?: number | null,
     } | null,
+    profilePicture?:  {
+      __typename: "Document",
+      type?: string | null,
+      document?: string | null,
+    } | null,
+    status: EmployeeStatus,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -1711,6 +1777,7 @@ export type ListEmployeeProfilesQuery = {
       lastName?: string | null,
       phoneNumber?: string | null,
       dob?: string | null,
+      status: EmployeeStatus,
       createdAt: string,
       updatedAt: string,
       _version: number,
@@ -1740,6 +1807,7 @@ export type SyncEmployeeProfilesQuery = {
       lastName?: string | null,
       phoneNumber?: string | null,
       dob?: string | null,
+      status: EmployeeStatus,
       createdAt: string,
       updatedAt: string,
       _version: number,
@@ -1782,7 +1850,7 @@ export type GetEmployeeQuery = {
       document?: string | null,
     } > | null,
     systemRating?: number | null,
-    payment?:  {
+    payment:  {
       __typename: "PaymentInfo",
       type: string,
       email?: string | null,
@@ -1790,7 +1858,7 @@ export type GetEmployeeQuery = {
       fin?: string | null,
       branchNum?: string | null,
       accountName?: string | null,
-    } | null,
+    },
     Houses?:  {
       __typename: "ModelHouseConnection",
       nextToken?: string | null,
@@ -1808,6 +1876,7 @@ export type GetEmployeeQuery = {
       lastName?: string | null,
       phoneNumber?: string | null,
       dob?: string | null,
+      status: EmployeeStatus,
       createdAt: string,
       updatedAt: string,
       _version: number,
@@ -1815,6 +1884,8 @@ export type GetEmployeeQuery = {
       _lastChangedAt: number,
       owner?: string | null,
     } | null,
+    identityId: string,
+    status: EmployeeStatus,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -1839,6 +1910,8 @@ export type ListEmployeesQuery = {
       cognitoUser?: string | null,
       workingStatus?: string | null,
       systemRating?: number | null,
+      identityId: string,
+      status: EmployeeStatus,
       createdAt: string,
       updatedAt: string,
       _version: number,
@@ -1867,6 +1940,8 @@ export type SyncEmployeesQuery = {
       cognitoUser?: string | null,
       workingStatus?: string | null,
       systemRating?: number | null,
+      identityId: string,
+      status: EmployeeStatus,
       createdAt: string,
       updatedAt: string,
       _version: number,
@@ -2248,6 +2323,12 @@ export type OnCreateEmployeeProfileSubscription = {
       nextToken?: string | null,
       startedAt?: number | null,
     } | null,
+    profilePicture?:  {
+      __typename: "Document",
+      type?: string | null,
+      document?: string | null,
+    } | null,
+    status: EmployeeStatus,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -2275,6 +2356,12 @@ export type OnUpdateEmployeeProfileSubscription = {
       nextToken?: string | null,
       startedAt?: number | null,
     } | null,
+    profilePicture?:  {
+      __typename: "Document",
+      type?: string | null,
+      document?: string | null,
+    } | null,
+    status: EmployeeStatus,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -2302,6 +2389,12 @@ export type OnDeleteEmployeeProfileSubscription = {
       nextToken?: string | null,
       startedAt?: number | null,
     } | null,
+    profilePicture?:  {
+      __typename: "Document",
+      type?: string | null,
+      document?: string | null,
+    } | null,
+    status: EmployeeStatus,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -2342,7 +2435,7 @@ export type OnCreateEmployeeSubscription = {
       document?: string | null,
     } > | null,
     systemRating?: number | null,
-    payment?:  {
+    payment:  {
       __typename: "PaymentInfo",
       type: string,
       email?: string | null,
@@ -2350,7 +2443,7 @@ export type OnCreateEmployeeSubscription = {
       fin?: string | null,
       branchNum?: string | null,
       accountName?: string | null,
-    } | null,
+    },
     Houses?:  {
       __typename: "ModelHouseConnection",
       nextToken?: string | null,
@@ -2368,6 +2461,7 @@ export type OnCreateEmployeeSubscription = {
       lastName?: string | null,
       phoneNumber?: string | null,
       dob?: string | null,
+      status: EmployeeStatus,
       createdAt: string,
       updatedAt: string,
       _version: number,
@@ -2375,6 +2469,8 @@ export type OnCreateEmployeeSubscription = {
       _lastChangedAt: number,
       owner?: string | null,
     } | null,
+    identityId: string,
+    status: EmployeeStatus,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -2415,7 +2511,7 @@ export type OnUpdateEmployeeSubscription = {
       document?: string | null,
     } > | null,
     systemRating?: number | null,
-    payment?:  {
+    payment:  {
       __typename: "PaymentInfo",
       type: string,
       email?: string | null,
@@ -2423,7 +2519,7 @@ export type OnUpdateEmployeeSubscription = {
       fin?: string | null,
       branchNum?: string | null,
       accountName?: string | null,
-    } | null,
+    },
     Houses?:  {
       __typename: "ModelHouseConnection",
       nextToken?: string | null,
@@ -2441,6 +2537,7 @@ export type OnUpdateEmployeeSubscription = {
       lastName?: string | null,
       phoneNumber?: string | null,
       dob?: string | null,
+      status: EmployeeStatus,
       createdAt: string,
       updatedAt: string,
       _version: number,
@@ -2448,6 +2545,8 @@ export type OnUpdateEmployeeSubscription = {
       _lastChangedAt: number,
       owner?: string | null,
     } | null,
+    identityId: string,
+    status: EmployeeStatus,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -2488,7 +2587,7 @@ export type OnDeleteEmployeeSubscription = {
       document?: string | null,
     } > | null,
     systemRating?: number | null,
-    payment?:  {
+    payment:  {
       __typename: "PaymentInfo",
       type: string,
       email?: string | null,
@@ -2496,7 +2595,7 @@ export type OnDeleteEmployeeSubscription = {
       fin?: string | null,
       branchNum?: string | null,
       accountName?: string | null,
-    } | null,
+    },
     Houses?:  {
       __typename: "ModelHouseConnection",
       nextToken?: string | null,
@@ -2514,6 +2613,7 @@ export type OnDeleteEmployeeSubscription = {
       lastName?: string | null,
       phoneNumber?: string | null,
       dob?: string | null,
+      status: EmployeeStatus,
       createdAt: string,
       updatedAt: string,
       _version: number,
@@ -2521,6 +2621,8 @@ export type OnDeleteEmployeeSubscription = {
       _lastChangedAt: number,
       owner?: string | null,
     } | null,
+    identityId: string,
+    status: EmployeeStatus,
     createdAt: string,
     updatedAt: string,
     _version: number,

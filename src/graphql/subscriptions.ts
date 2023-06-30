@@ -357,6 +357,12 @@ export const onCreateEmployeeProfile = /* GraphQL */ `
         startedAt
         __typename
       }
+      profilePicture {
+        type
+        document
+        __typename
+      }
+      status
       createdAt
       updatedAt
       _version
@@ -383,6 +389,12 @@ export const onUpdateEmployeeProfile = /* GraphQL */ `
         startedAt
         __typename
       }
+      profilePicture {
+        type
+        document
+        __typename
+      }
+      status
       createdAt
       updatedAt
       _version
@@ -409,6 +421,12 @@ export const onDeleteEmployeeProfile = /* GraphQL */ `
         startedAt
         __typename
       }
+      profilePicture {
+        type
+        document
+        __typename
+      }
+      status
       createdAt
       updatedAt
       _version
@@ -473,6 +491,7 @@ export const onCreateEmployee = /* GraphQL */ `
         lastName
         phoneNumber
         dob
+        status
         createdAt
         updatedAt
         _version
@@ -481,6 +500,8 @@ export const onCreateEmployee = /* GraphQL */ `
         owner
         __typename
       }
+      identityId
+      status
       createdAt
       updatedAt
       _version
@@ -545,6 +566,7 @@ export const onUpdateEmployee = /* GraphQL */ `
         lastName
         phoneNumber
         dob
+        status
         createdAt
         updatedAt
         _version
@@ -553,6 +575,8 @@ export const onUpdateEmployee = /* GraphQL */ `
         owner
         __typename
       }
+      identityId
+      status
       createdAt
       updatedAt
       _version
@@ -617,6 +641,7 @@ export const onDeleteEmployee = /* GraphQL */ `
         lastName
         phoneNumber
         dob
+        status
         createdAt
         updatedAt
         _version
@@ -625,6 +650,8 @@ export const onDeleteEmployee = /* GraphQL */ `
         owner
         __typename
       }
+      identityId
+      status
       createdAt
       updatedAt
       _version
