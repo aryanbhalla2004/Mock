@@ -114,3 +114,28 @@
   background-color: var(--primaryHover);
 }
 
+
+.house-cards{
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+}
+
+.house-cards:hover{
+  border: 1 px solid var(--primary);
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.house-cards-title{
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+.house-card-img{
+  width: 200px;
+  height: 150px;
+}

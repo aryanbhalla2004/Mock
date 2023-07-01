@@ -12,15 +12,16 @@ import { Homepage } from "./pages/frontend/homepage/Homepage";
 import { Logout } from "./pages/auth/logout/Logout";
 import { LoadingMain } from "./common/components/loading-main-page/LoadingMain";
 import { ModualPop } from "./common/components/module-pop/ModualPop";
-import { SetupWizzard } from "./pages/frontend/setupWizzard/SetupWizzard";
+import { SetupWizzard } from "./pages/frontend/setupWizzard/SetupWizzard"; 
 import Test from "./pages/backend/test/Test";
-import SelectHouses from "./pages/backend/selectHouses/selectHouses";
-import MyHouse from "./pages/backend/myHouse/myHouse";
-import MyWork from "./pages/backend/myWork/myWork";
+import SelectHouses from "./pages/backend/selectHouses/SelectHouses";
+import MyHouse from "./pages/backend/myHouse/MyHouse";
+import MyWork from "./pages/backend/myWork/MyWork";
 import { Error404 } from "./pages/frontend/404Error/Error404";
 import { PrivacyPolicy } from "./pages/frontend/privacy-policy/PrivacyPolicy";
 import { TermOfServices } from "./pages/frontend/term-of-services/TermOfServices";
 import { HelpCenter } from "./pages/frontend/help-center/HelpCenter";
+import Setting from "./pages/backend/setting/Setting";
 const App = () => {
   const {isSignInComplete, isLogoutEnabled, getUser, isAuthenticated, isLoading, logout, getSession, setIsSignUpInComplete} = useContext(AccountContext);
   // const [contentLoader, setContentLoader] = useState(true);
@@ -66,6 +67,7 @@ const App = () => {
           <Route path="selectHouses" element={<SelectHouses/>}/>
           <Route path="myHouse" element={<MyHouse/>}/>
           <Route path="myWork" element={<MyWork/>}/>
+          <Route path="setting" element={<Setting/>}/>
         </Route>
 
         <Route path="/" element={<Landing/>}>

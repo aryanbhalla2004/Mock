@@ -33,7 +33,7 @@ const Dashboard = () => {
           <nav className='dashboard-nav'>
             <span>General</span>
             <ul>
-              <li><Link to="/dashboard"><i className="bi bi-columns-gap"></i> Setting</Link></li>
+              <li><Link to="/dashboard/setting"><i className="bi bi-columns-gap"></i> Setting</Link></li>
               <li><Link to="/dashboard"><i className="bi bi-speedometer2"></i> Help</Link></li>
             </ul>
           </nav>

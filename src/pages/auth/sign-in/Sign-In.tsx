@@ -77,8 +77,14 @@ const SignIn = () => {
     setFormSubmitted(false);
   }
 
-  const loginquick = async () => {
-    const response = await login("aryanbhalla66@gmail.com", `Zoobo123`);
+  const loginquick = async (num:any) => {
+    let response;
+    if(num === 1){
+     response = await login("aryanbhalla66@gmail.com", `Zoobo123`);
+    } else {
+       response = await login("aryansaini1005@gmail.com", `Zoobo123`);
+    }
+
     if(response.challengeName === "NEW_PASSWORD_REQUIRED") {
       const { requiredAttributes } = response.challengeParam;
       setRequiredAttr(requiredAttributes);
@@ -117,7 +123,8 @@ const SignIn = () => {
         </div>
       </form>
 
-      <button onClick={loginquick}>LOG IN QUICK</button>
+      <button onClick={() => loginquick(1)}>LOG IN QUICK</button>
+      <button onClick={() => loginquick(2)}>LOG IN QUICK aryansaini1005</button>
     </>
   )
 }

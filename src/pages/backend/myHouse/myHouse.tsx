@@ -40,6 +40,15 @@ const MyHouse = () => {
 
     ))}
   
+      <div className="house-cards">
+        <img src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?cs=srgb&dl=pexels-binyamin-mellish-106399.jpg&fm=jpg" alt="" className="house-card-img" />
+        <div className="house-cards-bottom">
+          <p className="house-cards-title">12 West mill</p>
+          <p className="house-cards-subtitle">House ID</p>
+          <button className="house-cards-btn">Select This House</button>
+        </div>
+      
+      </div>
   </>)
 }
 
