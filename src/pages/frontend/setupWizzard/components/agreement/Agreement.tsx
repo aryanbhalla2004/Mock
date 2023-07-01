@@ -126,15 +126,16 @@ export const Agreement = (props: prop) => {
       </div>
     </div>
         <div className={viewAgreement !== "" ? "show-agreement aggrement-slide-absolute" : "aggrement-slide-absolute"}>
+          <button onClick={closePortal}><i className="bi bi-x-lg"></i></button>
           <div className={viewAgreement !== "" ? "show-agreement aggrement-data-container-pop" : "aggrement-data-container-pop" } id="printable-aggreement">
-            {viewAgreement === "EMPLOYEE" && <EmployeementAgreementPDF/>}
+            <EmployeementAgreementPDF/>
 
-            {viewAgreement === "EMPLOYEE" && <div className='signature-holder-agrement-container'>
+            <div className='signature-holder-agrement-container'>
               {!showSign && props.signatureData.oneCode === "" && <div className='sign-box' onClick={e => setShowSign(true)}><i className="bi bi-pen-fill"></i> Sign Here</div>}
               {showSign && props.signatureData.oneCode === "" && <SignatureCanvas ref={props.signatureData.oneRef} penColor='green' canvasProps={{width: 300, height: 100, className: 'sigCanvas'}} />}
               {props.signatureData.oneCode !== "" && <img src={props.signatureData.oneCode} width="250" height={70}/>}
               <p>{props.formData.lName}, {props.formData.fName} <div>{props.signatureData.oneCode === "" && <><button onClick={saveSiganture}>Save</button><button onClick={clear}>Clear</button></>}{props.signatureData.oneCode !== "" && <button onClick={deleteSignature}>Delete Signature</button>}</div></p>
-            </div>}
+            </div>
 
             <div className='sign-concent-name'>
               <p><input placeholder="Your Name"/>, I hereby acknowledge that I have read, fully understand, and agree to comply with all the terms, conditions, and obligations outlined in the agreement.</p>

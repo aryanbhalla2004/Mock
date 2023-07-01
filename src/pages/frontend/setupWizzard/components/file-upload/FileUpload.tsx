@@ -2,6 +2,7 @@ import React, { FormEvent, useState } from 'react'
 import { TextInput } from '../../../../../common/components/input/Input'
 import { IEmployeeSignUpForm } from '../../../../../common/interfaces/CommonInterfaces'
 import { GhostButton, PrimaryButton } from '../../../../../common/components/button/Button'
+// import { createScanner } from 'clamav.js';
 
 interface prop {
   formData: any,
@@ -21,6 +22,18 @@ export const FileUpload = (props: prop) => {
 
   const fileUploadToState = (e: any) => {
     const file = e.target.files[0];
+     // Initialize ClamAV scanner
+    // const clamscan = createScanner(3310, "localhost");
+     
+    // clamscan.scan(file)
+    //   .then((result: ClamScanResults) => {
+    //     console.log('Scan result:', result);
+       
+    //   })
+    //   .catch((error: Error) => {
+    //     console.error('Error scanning file:', error);
+    //   });
+
     console.log(e.target.name);
     props.setFormData((prev: any) => {
       return {...prev, proof: {...prev.proof, [e.target.name]: file}}

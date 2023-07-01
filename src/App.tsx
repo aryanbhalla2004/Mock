@@ -22,22 +22,25 @@ import { PrivacyPolicy } from "./pages/frontend/privacy-policy/PrivacyPolicy";
 import { TermOfServices } from "./pages/frontend/term-of-services/TermOfServices";
 import { HelpCenter } from "./pages/frontend/help-center/HelpCenter";
 import Setting from "./pages/backend/setting/Setting";
+import { EmployeeProfile, Employee } from "./API";
+
 const App = () => {
-  const {isSignInComplete, isLogoutEnabled, getUser, isAuthenticated, isLoading, logout, getSession, setIsSignUpInComplete} = useContext(AccountContext);
-  // const [contentLoader, setContentLoader] = useState(true);
-  
+  const {isSignInComplete, getUser, isAuthenticated, isLoading, getEmployeeProfile,setIsSignUpInComplete} = useContext(AccountContext);
+  const [EmployeeProfile, setEmployeeProfile] = useState<Employee | null>(null);
   useEffect(() => {
-    console.log(isLoading + " Is Loading State");
-    //console.log(contentLoader + " content Loader state");
+
     if(isAuthenticated) {
       const data = getUser();
       if(data !== null) {
         const signUpStatus = data?.attributes["custom:signup_status"];
         if(signUpStatus === "0") {
           setIsSignUpInComplete(true);
+        } else if (signUpStatus === "1") {
+          getEmployeeProfile();
         }
       }
     }
+
   }, [isAuthenticated]);
 
   // useEffect(() => {
