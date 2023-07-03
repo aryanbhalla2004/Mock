@@ -32,7 +32,7 @@ const Setting = () => {
   }, [formState, reset])
 
   const [editDeats, setEditDeats] = React.useState(0);
-  const {getUser, getSession} = useContext(AccountContext);
+  const {getUser, chnagePssGetSession, authenticate} = useContext(AccountContext);
   const {pushDataUser, pullObj,listDataByID, pushDataUserReturn, pullDataFilter, fetchData} = useContext(DatabaseContext);
   const [emp, setEmp] = React.useState({} as any);
   useEffect(() => {
@@ -61,6 +61,9 @@ const Setting = () => {
       e.fin = null;
       e.accountName = null;
     }
+    delete e.confirmPassword;
+    delete e.oldPassword;
+    delete e.newPassword;
     
     const data = {id:"99d8085d-d6b7-42f4-9dbc-f2d3b4c08f5d", payment: e, _version:emp._version };
 
@@ -73,13 +76,16 @@ const Setting = () => {
   const changePass = async (e:any) => {
     if(e.newPassword !== e.confirmPassword) return;
 
-    getSession().then((user:any) => {
-      user.changePassword(e.oldPassword, e.newPassword, (err:any, result:any) => {
-        if(err) console.log(err);
-        console.log(result);
-      })
-    })
-  }
+    chnagePssGetSession().then(({ user, email }:any) => {
+      authenticate(email, e.oldPassword).then(() => {
+        user.changePassword(e.oldPassword, e.newPassword, (err:any, result:any) => {
+          if (err) console.error(err);
+          console.log(result);
+        });
+      });
+    });
+  };
+  
 
   return (
     <>
@@ -135,5 +141,5 @@ const Setting = () => {
     
     </>
   )
-}
+    }
 export default Setting;

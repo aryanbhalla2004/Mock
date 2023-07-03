@@ -1,15 +1,17 @@
 import html2pdf from "html2pdf.js";
 
 var opt = {
-  margin: 0,
-  filename: "billofsales.pdf",
-  html2canvas: { 
+  margin: [0.1, 0],
+  filename: "EMPLOYMENT AGREEMENT.pdf",
+  html2canvas: {
     dpi: 192,
-    scale:4,
+    scale: 4,
     letterRendering: true,
     useCORS: true,
-    scrollY: 0 
+    scrollY: 0,
+
   },
+  pagebreak: { mode: ["css"] },
   jsPDF: { unit: "in", format: "A4", orientation: "portrait" },
 };
 
@@ -49,6 +51,7 @@ export const print = async () => {
   //   elem.style.marginBottom = "0px ";
   // });
 
+  console.log(opt);
   const data = await html2pdf().from(element).set(opt).outputPdf().then(function (p) {
     return p
   });

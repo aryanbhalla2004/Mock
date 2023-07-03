@@ -5,3 +5,56 @@
   line-height: 25px;
   text-align: left !important;
 }
+
+
+.terms-conditions ul {
+  padding-left: 20px;
+}
+
+.terms-conditions ol {
+  padding-left: 20px;
+}
+.terms-conditions li{
+  margin-left: 10px;
+  font-size: 15px;
+  font-family: inherit;
+  color: #333;
+  line-height: 2em;
+  font-weight: 400;
+  text-decoration:none;
+}
+.terms-conditions h1 {
+  font-size: 25px;
+  color: #2268DC;
+  font-weight: 600;
+  text-decoration:none;
+  }
+
+  .terms-conditions h2 {
+  font-size: 20px;
+  color: #009359;
+  font-weight: bold;
+  text-decoration:none;
+  margin-bottom: 10px;
+  }
+
+
+  .terms-conditions h3 {
+    font-size: 18px;
+    color: #009359;
+    font-weight: bold;
+    text-decoration:none;
+    }
+
+
+  .terms-conditions p {
+    margin-bottom: 10px;
+  font-size: 15px;
+  font-family: inherit;
+  color: #333;
+  line-height: 2em;
+  font-weight: 400;
+  text-decoration:none;
+  }
+
+ 

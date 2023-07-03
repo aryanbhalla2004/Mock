@@ -1,9 +1,12 @@
 import React, {createContext, useEffect, useState} from 'react';
 import { API, Auth } from "aws-amplify";
 // import { useDispatch } from 'react-redux';
-import { CognitoUser } from "@aws-amplify/auth";
+import { CognitoUser} from "@aws-amplify/auth";
+import {CognitoUser as cog, AuthenticationDetails } from "amazon-cognito-identity-js";
 import { Employee } from '../../API';
 import { getEmployee } from '../../graphql/queries';
+import { CognitoUserPool } from 'amazon-cognito-identity-js';
+import awsmobile from '../../aws-exports';
 // import { login as rLogin} from '../../setup/auth/userSlice';
 // import { logout as rLogout } from '../../setup/auth/userSlice';
 const AccountContext = createContext<any>(null);
@@ -77,6 +80,16 @@ const AccountProvider = ({children}: any) => {
     return user;
   };
   
+  const getPool = () => {
+  const poolData = {
+    UserPoolId: awsmobile.aws_user_pools_id,
+    ClientId: awsmobile.aws_user_pools_web_client_id
+  };
+
+
+  return new CognitoUserPool(poolData);
+}
+
   const login = async (email: string, password: string) => {
     try {
       const user = await Auth.signIn(email, password);
@@ -85,6 +98,7 @@ const AccountProvider = ({children}: any) => {
       throw err;
     }
   }
+
 
   const logout = async (isGlobal: boolean) => {
     Auth.signOut({global: isGlobal});
@@ -176,8 +190,69 @@ const AccountProvider = ({children}: any) => {
     }
   }
 
+  const chnagePssGetSession = async () =>
+  await new Promise((resolve, reject) => {
+    const user = getPool().getCurrentUser();
+    if (user) {
+      user.getSession(async (err:any, session:any) => {
+        if (err) {
+          reject();
+        } else {
+          const attributes:any = await new Promise((resolve, reject) => {
+            user.getUserAttributes((err:any, attributes:any) => {
+              if (err) {
+                reject(err);
+              } else {
+                const results:any = {};
+
+                for (let attribute of attributes) {
+                  const { Name, Value } = attribute;
+                  results[Name] = Value;
+                }
+
+                resolve(results);
+              }
+            });
+          });
+
+          resolve({
+            user,
+            ...session,
+            ...attributes
+          });
+        }
+      });
+    } else {
+      reject();
+    }
+  });
+
+const authenticate = async (Username:any, Password:any) =>
+  await new Promise((resolve, reject) => {
+    const Pool = getPool();
+    const user = new cog({ Username,  Pool});
+    const authDetails = new AuthenticationDetails({ Username, Password });
+
+    user.authenticateUser(authDetails, {
+      onSuccess: data => {
+        console.log("onSuccess:", data);
+        resolve(data);
+      },
+
+      onFailure: err => {
+        console.error("onFailure:", err);
+        reject(err);
+      },
+
+      newPasswordRequired: data => {
+        console.log("newPasswordRequired:", data);
+        resolve(data);
+      }
+    });
+  });
+
   return (
-    <AccountContext.Provider value={{getEmployeeProfile, isSignInComplete, setIsSignUpInComplete, createNewPassword, setIsLogoutEnabled, isLogoutEnabled, getUser, isLoading, isAuthenticated, getSession, login, forgotPassword, verifyMFACode, register, completeUserPassword, sendMFACode, logout, fetchDevices, setIsAuthenticated}}>
+    <AccountContext.Provider value={{authenticate, chnagePssGetSession, getEmployeeProfile, isSignInComplete, setIsSignUpInComplete, createNewPassword, setIsLogoutEnabled, isLogoutEnabled, getUser, isLoading, isAuthenticated, getSession, login, forgotPassword, verifyMFACode, register, completeUserPassword, sendMFACode, logout, fetchDevices, setIsAuthenticated}}>
       {children}
     </AccountContext.Provider>
   )

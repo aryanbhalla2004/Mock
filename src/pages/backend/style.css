@@ -114,8 +114,6 @@
   background-color: var(--primaryHover);
 }
 
-<<<<<<< HEAD
-
 .house-cards{
   display: flex;
   gap: 10px;
@@ -140,7 +138,6 @@
   width: 200px;
   height: 150px;
 }
-=======
 .content-dashboard-data {
   display: flex;
   justify-content: center;
@@ -151,4 +148,3 @@
   width: 100%;
   padding: 30px;
 }
->>>>>>> ed234e7f180c6186dd77ecc30342d4ac7d7ea593

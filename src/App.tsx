@@ -23,6 +23,9 @@ import { TermOfServices } from "./pages/frontend/term-of-services/TermOfServices
 import { HelpCenter } from "./pages/frontend/help-center/HelpCenter";
 import Setting from "./pages/backend/setting/Setting";
 import { EmployeeProfile, Employee } from "./API";
+import { MainDashboard } from "./pages/backend/mainDashboard/MainDashboard";
+
+
 
 const App = () => {
   const {isSignInComplete, getUser, isAuthenticated, isLoading, getEmployeeProfile,setIsSignUpInComplete} = useContext(AccountContext);
@@ -52,7 +55,7 @@ const App = () => {
   return (
    !isLoading ? <div className="slow-animate-pop-loading">
       <Logout/>
-      {/* <ModualPop show={isSignInComplete} child={<SetupWizzard />}/> */}
+      <ModualPop show={isSignInComplete} child={<SetupWizzard />}/>
       <Routes>
         <Route path="*" element={<Error404 />}></Route>
 
@@ -70,6 +73,7 @@ const App = () => {
           <Route path="selectHouses" element={<SelectHouses/>}/>
           <Route path="myHouse" element={<MyHouse/>}/>
           <Route path="myWork" element={<MyWork/>}/>
+          <Route index element={<MainDashboard/>}/>
           <Route path="setting" element={<Setting/>}/>
         </Route>
 
